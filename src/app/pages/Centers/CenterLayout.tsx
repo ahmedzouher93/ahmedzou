@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
+import { Breadcrumbs, navTrail } from '../../components/Breadcrumbs';
 import { Menu, ChevronLeft, ChevronDown, FileText, Monitor, Target, Users, Image as ImageIcon } from 'lucide-react';
 import { Button } from '../../components/ui/button';
 
@@ -242,6 +243,10 @@ export function CenterLayout({
 
           <div className={heroVariant === "photo" ? "container relative z-20 mx-auto px-4 md:px-8 text-center" : "container relative z-20 mx-auto px-4 md:px-8"}>
             <div className={heroVariant === "photo" ? "max-w-4xl mx-auto" : "max-w-4xl"}>
+              <Breadcrumbs align={heroVariant === "photo" ? "center" : "start"} pill={heroVariant === "photo"} className="mb-6" items={[
+                { label: centerName, onClick: links[0] ? () => handleTabChange(links[0].id) : undefined },
+                ...navTrail(links, activeItem).filter(n => n.id !== links[0]?.id).map(n => ({ label: n.name })),
+              ]} />
               {heroVariant !== "photo" && <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
                 <Target size={16} className="text-[#c9a227]" />
                 <span className="text-white/90 text-sm font-medium tracking-wide">

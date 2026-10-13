@@ -7,6 +7,7 @@ import {
 import { Button } from '../components/ui/button';
 import aboutImg from "../../imports/image-4.png";
 import presidentImg from "../../imports/president.webp";
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 // Member photos, named by position in COUNCIL / DEANS / TRUSTEES (cropped from the official university pages)
 const PHOTOS = import.meta.glob('../../imports/{council,deans,trustees}/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
@@ -628,6 +629,7 @@ export function About() {
 
           <div className="container relative z-20 mx-auto px-4 md:px-8">
             <div className="max-w-4xl">
+              <Breadcrumbs className="mb-6" items={[{ label: 'عن الجامعة', onClick: () => setActiveItem('about') }, { label: getSectionTitle(activeItem) }]} />
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
                 <Building size={16} className="text-[#c9a227]" />
                 <span className="text-white/90 text-sm font-medium tracking-wide">

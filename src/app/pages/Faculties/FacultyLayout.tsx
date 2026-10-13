@@ -3,6 +3,7 @@ import { WireframeHeader } from "../../components/WireframeHeader";
 import { WireframeFooter } from "../../components/WireframeFooter";
 import { ChevronLeft, ChevronDown, ChevronRight, Menu } from "lucide-react";
 import { ImageWithFallback } from "../../components/figma/ImageWithFallback";
+import { Breadcrumbs, pathTrail } from "../../components/Breadcrumbs";
 import { useState } from "react";
 import FACULTIES from "./FacultyData";
 import { facultySlug, facultyLinks, departmentOf, departmentLinks, PROGRAM_LABELS } from "./FacultyNav";
@@ -25,6 +26,14 @@ export function FacultyLayout() {
     ? deptCtx!.dept.name + ' — أحد الأقسام الأكاديمية في ' + cfg.name + ' بجامعة مؤتة.'
     : cfg.intro;
   const HERO_IMAGE = cfg.hero;
+  const deptRoot = isDept ? root + '/departments/' + deptCtx!.dept.id : '';
+  const crumbs = [
+    { label: 'كليات وعمادات', to: '/faculties' },
+    { label: cfg.name, to: root },
+    ...(isDept ? [{ label: 'الأقسام' }, { label: deptCtx!.dept.name, to: deptRoot }] : []),
+    ...pathTrail(currentLinks, location.pathname).filter((n: any) => n.path !== root && n.path !== deptRoot)
+      .map((n: any) => ({ label: n.name, to: n.children ? undefined : n.path })),
+  ];
 
   return (
     <div
@@ -235,6 +244,7 @@ export function FacultyLayout() {
             style={{ maxWidth: "1440px" }}
           >
             <div className="w-full lg:w-[45%] flex flex-col justify-center">
+              <Breadcrumbs className="mb-6" items={crumbs} />
               {isDept && (
                 <div className="flex mb-5" style={{ justifyContent: "flex-start" }}>
                   <button

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { WireframeHeader } from '../components/WireframeHeader';
 import { WireframeFooter } from '../components/WireframeFooter';
 import { MapPin, Phone, Printer, Mail, Send, CheckCircle2 } from 'lucide-react';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 const CONTACT = [
   { icon: MapPin, label: 'العنوان', lines: ['الكرك - الأردن - الرمز البريدي (61710)'] },
@@ -23,6 +24,7 @@ export function ContactUs() {
       <section className="relative" style={{ background: '#0f3057' }}>
         <img src="https://www.mutah.edu.jo/PublishingImages/640.jpg" alt="جامعة مؤتة" className="absolute inset-0 w-full h-full object-cover opacity-25" />
         <div className="relative max-w-[1180px] mx-auto px-6 py-16">
+          <Breadcrumbs className="mb-5" items={[{ label: 'اتصل بنا' }]} />
           <h1 className="text-white font-extrabold" style={{ fontSize: 40 }}>اتصل بنا</h1>
           <p className="text-white/85 mt-4 leading-9" style={{ fontSize: 17 }}>جامعة مؤتة :: الكرك :: الأردن — نسعد بتواصلكم واستفساراتكم ومقترحاتكم.</p>
         </div>

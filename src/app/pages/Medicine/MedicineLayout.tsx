@@ -1,4 +1,5 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router";
+import { Breadcrumbs, pathTrail } from "../../components/Breadcrumbs";
 import { WireframeHeader } from "../../components/WireframeHeader";
 import { WireframeFooter } from "../../components/WireframeFooter";
 import { ChevronLeft, ChevronDown, ChevronRight, Menu, Mail, Phone, ExternalLink, GraduationCap } from "lucide-react";
@@ -351,6 +352,16 @@ export function MedicineLayout() {
           >
             {/* Right Side: Title & Paragraph */}
             <div className={`w-full ${isAnatomy ? 'lg:w-[60%]' : 'lg:w-[45%]'} flex flex-col justify-center`}>
+              <Breadcrumbs className="mb-6" items={[
+                { label: 'كليات وعمادات', to: '/faculties' },
+                { label: 'كلية الطب', to: '/medicine' },
+                ...(isAnatomy ? [{ label: 'الأقسام' }, { label: 'قسم التشريح وعلم الأنسجة', to: '/medicine/departments/anatomy' }] : []),
+                ...(isAnatomyCourses
+                  ? [{ label: heroTitle }]
+                  : pathTrail(isAnatomy ? ANATOMY_LINKS : MEDICINE_LINKS, location.pathname)
+                      .filter((n: any) => n.path !== '/medicine' && n.path !== '/medicine/departments/anatomy')
+                      .map((n: any) => ({ label: n.name, to: n.children ? undefined : n.path }))),
+              ]} />
               {isDept && (
                 <div className="flex mb-5" style={{ justifyContent: "flex-start" }}>
                   <button

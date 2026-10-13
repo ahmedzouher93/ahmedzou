@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { findMember, FacultySite, LinkItem } from './FacultySitesData';
 
 function initials(name: string) {
@@ -111,13 +112,7 @@ export function FacultyProfile() {
         <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '26px 26px' }} />
         <div className="absolute -left-32 -top-32 w-[460px] h-[460px] rounded-full bg-[#c9a227]/10 blur-3xl" />
         <div className="relative max-w-[1400px] mx-auto px-6 md:px-10 pt-[130px] pb-28">
-          <nav className="flex flex-wrap items-center gap-2 text-[13px] text-white/60 mb-10">
-            <Link to="/" className="hover:text-[#c9a227]">الرئيسية</Link><ChevronLeft size={14} />
-            <Link to="/faculty-sites" className="hover:text-[#c9a227]">مواقع أعضاء هيئة التدريس</Link><ChevronLeft size={14} />
-            {tab
-              ? <><Link to={base} className="hover:text-[#c9a227]">{f.name}</Link><ChevronLeft size={14} /><span className="text-[#c9a227]">{tab.title}</span></>
-              : <span className="text-[#c9a227]">{f.name}</span>}
-          </nav>
+          <Breadcrumbs className="mb-10" items={[{ label: 'مواقع أعضاء هيئة التدريس', to: '/faculty-sites' }, { label: f.name, to: tab ? base : undefined }, ...(tab ? [{ label: tab.title }] : [])]} />
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             <div className="shrink-0 self-start md:self-auto w-[128px] h-[128px] md:w-[150px] md:h-[150px] rounded-[28px] p-[3px] bg-gradient-to-br from-[#c9a227] to-[#c9a227]/20 shadow-2xl">
               {f.photo

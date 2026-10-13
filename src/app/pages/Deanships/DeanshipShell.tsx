@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
+import { Breadcrumbs, navTrail } from '../../components/Breadcrumbs';
 import {
   ChevronRight, ChevronLeft, ChevronDown, Menu, FileText, Download,
   ExternalLink, Info, Globe
@@ -258,6 +259,10 @@ export function DeanshipShell({
             <img src={heroImage} alt={brand} className="w-full h-full object-cover mix-blend-overlay" />
           </div>
           <div className="mx-auto px-8 relative z-20 flex flex-col items-center justify-center text-center h-full max-w-[1440px]">
+            <Breadcrumbs align="center" className="mb-6" items={[
+              { label: brand, onClick: links[0] && !links[0].url ? () => setActiveItem(links[0].id) : undefined },
+              ...navTrail(links, activeItem).filter(n => n.id !== links[0]?.id).map(n => ({ label: n.name })),
+            ]} />
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight text-shadow-lg">
               {brand}
             </h1>

@@ -5,6 +5,7 @@ import NEWS from './NewsData';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
 import { go } from '../../nav';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 const YEARS = Array.from(new Set(NEWS.map((n: any) => n.date.slice(0, 4)))).sort().reverse();
 const TAGS = Array.from(new Set(NEWS.map((n: any) => n.tag)));
@@ -36,6 +37,7 @@ export function NewsList() {
       <WireframeHeader />
       <div style={{ background: '#0f3057', padding: '110px 40px 72px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+          <Breadcrumbs className="mb-6" items={[{ label: 'جميع الأخبار' }]} />
           <p style={{ color: '#c9a227', fontSize: 12, letterSpacing: 3, fontWeight: 700, marginBottom: 12 }}>المستجدات</p>
           <h1 style={{ color: '#fff', fontSize: 40, fontWeight: 800, marginBottom: 10 }}>جميع الأخبار</h1>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 16 }}>أخبار الجامعة وفعالياتها ومؤتمراتها وإعلاناتها.</p>
@@ -106,6 +108,7 @@ export function NewsDetail() {
     <div dir="rtl" className="min-h-screen flex flex-col font-['Noto_Kufi_Arabic'] bg-white">
       <WireframeHeader />
       <div style={{ maxWidth: 1180, margin: '0 auto', padding: '110px 40px 56px', width: '100%' }}>
+        <Breadcrumbs tone="light" className="mb-6" items={[{ label: 'جميع الأخبار', to: '/news' }, { label: item.title }]} />
         <button onClick={() => go('/news')}
           style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 12, border: '1px solid rgba(15,48,87,0.15)', background: '#fff', color: '#0f3057', fontSize: 13.5, fontWeight: 600, cursor: 'pointer', marginBottom: 24, fontFamily: 'inherit' }}>
           <ArrowRight size={15} /> الرجوع إلى جميع الأخبار

@@ -6,6 +6,7 @@ import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
 import FACULTIES from './FacultyData';
 import LEGACY_NEWS from './LegacyNewsData';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 const KIND_LABEL: Record<string, string> = {
   news: 'أخبار وإعلانات',
@@ -63,6 +64,7 @@ export function ItemDetail() {
     <div dir="rtl" className="min-h-screen flex flex-col font-['Noto_Kufi_Arabic'] bg-white">
       <WireframeHeader />
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '110px 40px 60px', width: '100%' }}>
+        <Breadcrumbs tone="light" className="mb-6" items={[{ label: 'كليات وعمادات', to: '/faculties' }, { label: cfg.name, to: base ? '/faculty/' + slug : backTo }, ...(dept ? [{ label: dept.name, to: '/faculty/' + slug + '/departments/' + deptId }] : []), { label: kind === 'achievements' ? 'الإنجازات' : kind === 'conferences' ? 'المؤتمرات' : 'الأخبار والإعلانات' }, { label: item.title }]} />
         <button
           onClick={() => navigate(backTo)}
           style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 12, border: '1px solid rgba(15,48,87,0.15)', background: '#fff', color: '#0f3057', fontSize: 13.5, fontWeight: 600, cursor: 'pointer', marginBottom: 26, fontFamily: 'inherit' }}

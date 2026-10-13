@@ -1,4 +1,5 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router";
+import { Breadcrumbs, pathTrail } from "../../components/Breadcrumbs";
 import { WireframeHeader } from "../../components/WireframeHeader";
 import { WireframeFooter } from "../../components/WireframeFooter";
 import { ChevronLeft, ChevronDown, ChevronRight, Menu } from "lucide-react";
@@ -275,6 +276,14 @@ export function DentistryLayout() {
             style={{ maxWidth: "1440px" }}
           >
             <div className={`w-full ${isDept ? "lg:w-[60%]" : "lg:w-[45%]"} flex flex-col justify-center`}>
+              <Breadcrumbs className="mb-6" items={[
+                { label: 'كليات وعمادات', to: '/faculties' },
+                { label: 'كلية طب وجراحة الأسنان', to: '/dentistry' },
+                ...(isDept ? [{ label: 'الأقسام' }, { label: 'قسم العلوم السنية والطبية', to: '/dentistry/departments/dental-sciences' }] : []),
+                ...pathTrail(currentLinks, location.pathname)
+                  .filter((n: any) => n.path !== '/dentistry' && n.path !== '/dentistry/departments/dental-sciences')
+                  .map((n: any) => ({ label: n.name, to: n.children ? undefined : n.path })),
+              ]} />
               <h1
                 style={{
                   fontSize: "48px",

@@ -34,6 +34,7 @@ import {
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import importedImageMUTAH from "../../imports/MUTAH_LOGO.png"; // We can just use standard logo or an unsplash image for sidebar
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 const ADMISSION_LINKS = [
   { name: "الرئيسية", go: "top" },
@@ -367,6 +368,7 @@ export function Admission() {
             />
           </div>
           <div className="mx-auto px-8 relative z-20 flex flex-col items-center justify-center text-center h-full max-w-4xl">
+            <Breadcrumbs align="center" className="mb-6" items={[{ label: 'وحدة القبول والتسجيل' }]} />
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-[1.3] text-shadow-lg">
               مرحباً بك، كيف يمكننا مساعدتك اليوم؟
             </h1>

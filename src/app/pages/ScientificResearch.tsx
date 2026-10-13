@@ -11,6 +11,7 @@ import {
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Breadcrumbs, navTrail } from '../components/Breadcrumbs';
 
 function DocRow({ name, type = 'PDF' }: { name: string; type?: string }) {
   return (
@@ -1440,6 +1441,7 @@ export function ScientificResearch() {
             />
           </div>
           <div className="mx-auto px-8 relative z-20 flex flex-col items-center justify-center text-center h-full max-w-[1440px]">
+            <Breadcrumbs align="center" className="mb-6" items={[{ label: 'عمادة البحث العلمي', onClick: () => setActiveItem('home') }, ...navTrail(RESEARCH_LINKS as any, activeItem).filter((n: any) => n.id !== 'home').map((n: any) => ({ label: n.name }))]} />
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight text-shadow-lg">
               عمادة البحث العلمي
             </h1>

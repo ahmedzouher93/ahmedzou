@@ -6,6 +6,7 @@ import CC_NEWS from './ComputerCenterNews';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 function Shell({ children }: any) {
   return (
@@ -32,6 +33,7 @@ export function ComputerCenterNewsList() {
   const Icon = kind === 'info' ? Bell : Newspaper;
   return (
     <Shell>
+      <Breadcrumbs tone="light" className="mb-6" items={[{ label: 'مركز الحاسوب', to: '/computer-center' }, { label: set.label }]} />
       <BackBtn onClick={() => navigate('/computer-center')} label="الرجوع إلى مركز الحاسوب" />
       <div className="flex items-center gap-3 mb-8 border-b border-gray-100 pb-5">
         <div className="w-10 h-10 rounded-lg bg-[#0f3057]/5 flex items-center justify-center">
@@ -61,6 +63,7 @@ export function ComputerCenterItemDetail() {
   const Icon = kind === 'info' ? Bell : Newspaper;
   return (
     <Shell>
+      <Breadcrumbs tone="light" className="mb-6" items={[{ label: 'مركز الحاسوب', to: '/computer-center' }, { label: set.label, to: '/cc-list/' + (kind || 'news') }, { label: item.title }]} />
       <BackBtn onClick={() => navigate('/cc-list/' + (kind || 'news'))} label={'الرجوع إلى ' + set.label} />
       <div className="flex flex-wrap items-center gap-3 mb-5">
         <span className="inline-flex items-center gap-2 text-[11px] font-bold text-[#0f3057] bg-[#0f3057]/[0.06] px-3 py-1.5 rounded-full">

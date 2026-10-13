@@ -9,6 +9,7 @@ import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
 import orgChart2024 from '@/imports/org-chart-2024.png';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Breadcrumbs, navTrail } from '../components/Breadcrumbs';
 
 const GRADUATE_LINKS = [
   { id: 'home', name: 'الرئيسية' },
@@ -536,6 +537,7 @@ export function GraduateStudies() {
             />
           </div>
           <div className="mx-auto px-8 relative z-20 flex flex-col items-center justify-center text-center h-full max-w-[1440px]">
+            <Breadcrumbs align="center" className="mb-6" items={[{ label: 'كلية الدراسات العليا', onClick: () => setActiveItem('home') }, ...navTrail(GRADUATE_LINKS as any, activeItem).filter((n: any) => n.id !== 'home').map((n: any) => ({ label: n.name })), ...(String(activeItem).startsWith('news-') ? [{ label: 'أخبار وأحداث' }, { label: (NEWS.find((n: any) => 'news-' + n.id === activeItem) || {} as any).title }] : [])]} />
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
               كلية الدراسات العليا
             </h1>

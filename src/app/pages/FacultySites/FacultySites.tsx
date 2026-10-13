@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { Search, Globe, Mail, GraduationCap, Users, Building2, ChevronLeft, X } from 'lucide-react';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { FACULTY_SITES, DIRECTORY_TOTAL, FacultySite } from './FacultySitesData';
 
 const PAGE = 25;
@@ -75,10 +76,7 @@ export function FacultySites() {
         <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '26px 26px' }} />
         <div className="absolute -left-24 -bottom-24 w-[420px] h-[420px] rounded-full bg-[#c9a227]/10 blur-3xl" />
         <div className="relative max-w-[1400px] mx-auto px-6 md:px-10 pt-[130px] pb-24">
-          <nav className="flex items-center gap-2 text-[13px] text-white/60 mb-6">
-            <Link to="/" className="hover:text-[#c9a227]">الرئيسية</Link><ChevronLeft size={14} />
-            <span className="text-[#c9a227]">مواقع أعضاء هيئة التدريس</span>
-          </nav>
+          <Breadcrumbs className="mb-6" items={[{ label: 'مواقع أعضاء هيئة التدريس' }]} />
           <span className="inline-flex items-center gap-2 rounded-full border border-[#c9a227]/40 bg-[#c9a227]/10 px-4 py-1.5 text-[12.5px] font-bold text-[#c9a227] mb-5">
             <GraduationCap size={15} /> الهيئة التدريسية
           </span>

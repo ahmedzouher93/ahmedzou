@@ -5,6 +5,7 @@ import ITEMS from './ItemsRegistry';
 import { WireframeHeader } from '../components/WireframeHeader';
 import { WireframeFooter } from '../components/WireframeFooter';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export function UnitItemList() {
   const { key } = useParams();
@@ -15,6 +16,7 @@ export function UnitItemList() {
     <div dir="rtl" className="min-h-screen flex flex-col font-['Noto_Kufi_Arabic'] bg-white">
       <WireframeHeader />
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '110px 40px 60px', width: '100%' }}>
+        <Breadcrumbs tone="light" className="mb-6" items={[{ label: set.scope, to: set.back }, { label: set.label }]} />
         <button onClick={() => navigate(set.back)}
           style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 12, border: '1px solid rgba(15,48,87,0.15)', background: '#fff', color: '#0f3057', fontSize: 13.5, fontWeight: 600, cursor: 'pointer', marginBottom: 26, fontFamily: 'inherit' }}>
           <ArrowRight size={15} /> الرجوع إلى {set.scope}

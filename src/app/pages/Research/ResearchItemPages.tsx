@@ -5,6 +5,7 @@ import RESEARCH_ITEMS from './ResearchNewsData';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 function Shell({ children }: any) {
   return (
@@ -31,6 +32,7 @@ export function ResearchItemList() {
   const Icon = kind === 'announcements' ? AlertCircle : FileText;
   return (
     <Shell>
+      <Breadcrumbs tone="light" className="mb-6" items={[{ label: 'عمادة البحث العلمي', to: '/scientific-research' }, { label: set.label }]} />
       <BackBtn onClick={() => navigate('/scientific-research')} label="الرجوع إلى عمادة البحث العلمي" />
       <div className="flex items-center gap-3 mb-8 border-b border-gray-100 pb-5">
         <div className="w-11 h-11 rounded-xl bg-[#0f3057] flex items-center justify-center">
@@ -60,6 +62,7 @@ export function ResearchItemDetail() {
   const Icon = kind === 'announcements' ? AlertCircle : FileText;
   return (
     <Shell>
+      <Breadcrumbs tone="light" className="mb-6" items={[{ label: 'عمادة البحث العلمي', to: '/scientific-research' }, { label: set.label, to: '/r-list/' + (kind || 'news') }, { label: item.title }]} />
       <BackBtn onClick={() => navigate('/r-list/' + (kind || 'news'))} label={'الرجوع إلى ' + set.label} />
       <div className="flex flex-wrap items-center gap-3 mb-5">
         <span className="inline-flex items-center gap-2 text-[11px] font-bold text-[#0f3057] bg-[#0f3057]/[0.06] px-3 py-1.5 rounded-full">

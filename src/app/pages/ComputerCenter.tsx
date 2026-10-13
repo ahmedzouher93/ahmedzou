@@ -11,6 +11,7 @@ import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
 import structureImg from '../../imports/Org.png';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Breadcrumbs, navTrail } from '../components/Breadcrumbs';
 
 const CENTER_LINKS = [
   { id: 'home', name: 'الرئيسية' },
@@ -964,6 +965,7 @@ function ComputerCenterContent() {
 
           <div className="container relative z-20 mx-auto px-4 md:px-8">
             <div className="max-w-4xl">
+              <Breadcrumbs className="mb-6" items={[{ label: 'مركز الحاسوب', onClick: () => setActiveItem('home') }, ...navTrail(CENTER_LINKS as any, activeItem).filter((n: any) => n.id !== 'home').map((n: any) => ({ label: n.name }))]} />
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
                 <Monitor size={16} className="text-[#c9a227]" />
                 <span className="text-white/90 text-sm font-medium tracking-wide">

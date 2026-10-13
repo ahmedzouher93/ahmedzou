@@ -4,6 +4,7 @@ import { Calendar, ArrowRight, Newspaper, Info } from 'lucide-react';
 import DAA_NEWS from './DaaNewsData';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export function DaaNewsDetail() {
   const { idx } = useParams();
@@ -15,6 +16,7 @@ export function DaaNewsDetail() {
     <div dir="rtl" className="min-h-screen flex flex-col font-['Noto_Kufi_Arabic'] bg-white">
       <WireframeHeader />
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '110px 40px 60px', width: '100%' }}>
+        <Breadcrumbs tone="light" className="mb-6" items={[{ label: 'عمادة الشؤون الأكاديمية', to: '/academic-affairs' }, { label: 'أخبار وأحداث' }, { label: item.title }]} />
         <button onClick={() => navigate('/academic-affairs')}
           style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 12, border: '1px solid rgba(15,48,87,0.15)', background: '#fff', color: '#0f3057', fontSize: 13.5, fontWeight: 600, cursor: 'pointer', marginBottom: 26, fontFamily: 'inherit' }}>
           <ArrowRight size={15} /> الرجوع إلى عمادة الشؤون الأكاديمية
