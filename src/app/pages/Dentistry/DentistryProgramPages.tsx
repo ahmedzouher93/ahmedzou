@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { FileText, ArrowLeft, ExternalLink, Info } from "lucide-react";
+import { Attachments, samplePair } from '../../components/Attachments';
 
 function PageHead({ title }: { title: string }) {
   return (
@@ -51,6 +52,7 @@ export function DentistryBachelor() {
       <div className="flex flex-col gap-3">
         <ProgramRow title="خطة البكالوريس لطب الأسنان 2024" />
       </div>
+      <Attachments files={samplePair('الخطة الدراسية - بكالوريوس طب الأسنان 2024')} />
     </div>
   );
 }

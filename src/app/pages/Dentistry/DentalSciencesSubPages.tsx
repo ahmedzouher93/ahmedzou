@@ -1,7 +1,8 @@
 import React from "react";
 import { Info } from "lucide-react";
+import { Attachments, samplePair } from '../../components/Attachments';
 
-function DeptPage({ title }: { title: string }) {
+function DeptPage({ title, files }: { title: string; files?: { name: string; type: "pdf" | "docx" }[] }) {
   return (
     <div className="flex flex-col w-full animate-in fade-in duration-500" dir="rtl">
       <div className="mb-8 border-b border-gray-100 pb-6">
@@ -12,13 +13,14 @@ function DeptPage({ title }: { title: string }) {
         <Info size={16} className="text-gray-400 flex-shrink-0 mt-0.5" />
         <p className="text-sm text-gray-500 leading-relaxed">لا توجد عناصر لعرضها في هذه الصفحة.</p>
       </div>
+      {files && <Attachments files={files} />}
     </div>
   );
 }
 
 export function DentalSciencesStrategy() { return <DeptPage title="الاستيراتيجية" />; }
-export function DentalSciencesCourses() { return <DeptPage title="المواد الدراسية" />; }
+export function DentalSciencesCourses() { return <DeptPage title="المواد الدراسية" files={samplePair('وصف المواد الدراسية - قسم العلوم السنية والطبية')} />; }
 export function DentalSciencesPrograms() { return <DeptPage title="البرامج الدراسية" />; }
-export function DentalSciencesPlans() { return <DeptPage title="الخطط الدراسية" />; }
+export function DentalSciencesPlans() { return <DeptPage title="الخطط الدراسية" files={samplePair('الخطة الدراسية - قسم العلوم السنية والطبية')} />; }
 export function DentalSciencesForms() { return <DeptPage title="النماذج" />; }
 export function DentalSciencesAchievements() { return <DeptPage title="الإنجازات" />; }

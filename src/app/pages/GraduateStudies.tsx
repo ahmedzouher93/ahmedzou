@@ -10,6 +10,7 @@ import { Link } from 'react-router';
 import orgChart2024 from '@/imports/org-chart-2024.png';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 import { Breadcrumbs, navTrail } from '../components/Breadcrumbs';
+import { Attachments, samplePair } from '../components/Attachments';
 
 const GRADUATE_LINKS = [
   { id: 'home', name: 'الرئيسية' },
@@ -770,6 +771,7 @@ export function GraduateStudies() {
                       </div>
                     ))}
                   </div>
+                  <Attachments files={samplePair('الخطط الدراسية - برامج الدكتوراه')} />
                 </div>
               )}
 
@@ -794,6 +796,7 @@ export function GraduateStudies() {
                       </button>
                     ))}
                   </div>
+                  <Attachments files={samplePair('الخطط الدراسية - برامج الماجستير')} />
                 </div>
               )}
 
@@ -852,6 +855,7 @@ export function GraduateStudies() {
                       <p className="text-sm text-gray-600">بالتعاون مع جامعة الشرق الأوسط</p>
                     </div>
                   </div>
+                  <Attachments files={samplePair('الخطط الدراسية - البرامج المشتركة')} />
                 </div>
               )}
 
@@ -977,6 +981,7 @@ export function GraduateStudies() {
                       </div>
                     </div>
                   </div>
+                  <Attachments files={samplePair('الخطة الدراسية - الدبلوم العالي في التمريض')} />
                 </div>
               )}
 
@@ -987,6 +992,7 @@ export function GraduateStudies() {
                     <Info size={28} className="text-gray-400 mx-auto mb-4" />
                     <p className="text-xl font-bold text-[#0f3057]">تحت الانشاء</p>
                   </div>
+                  <Attachments files={samplePair('الخطة الدراسية - دبلوم إعداد المعلمين')} />
                 </div>
               )}
 
@@ -1135,6 +1141,7 @@ export function GraduateStudies() {
                       </button>
                     ))}
                   </div>
+                  <Attachments files={samplePair('الخطط الدراسية لكلية الدراسات العليا')} />
                 </div>
               )}
 

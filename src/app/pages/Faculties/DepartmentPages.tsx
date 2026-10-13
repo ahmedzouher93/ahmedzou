@@ -4,6 +4,7 @@ import { Info, Users, BookOpen, FileText, Download, Layers, Newspaper, Graduatio
 import { ImageWithFallback } from '../../components/figma/ImageWithFallback';
 import { departmentOf, DEPT_TABS, PROGRAM_LABELS } from './FacultyNav';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Attachments, samplePair } from '../../components/Attachments';
 
 function useDept() {
   const location = useLocation();
@@ -403,7 +404,7 @@ export function DepartmentFaculty() {
   );
 }
 
-export function DepartmentCourses() {
+function DepartmentCoursesBody() {
   const { dept } = useDept();
   if (dept.courseTable) {
     return (
@@ -470,7 +471,7 @@ export function DepartmentCourses() {
   );
 }
 
-export function DepartmentPlans() {
+function DepartmentPlansBody() {
   const { dept } = useDept();
   if (dept.planTable) {
     return (
@@ -585,4 +586,15 @@ export function DepartmentAchievements() {
       ))}
     </Wrap>
   );
+}
+
+// Course descriptions / study plans, followed by their attachments (sample files)
+export function DepartmentCourses() {
+  const { dept } = useDept();
+  return <><DepartmentCoursesBody /><Attachments files={samplePair('وصف المواد الدراسية - ' + dept.name)} /></>;
+}
+
+export function DepartmentPlans() {
+  const { dept } = useDept();
+  return <><DepartmentPlansBody /><Attachments files={samplePair('الخطة الدراسية - ' + dept.name)} /></>;
 }

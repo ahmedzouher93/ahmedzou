@@ -2,6 +2,7 @@ import { Badge } from "../../components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { BookOpen, FileText, Video, Link as LinkIcon, Download, Clock, Info, CheckCircle } from "lucide-react";
 import { Link } from "react-router";
+import { Attachments, samplePair } from '../../components/Attachments';
 
 export function AnatomyCourseDetail() {
   return (
@@ -63,6 +64,7 @@ export function AnatomyCourseDetail() {
                 </li>
               ))}
             </ul>
+            <Attachments files={[...samplePair('وصف المادة'), ...samplePair('خطة المادة (Syllabus)')]} />
           </section>
 
           {/* Slides */}

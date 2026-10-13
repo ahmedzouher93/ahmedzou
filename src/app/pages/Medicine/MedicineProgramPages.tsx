@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { FileText, ArrowLeft, ExternalLink } from "lucide-react";
+import { Attachments, samplePair } from '../../components/Attachments';
 
 function PageHead({ title }: { title: string }) {
   return (
@@ -53,6 +54,7 @@ export function MedicineBachelor() {
       <div className="flex flex-col gap-3">
         {items.map((t) => <ProgramRow key={t} title={t} />)}
       </div>
+      <Attachments files={samplePair('الخطة الدراسية - بكالوريوس الطب والجراحة')} />
     </div>
   );
 }
@@ -68,6 +70,7 @@ export function MedicineGraduate() {
           dept="قسم الصحة العامة وطب المجتمع"
         />
       </div>
+      <Attachments files={samplePair('الخطة الدراسية - ماجستير الصحة العامة')} />
     </div>
   );
 }

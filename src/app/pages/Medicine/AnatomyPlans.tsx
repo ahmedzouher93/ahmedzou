@@ -1,6 +1,7 @@
 import { Card, CardContent } from "../../components/ui/card";
 import { FileText, Download, Layers } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import { Attachments, samplePair } from '../../components/Attachments';
 
 const PLANS = [
   {
@@ -124,6 +125,7 @@ export function AnatomyPlans() {
           ))}
         </div>
       </section>
+      <Attachments files={samplePair('الخطط الدراسية - قسم التشريح وعلم الأنسجة')} />
     </div>
   );
 }

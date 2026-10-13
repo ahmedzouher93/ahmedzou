@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/ca
 import { Badge } from "../../components/ui/badge";
 import { Link } from "react-router";
 import { BookOpen, FileText, Layers, Stethoscope, Microscope, Brain, Link as LinkIcon, FileSpreadsheet, Book } from "lucide-react";
+import { Attachments, samplePair } from '../../components/Attachments';
 
 export function AnatomyCourses() {
   return (
@@ -80,6 +81,7 @@ export function AnatomyCourses() {
           ))}
         </div>
       </section>
+      <Attachments files={[...samplePair('وصف المواد الدراسية - قسم التشريح وعلم الأنسجة'), ...samplePair('الخطط الدراسية - قسم التشريح وعلم الأنسجة')]} />
     </div>
   );
 }
