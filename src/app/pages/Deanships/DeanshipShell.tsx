@@ -7,7 +7,9 @@ import {
   ExternalLink, Info, Globe
 } from 'lucide-react';
 
-export function DocRow({ name, type = 'PDF', url }: { name: string; type?: string; url?: string }) {
+export function DocRow({ name, type, url }: { name: string; type?: string; url?: string }) {
+  // linked files keep their real type; unlinked sample rows use an accessible format
+  type = type || (url && /\.pdf($|\?)/i.test(url) ? 'PDF' : url ? 'رابط' : 'DOCX');
   const inner = (
     <>
       <div className="w-9 h-9 rounded-lg bg-[#0f3057]/8 flex items-center justify-center shrink-0">

@@ -167,7 +167,7 @@ export function ScientificResearch() {
             <div className="bg-gradient-to-br from-[#0f3057] to-[#153e71] rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-xl border border-[#0f3057]/20 flex flex-col md:flex-row gap-10 items-center">
               <div className="absolute top-0 left-0 w-64 h-64 bg-[#c9a227] rounded-full blur-[80px] opacity-20 -z-0 translate-x-1/2 -translate-y-1/2"></div>
               <div className="w-48 h-48 md:w-56 md:h-56 rounded-full border-4 border-white/10 shadow-2xl overflow-hidden shrink-0 relative z-10">
-                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=400&q=80" alt="Research" className="w-full h-full object-cover" />
+                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=400&q=80" alt="باحث يعمل في مختبر علمي" className="w-full h-full object-cover" />
               </div>
               <div className="flex-1 relative z-10 text-center md:text-right">
                 <div className="inline-flex items-center gap-2 text-[#c9a227] font-bold mb-4 bg-[#c9a227]/10 px-4 py-1.5 rounded-full text-sm border border-[#c9a227]/20">
@@ -1436,7 +1436,7 @@ export function ScientificResearch() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0f3057] to-transparent z-10 opacity-70" />
             <img
               src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-              alt="Scientific Research"
+              alt="أجهزة ومعدات في مختبر للبحث العلمي — عمادة البحث العلمي"
               className="w-full h-full object-cover mix-blend-overlay"
             />
           </div>

@@ -322,25 +322,25 @@ const SCHOL_COMMITTEE = [
 ];
 
 const GRAD_FORMS = [
-  { name: 'نموذج تقرير مندوب دراسات', type: 'DOC' },
-  { name: 'إنتقال تخصص', type: 'DOC' },
-  { name: 'إنتقال جامعة', type: 'DOC' },
-  { name: 'نموذج تسليم', type: 'DOC' },
-  { name: 'انسحاب', type: 'DOC' },
-  { name: 'تقييم عمل طلبة الدراسات العليا', type: 'DOC' },
-  { name: 'كشف التشغيل جديد', type: 'DOC' },
-  { name: 'نموذج تقرير دوري', type: 'DOC' },
-  { name: 'نموذج تعهد', type: 'DOC' },
-  { name: 'نموذج تقرير صلاحية', type: 'DOC' },
-  { name: 'نموذج تقرير صلاحية عضو خارجي', type: 'DOC' },
-  { name: 'نموذج جاهزية الطالب للتقدم للمناقشة', type: 'DOC' },
-  { name: 'نموذج جاهزية شامل', type: 'DOC' },
-  { name: 'نموذج طلب تشغيل', type: 'DOC' },
-  { name: 'نموذج غير مكتمل', type: 'DOC' },
-  { name: 'نموذج نتائج الإمتحان شامل', type: 'DOC' },
-  { name: 'نموذج نتيجة شامل', type: 'DOC' },
-  { name: 'نموذج مشروع خطة', type: 'DOC' },
-  { name: 'دليل كتابة الرسائل الجامعية في جامعة مؤتة', type: 'PDF' }
+  { name: 'نموذج تقرير مندوب دراسات', type: 'DOCX' },
+  { name: 'إنتقال تخصص', type: 'DOCX' },
+  { name: 'إنتقال جامعة', type: 'DOCX' },
+  { name: 'نموذج تسليم', type: 'DOCX' },
+  { name: 'انسحاب', type: 'DOCX' },
+  { name: 'تقييم عمل طلبة الدراسات العليا', type: 'DOCX' },
+  { name: 'كشف التشغيل جديد', type: 'DOCX' },
+  { name: 'نموذج تقرير دوري', type: 'DOCX' },
+  { name: 'نموذج تعهد', type: 'DOCX' },
+  { name: 'نموذج تقرير صلاحية', type: 'DOCX' },
+  { name: 'نموذج تقرير صلاحية عضو خارجي', type: 'DOCX' },
+  { name: 'نموذج جاهزية الطالب للتقدم للمناقشة', type: 'DOCX' },
+  { name: 'نموذج جاهزية شامل', type: 'DOCX' },
+  { name: 'نموذج طلب تشغيل', type: 'DOCX' },
+  { name: 'نموذج غير مكتمل', type: 'DOCX' },
+  { name: 'نموذج نتائج الإمتحان شامل', type: 'DOCX' },
+  { name: 'نموذج نتيجة شامل', type: 'DOCX' },
+  { name: 'نموذج مشروع خطة', type: 'DOCX' },
+  { name: 'دليل كتابة الرسائل الجامعية في جامعة مؤتة', type: 'DOCX' }
 ];
 
 function SectionHead({ title, sub }: { title: string; sub?: string }) {
@@ -533,7 +533,7 @@ export function GraduateStudies() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0f3057] to-transparent z-10 opacity-70" />
             <img
               src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-              alt="Graduate Studies"
+              alt="مبانٍ جامعية في حرم جامعة مؤتة — كلية الدراسات العليا"
               className="w-full h-full object-cover mix-blend-overlay"
             />
           </div>

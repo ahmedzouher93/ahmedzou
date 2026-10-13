@@ -3,11 +3,12 @@ import { Paperclip, Download } from 'lucide-react';
 
 // "المرفقات" block shown under course-description and study-plan content.
 // Files are sample entries for now: they are displayed but do not open.
-export type Attachment = { name: string; type: 'pdf' | 'docx' };
+// Accessible formats only: Word (DOCX) and web page (HTML).
+export type Attachment = { name: string; type: 'docx' | 'html' };
 
 const TYPES = {
-  pdf: { label: 'PDF', badge: 'bg-[#d93025]', tint: 'bg-[#d93025]/8' },
   docx: { label: 'DOCX', badge: 'bg-[#2b579a]', tint: 'bg-[#2b579a]/8' },
+  html: { label: 'HTML', badge: 'bg-[#e44d26]', tint: 'bg-[#e44d26]/8' },
 };
 
 function FileIcon({ type }: { type: Attachment['type'] }) {
@@ -50,10 +51,10 @@ export function Attachments({ files, title = 'المرفقات', className = '' 
   );
 }
 
-// Standard pair of sample files (PDF + Word) for a given document title
+// Standard pair of sample files (Word + HTML) for a given document title
 export const samplePair = (base: string): Attachment[] => [
-  { name: base + '.pdf', type: 'pdf' },
   { name: base + '.docx', type: 'docx' },
+  { name: base + '.html', type: 'html' },
 ];
 
 // Detects course-description wording ("وصف المواد", "وصف مساقات", "ووصف موادها", "وصف مقرر"…)
@@ -63,14 +64,14 @@ export function mentionsDescription(...texts: unknown[]): boolean {
   return DESC_RE.test(texts.map(flat).join(' '));
 }
 
-// For a list of document titles, a PDF + Word sample for each one that is a course description
+// For a list of document titles, a Word + HTML sample for each one that is a course description
 export function descriptionFiles(names: unknown[]): Attachment[] {
   const seen = new Set<string>();
   const out: Attachment[] = [];
   for (const n of names) {
     const raw = typeof n === 'string' ? n : n && typeof n === 'object' ? String((n as any).name || (n as any).title || '') : '';
     if (!DESC_RE.test(raw)) continue;
-    const base = raw.replace(/\s*\((pdf|PDF|docx|DOCX)\)\s*$/, '').replace(/\.(pdf|docx?|PDF|DOCX?)$/, '').trim();
+    const base = raw.replace(/\s*\((pdf|PDF|docx|DOCX)\)\s*$/, '').replace(/\.(pdf|docx?|html?|PDF|DOCX?|HTML?)$/, '').trim();
     if (seen.has(base)) continue;
     seen.add(base);
     out.push(...samplePair(base));

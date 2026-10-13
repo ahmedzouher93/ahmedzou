@@ -773,7 +773,7 @@ export function ELearningCenter() {
                 <h3 className="text-xl font-bold text-[#0f3057]" dir="ltr">Windows 10 Enterprise</h3>
               </div>
               <div className="rounded-2xl overflow-hidden border border-gray-100 mb-6 bg-gray-50 p-4 flex items-center justify-center">
-                <img src="https://www.mutah.edu.jo/ar/ELCenter/SiteAssets/Pages/Forms/EditForm/win%2010-10.png" alt="Windows 10 Enterprise" className="max-h-40 object-contain" />
+                <img src="https://www.mutah.edu.jo/ar/ELCenter/SiteAssets/Pages/Forms/EditForm/win%2010-10.png" alt="شعار نظام التشغيل ويندوز 10 للمؤسسات (Windows 10 Enterprise)" className="max-h-40 object-contain" />
               </div>
               <p className="text-gray-700 leading-[2] text-justify mb-4">
                 عزيزي الطالب يمكنك الحصول على نسخة Windows 10 من خلال الرابط التالي، كما يمكنك تفعيل
@@ -792,7 +792,7 @@ export function ELearningCenter() {
                 <h3 className="text-xl font-bold text-[#0f3057]" dir="ltr">OFFICE 365</h3>
               </div>
               <div className="rounded-2xl overflow-hidden border border-gray-100 mb-6 bg-gray-50 p-4 flex items-center justify-center">
-                <img src="https://www.mutah.edu.jo/ar/ELCenter/SiteAssets/Pages/Forms/EditForm/microsoft-office-365-logo-B6066501BB-seeklogo.com.png" alt="Office 365" className="max-h-32 object-contain" />
+                <img src="https://www.mutah.edu.jo/ar/ELCenter/SiteAssets/Pages/Forms/EditForm/microsoft-office-365-logo-B6066501BB-seeklogo.com.png" alt="شعار حزمة مايكروسوفت أوفيس 365 (Office 365)" className="max-h-32 object-contain" />
               </div>
               <p className="font-bold text-[#0f3057] mb-4">للحصول على نسخة من برمجية Office 365 اتبع الخطوات التالية:</p>
               <NumList items={[

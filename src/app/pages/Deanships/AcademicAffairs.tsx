@@ -110,7 +110,7 @@ export function AcademicAffairs() {
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">معلومات عامة</h3>
               <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex gap-4">
-                <img src="https://www.mutah.edu.jo/ar/daa/PublishingImages/l-main.png" alt="" loading="lazy" className="w-14 h-14 rounded-xl object-contain bg-gray-50 shrink-0" />
+                <img src="https://www.mutah.edu.jo/ar/daa/PublishingImages/l-main.png" alt="شعار القيادة العامة للقوات المسلحة الأردنية — الجيش العربي" loading="lazy" className="w-14 h-14 rounded-xl object-contain bg-gray-50 shrink-0" />
                 <div className="min-w-0">
                   <p className="text-[15px] font-bold text-[#0f3057] leading-relaxed">
                     القيادة العامة للقوات المسلحة الأردنية — الجيش العربي
@@ -122,7 +122,7 @@ export function AcademicAffairs() {
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">إعلانات</h3>
               <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex gap-4">
-                <img src="https://www.mutah.edu.jo/ar/daa/PublishingImages/l-main.png" alt="" loading="lazy" className="w-16 h-16 rounded-xl object-contain bg-gray-50 shrink-0" />
+                <img src="https://www.mutah.edu.jo/ar/daa/PublishingImages/l-main.png" alt="شعار القيادة العامة للقوات المسلحة الأردنية — الجيش العربي" loading="lazy" className="w-16 h-16 rounded-xl object-contain bg-gray-50 shrink-0" />
                 <div className="min-w-0">
                   <p className="text-[15px] font-bold text-[#0f3057] leading-relaxed mb-1">
                     القيادة العامة للقوات المسلحة الأردنية — الجيش العربي

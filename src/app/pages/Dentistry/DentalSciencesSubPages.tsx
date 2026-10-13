@@ -2,7 +2,7 @@ import React from "react";
 import { Info } from "lucide-react";
 import { Attachments, samplePair } from '../../components/Attachments';
 
-function DeptPage({ title, files }: { title: string; files?: { name: string; type: "pdf" | "docx" }[] }) {
+function DeptPage({ title, files }: { title: string; files?: { name: string; type: "docx" | "html" }[] }) {
   return (
     <div className="flex flex-col w-full animate-in fade-in duration-500" dir="rtl">
       <div className="mb-8 border-b border-gray-100 pb-6">

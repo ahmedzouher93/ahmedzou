@@ -7,7 +7,7 @@ import {
 } from '../Deanships/DeanshipShell';
 import { Eye, Target, Users, Phone, Mail, MapPin, GraduationCap, BookOpen } from 'lucide-react';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
-import { Attachments } from '../../components/Attachments';
+import { Attachments, samplePair } from '../../components/Attachments';
 
 const ARTS_LINKS: NavLink[] = [
   { id: 'home', name: 'الرئيسية' },
@@ -582,7 +582,7 @@ export function ArtsFaculty() {
                 </tbody>
               </table>
             </div>
-            <Attachments files={items.map((it) => ({ name: 'الخطة الدراسية - ' + it.n + '.pdf', type: 'pdf' as const }))} />
+            <Attachments files={items.flatMap((it) => samplePair('الخطة الدراسية - ' + it.n))} />
           </div>
         );
       }

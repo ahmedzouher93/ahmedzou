@@ -279,7 +279,7 @@ export function StudentAffairs() {
                   { q: 'ما هي الاوراق المطلوبة لمنحة أبناء المصابين ( الجسيم ) ؟', a: 'بعد حصول الطالب على الرقم الجامعي يستخرج إثبات طالب من وحدة القبول والتسجيل، ويراجع مديرية الثقافة العسكرية ليحصل على كتاب موجه للجامعة، مع قرار التقاعد وقيد فردي مدني، ثم يتقدم بالمعاملة إلى وحدة الرئاسة محضراً معه قرار التقاعد حيث تعتمد معاملته اعتباراً من الفصل.', img: 'https://www.mutah.edu.jo/ar/studentaffairs/PublishingImages/Mill.jpg' },
                 ].map((it, i) => (
                   <div key={i} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex gap-4">
-                    <img src={it.img} alt="" loading="lazy" className="w-14 h-14 rounded-xl object-cover bg-gray-100 shrink-0" />
+                    <img src={it.img} alt={"صورة توضيحية للسؤال: " + it.q} loading="lazy" className="w-14 h-14 rounded-xl object-cover bg-gray-100 shrink-0" />
                     <div className="min-w-0">
                       <p className="text-[15px] font-bold text-[#0f3057] leading-relaxed mb-2">{it.q}</p>
                       <p className="text-[13.5px] text-gray-600 leading-[1.95]">{it.a}</p>

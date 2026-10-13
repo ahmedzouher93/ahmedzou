@@ -958,7 +958,7 @@ function ComputerCenterContent() {
             <div className="absolute inset-0 bg-[#0f3057]/85 z-10" />
             <img
               src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-              alt="Computer Center Hero"
+              alt="شاشات حاسوب تعرض شيفرات برمجية — مركز الحاسوب"
               className="w-full h-full object-cover"
             />
           </div>

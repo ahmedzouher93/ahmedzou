@@ -119,10 +119,10 @@ export function QualityCharterContent() {
 ══════════════════════════════════════════ */
 export function RankingsContent() {
   const main = [
-    { name: 'التصنيف الأردني للجامعات', note: 'PDF' },
-    { name: 'الجامعات العالمية المرموقة', note: 'XLSX' },
+    { name: 'التصنيف الأردني للجامعات', note: 'DOCX' },
+    { name: 'الجامعات العالمية المرموقة', note: 'DOCX' },
     { name: 'تصنيف QS-Stars', note: 'DOCX' },
-    { name: 'تصنيف الجامعات بقاعدة بيانات سكوبس', note: 'XLSX' },
+    { name: 'تصنيف الجامعات بقاعدة بيانات سكوبس', note: 'DOCX' },
   ];
   const templates = [
     '1_Ranking_Systems_2019_BAU (1).xls',
@@ -444,41 +444,41 @@ const PROGRAM_EVAL_FORMS: { faculty: string; items: string[] }[] = [
 ];
 
 const FACULTY_EVAL_FORMS = [
-  { name: 'التقييم الذاتي لعضو هيئة التدريس', note: 'DOC' },
-  { name: 'تقييم أداء عمداء الكليات', note: 'DOC' },
-  { name: 'تقييم عضو هيئة التدريس من قبل رئيس القسم', note: 'DOC' },
-  { name: 'تقييم عضو هيئة التدريس من قبل عميد الكلية', note: 'DOC' },
-  { name: 'مصفوفة الأهداف التعليمية ونتاجات التعلم للبرامج الأكاديمية', note: 'DOC' },
-  { name: 'مصفوفة المجالات المعرفية للتخصص والمواد الدراسية', note: 'DOC' },
-  { name: 'نموذج إنساني', note: 'DOC' },
-  { name: 'تقييم البرامج', note: 'PDF' },
-  { name: 'تقييم المادة', note: 'PDF' },
-  { name: 'كفاءة الخريجين من وجهة نظر سوق العمل', note: 'PDF' },
+  { name: 'التقييم الذاتي لعضو هيئة التدريس', note: 'DOCX' },
+  { name: 'تقييم أداء عمداء الكليات', note: 'DOCX' },
+  { name: 'تقييم عضو هيئة التدريس من قبل رئيس القسم', note: 'DOCX' },
+  { name: 'تقييم عضو هيئة التدريس من قبل عميد الكلية', note: 'DOCX' },
+  { name: 'مصفوفة الأهداف التعليمية ونتاجات التعلم للبرامج الأكاديمية', note: 'DOCX' },
+  { name: 'مصفوفة المجالات المعرفية للتخصص والمواد الدراسية', note: 'DOCX' },
+  { name: 'نموذج إنساني', note: 'DOCX' },
+  { name: 'تقييم البرامج', note: 'DOCX' },
+  { name: 'تقييم المادة', note: 'DOCX' },
+  { name: 'كفاءة الخريجين من وجهة نظر سوق العمل', note: 'DOCX' },
 ];
 
 const COURSE_PROGRAM_FORMS = [
-  { name: 'توصيف خطة دراسية باللغة الإنجليزية (Detailed Syllabus Form)', note: 'DOC' },
-  { name: 'توصيف خطة دراسية باللغة العربية', note: 'DOC' },
-  { name: 'ملف المادة', note: 'DOC' },
-  { name: 'إلغاء أو تجميد برنامج أكاديمي', note: 'DOC' },
-  { name: 'طلب استحداث برنامج بكالوريوس', note: 'DOC' },
-  { name: 'طلب استحداث برنامج دراسات عليا (دكتوراه)', note: 'DOC' },
-  { name: 'طلب استحداث برنامج دراسات عليا (ماجستير)', note: 'DOC' },
-  { name: 'إضافة مادة دراسية جديدة', note: 'DOC' },
-  { name: 'إلغاء مادة دراسية قائمة', note: 'DOC' },
-  { name: 'تعديل خطة برنامج أكاديمي قائم', note: 'DOC' },
+  { name: 'توصيف خطة دراسية باللغة الإنجليزية (Detailed Syllabus Form)', note: 'DOCX' },
+  { name: 'توصيف خطة دراسية باللغة العربية', note: 'DOCX' },
+  { name: 'ملف المادة', note: 'DOCX' },
+  { name: 'إلغاء أو تجميد برنامج أكاديمي', note: 'DOCX' },
+  { name: 'طلب استحداث برنامج بكالوريوس', note: 'DOCX' },
+  { name: 'طلب استحداث برنامج دراسات عليا (دكتوراه)', note: 'DOCX' },
+  { name: 'طلب استحداث برنامج دراسات عليا (ماجستير)', note: 'DOCX' },
+  { name: 'إضافة مادة دراسية جديدة', note: 'DOCX' },
+  { name: 'إلغاء مادة دراسية قائمة', note: 'DOCX' },
+  { name: 'تعديل خطة برنامج أكاديمي قائم', note: 'DOCX' },
 ];
 
 const PLANNING_FORMS = [
-  { name: 'دليل التخطيط الاستراتيجي في الجامعات', note: 'DOC' },
-  { name: 'خطة تنفيذية', note: 'DOC' },
-  { name: 'نموذج خطة استراتيجية للكليات والوحدات الإدارية', note: 'DOC' },
-  { name: 'التقرير السنوي', note: 'DOC' },
-  { name: 'تقييم الرؤية والرسالة والغايات', note: 'DOC' },
-  { name: 'دراسة التقييم', note: 'DOC' },
-  { name: 'أدلة ووثائق ومؤشرات معايير الجودة', note: 'PDF' },
-  { name: 'دليل الجودة لجامعة مؤتة', note: 'PDF' },
-  { name: 'الخطوط العريضة لكتابة الخطة الاستراتيجية', note: 'PDF' },
+  { name: 'دليل التخطيط الاستراتيجي في الجامعات', note: 'DOCX' },
+  { name: 'خطة تنفيذية', note: 'DOCX' },
+  { name: 'نموذج خطة استراتيجية للكليات والوحدات الإدارية', note: 'DOCX' },
+  { name: 'التقرير السنوي', note: 'DOCX' },
+  { name: 'تقييم الرؤية والرسالة والغايات', note: 'DOCX' },
+  { name: 'دراسة التقييم', note: 'DOCX' },
+  { name: 'أدلة ووثائق ومؤشرات معايير الجودة', note: 'DOCX' },
+  { name: 'دليل الجودة لجامعة مؤتة', note: 'DOCX' },
+  { name: 'الخطوط العريضة لكتابة الخطة الاستراتيجية', note: 'DOCX' },
 ];
 
 function GroupHeading({ title }: { title: string }) {
@@ -509,7 +509,7 @@ export function FormsListContent() {
                 <div key={it} className="flex items-center gap-2.5 border border-gray-200 rounded-lg px-4 py-2.5 hover:border-[#c9a227] hover:bg-[#fffbf0] transition-colors">
                   <FileText size={14} className="text-[#0f3057] flex-shrink-0" />
                   <span className="text-xs text-gray-700 flex-1 leading-snug">{it}</span>
-                  <span className="text-[10px] font-bold text-gray-400">PDF</span>
+                  <span className="text-[10px] font-bold text-gray-400">DOCX</span>
                   <Download size={13} className="text-[#c9a227] flex-shrink-0" />
                 </div>
               ))}

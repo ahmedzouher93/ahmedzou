@@ -622,7 +622,7 @@ export function About() {
             <div className="absolute inset-0 bg-[#0f3057]/85 z-10" />
             <img
               src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-              alt="About Hero"
+              alt="مبانٍ جامعية في حرم جامعة مؤتة"
               className="w-full h-full object-cover"
             />
           </div>

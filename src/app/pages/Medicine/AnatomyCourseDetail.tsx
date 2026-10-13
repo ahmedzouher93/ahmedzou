@@ -168,9 +168,9 @@ export function AnatomyCourseDetail() {
             </CardHeader>
             <CardContent className="space-y-3">
               {[
-                { title: "الخطة الدراسية التفصيلية (Syllabus)", type: "PDF" },
+                { title: "الخطة الدراسية التفصيلية (Syllabus)", type: "DOCX" },
                 { title: "ملخص التشريح العملي", type: "DOCX" },
-                { title: "أسئلة سنوات سابقة", type: "ZIP" },
+                { title: "أسئلة سنوات سابقة", type: "HTML" },
               ].map((file, i) => (
                 <button key={i} className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors text-right group">
                   <div className="flex items-center gap-3">

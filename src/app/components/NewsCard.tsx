@@ -20,7 +20,7 @@ function Placeholder() {
   return (
     <div className="w-full h-full bg-gradient-to-br from-[#0a2342] via-[#0f3057] to-[#1d4e89] flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-      <img src={mutahLogo} alt="" className="relative w-[58%] max-w-[220px] opacity-25 brightness-0 invert" />
+      <img src={mutahLogo} alt="شعار جامعة مؤتة (صورة افتراضية للخبر)" className="relative w-[58%] max-w-[220px] opacity-25 brightness-0 invert" />
     </div>
   );
 }
