@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Front-end pages show the Mutah site in #root. Navigation inside the site uses
+ * the address hash (for example /#/about/presidency), so one Drupal page serves all pages.
+ * Account pages (login, password reset) show Drupal's own content instead.
+ */
+#}
+{% if mutah_app %}
+  <div id="root"></div>
+  <noscript>يتطلب عرض موقع جامعة مؤتة تفعيل JavaScript في المتصفح.</noscript>
+{% else %}
+  <main class="mutah-drupal" dir="rtl">
+    <a class="mutah-drupal__brand" href="{{ path('<front>') }}"><img src="{{ base_path ~ directory }}/logo.png" alt="شعار جامعة مؤتة"></a>
+    {{ page.messages }}
+    <div class="mutah-drupal__card">{{ page.content }}</div>
+  </main>
+{% endif %}

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Mutah University theme: minimal document. The site itself renders into #root
+ * (see templates/page.html.twig and the "app" library).
+ */
+#}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <head-placeholder token="{{ placeholder_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+  </head>
+  <body{{ attributes }}>
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>

@@ -1,0 +1,17 @@
+# The whole site (pages, styles, fonts and images) is bundled in dist/.
+# Rebuild with `npm run build:drupal` in the project folder.
+app:
+  version: 2026.1
+  header: false
+  css:
+    theme:
+      dist/app.css: { minified: true, preprocess: false }
+  js:
+    dist/app.js: { minified: true, preprocess: false, attributes: { type: module } }
+
+# Plain styling for Drupal's own pages (login, account)
+drupal:
+  version: 2026.1
+  css:
+    theme:
+      css/drupal-pages.css: {}
