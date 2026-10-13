@@ -26,7 +26,7 @@ const ABOUT_LINKS = [
 ];
 
 // Data Arrays
-const TRUSTEES = [
+const TRUSTEES: { name: string; role: string; img?: string }[] = [
   { name: "سعادة د. يوسف موسى القسوس", role: "رئيس المجلس" },
   { name: "الأستاذ الدكتور رئيس الجامعة", role: "عضواً" },
   { name: "معالي أ.د. كامل عودة الله المحادين", role: "عضواً" },
@@ -57,14 +57,14 @@ const FORMER_PRESIDENTS = [
   { name: "عطوفة الأستاذ الدكتور عرفات عوجان", period: "2020/08/23 - 2023/05/18" },
 ];
 
-const VP_LIST = [
-  { name: "العميد الركن عوض علي الطهاروة", role: "نائب الرئيس للشؤون العسكرية", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" },
-  { name: "أ.د.محمد سليمان الصرايرة", role: "نائب الرئيس للشؤون الإدارية", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" },
-  { name: "أ.د.امين عقل", role: "نائب الرئيس لشؤون الكليات العلمية", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" },
-  { name: "أ.د.محمد داود المجالي", role: "نائب الرئيس للتعليم الالكتروني والجودة", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" },
+const VP_LIST: { name: string; role: string; img?: string }[] = [
+  { name: "العميد الركن عوض علي الطهاروة", role: "نائب الرئيس للشؤون العسكرية" },
+  { name: "أ.د.محمد سليمان الصرايرة", role: "نائب الرئيس للشؤون الإدارية" },
+  { name: "أ.د.امين عقل", role: "نائب الرئيس لشؤون الكليات العلمية" },
+  { name: "أ.د.محمد داود المجالي", role: "نائب الرئيس للتعليم الالكتروني والجودة" },
 ];
 
-const COUNCIL = [
+const COUNCIL: { name: string; role: string; img?: string }[] = [
   { name: "معالي أ.د. سلامة صالح النعيمات", role: "رئيس الجامعة" },
   { name: "العميد الركن عطالله سالم الحماد", role: "نائب الرئيس للشؤون العسكرية" },
   { name: "أ.د.محمد داوود المجالي", role: "نائب الرئيس للشؤون الأكاديمية والتعليم الإلكتروني والجودة" },
@@ -112,7 +112,7 @@ const COUNCIL = [
   { name: "الطالبة ميسون مرتضى الضلاعين", role: "عضو مجلس اتحاد الطلبة/ ممثل طلبة الجامعة" },
 ];
 
-const DEANS = [
+const DEANS: { name: string; role: string; img?: string }[] = [
   { name: "معالي أ.د. سلامة صالح النعيمات", role: "رئيس الجامعة" },
   { name: "العميد الركن عطالله سالم الحماد", role: "نائب الرئيس للشؤون العسكرية" },
   { name: "أ.د محمد داوود المجالي", role: "نائب الرئيس للشؤون الأكاديمية والتعليم الإلكتروني والجودة" },
@@ -140,6 +140,26 @@ const DEANS = [
   { name: "أ.د أيمن قطيطات", role: "عميد كلية طب الأسنان" },
 ];
 
+
+// Member photo; falls back to initials until a real photo is added (img field)
+function MemberPhoto({ name, img, size = 'w-20 h-20', text = 'text-[22px]' }: { name: string; img?: string; size?: string; text?: string }) {
+  const clean = name.replace(/['"]/g, '').replace(/^(معالي|عطوفة|سعادة|السيد|الطالبة|الطالب|الخريج|العميد الركن|الأستاذ الدكتور|الاستاذ الدكتور)\s+/g, '')
+    .replace(/^(أ\.\s?د\.?|د\.|م\.)\s*/, '').trim().split(/\s+/);
+  const initials = (clean[0]?.[0] || '') + (clean[1]?.[0] || '');
+  return img
+    ? <img src={img} alt={name} loading="lazy" className={size + ' shrink-0 rounded-full object-cover object-top shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40 bg-gray-100'} />
+    : <div className={size + ' ' + text + ' shrink-0 rounded-full bg-gradient-to-br from-[#0f3057] to-[#1d4e89] text-[#c9a227] font-bold flex items-center justify-center shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40'}>{initials}</div>;
+}
+
+function MemberCard({ item }: { item: { name: string; role: string; img?: string } }) {
+  return (
+    <div className="flex flex-col items-center text-center p-5 bg-gray-50 border border-gray-100 rounded-2xl hover:bg-white hover:border-[#c9a227]/50 hover:shadow-md transition-all">
+      <MemberPhoto name={item.name} img={item.img} size="w-24 h-24" text="text-[24px]" />
+      <span className="font-bold text-[#0f3057] mt-4 leading-relaxed">{item.name}</span>
+      <span className="text-xs text-[#c9a227] font-medium mt-1.5 leading-relaxed">{item.role}</span>
+    </div>
+  );
+}
 
 export function About() {
   const location = useLocation();
@@ -298,7 +318,7 @@ export function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {VP_LIST.map((vp, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row gap-6 bg-gray-50 p-6 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow items-center sm:items-start text-center sm:text-right">
-                  <img src={vp.img} alt={vp.name} className="w-24 h-24 rounded-full object-cover shadow-sm border-2 border-white" />
+                  <MemberPhoto name={vp.name} img={vp.img} size="w-24 h-24" text="text-[24px]" />
                   <div className="flex-1 flex flex-col justify-center h-full">
                     <h3 className="text-lg font-bold text-[#0f3057] mb-1">{vp.name}</h3>
                     <p className="text-[#c9a227] font-medium text-sm mb-4">{vp.role}</p>
@@ -322,13 +342,8 @@ export function About() {
               <h2 className="text-2xl font-bold text-[#0f3057]">مجلس الأمناء</h2>
             </div>
             <img src={aboutImg} alt="مجلس الأمناء" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {TRUSTEES.map((item, idx) => (
-                <div key={idx} className="flex justify-between items-center p-4 bg-gray-50 border border-gray-100 rounded-xl hover:bg-[#0f3057]/5 transition-colors">
-                  <span className="font-bold text-[#0f3057]">{item.name}</span>
-                  <span className="text-sm px-3 py-1 bg-white rounded-full text-[#c9a227] border border-gray-200 shadow-sm">{item.role}</span>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {TRUSTEES.map((item, idx) => <MemberCard key={idx} item={item} />)}
             </div>
           </div>
         );
@@ -343,13 +358,8 @@ export function About() {
               <h2 className="text-2xl font-bold text-[#0f3057]">مجلس الجامعة</h2>
             </div>
             <img src={aboutImg} alt="مجلس الجامعة" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {COUNCIL.map((item, idx) => (
-                <div key={idx} className="flex flex-col p-4 bg-gray-50 border border-gray-100 rounded-xl hover:border-[#c9a227]/40 transition-colors shadow-sm">
-                  <span className="font-bold text-[#0f3057] mb-1">{item.name}</span>
-                  <span className="text-xs text-gray-500">{item.role}</span>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {COUNCIL.map((item, idx) => <MemberCard key={idx} item={item} />)}
             </div>
           </div>
         );
@@ -364,13 +374,8 @@ export function About() {
               <h2 className="text-2xl font-bold text-[#0f3057]">مجلس العمداء</h2>
             </div>
             <img src={aboutImg} alt="مجلس العمداء" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {DEANS.map((item, idx) => (
-                <div key={idx} className="flex flex-col p-4 bg-gray-50 border border-gray-100 rounded-xl hover:border-[#c9a227]/40 transition-colors shadow-sm">
-                  <span className="font-bold text-[#0f3057] mb-1">{item.name}</span>
-                  <span className="text-xs text-gray-500">{item.role}</span>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {DEANS.map((item, idx) => <MemberCard key={idx} item={item} />)}
             </div>
           </div>
         );
