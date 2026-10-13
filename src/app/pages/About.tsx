@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router';
 import { 
   Menu, ChevronLeft, ChevronDown, Info, Target, Users, Award, 
-  FileText, ShieldAlert, BookOpen, Download, Building, UserRound
+  FileText, ShieldAlert, BookOpen, Download, Building
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import aboutImg from "../../imports/image-4.png";
 import presidentImg from "../../imports/president.webp";
 
-// University council photos, named by position in COUNCIL (cropped from the official council page)
-const COUNCIL_PHOTOS = import.meta.glob('../../imports/council/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
-const councilPhoto = (i: number) => COUNCIL_PHOTOS[`../../imports/council/${String(i).padStart(2, '0')}.jpg`];
+// Member photos, named by position in COUNCIL / DEANS (cropped from the official university pages)
+const PHOTOS = import.meta.glob('../../imports/{council,deans}/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
+const photoAt = (dir: string, i: number) => PHOTOS[`../../imports/${dir}/${String(i).padStart(2, '0')}.jpg`];
 
 const ABOUT_LINKS = [
   { id: 'about', name: 'نبذة عن الجامعة', icon: Info },
@@ -145,13 +145,11 @@ const DEANS: { name: string; role: string; img?: string }[] = [
 ];
 
 
-// Member photo; falls back to a person icon until a real photo is added (img field)
+// Member photo; falls back to an empty circle until a real photo is added (img field)
 function MemberPhoto({ name, img, size = 'w-20 h-20' }: { name: string; img?: string; size?: string }) {
   return img
     ? <img src={img} alt={name} loading="lazy" className={size + ' shrink-0 rounded-full object-cover object-top shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40 bg-gray-100'} />
-    : <div className={size + ' shrink-0 rounded-full bg-gradient-to-br from-[#0f3057] to-[#1d4e89] text-[#c9a227] flex items-end justify-center overflow-hidden shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40'}>
-        <UserRound className="w-[72%] h-[72%] translate-y-[8%]" strokeWidth={1.5} />
-      </div>;
+    : <div className={size + ' shrink-0 rounded-full bg-gray-200 shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40'} />;
 }
 
 function MemberCard({ item }: { item: { name: string; role: string; img?: string } }) {
@@ -362,7 +360,7 @@ export function About() {
             </div>
             <img src={aboutImg} alt="مجلس الجامعة" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {COUNCIL.map((item, idx) => <MemberCard key={idx} item={{ ...item, img: item.img || councilPhoto(idx) }} />)}
+              {COUNCIL.map((item, idx) => <MemberCard key={idx} item={{ ...item, img: item.img || photoAt('council', idx) }} />)}
             </div>
           </div>
         );
@@ -378,7 +376,7 @@ export function About() {
             </div>
             <img src={aboutImg} alt="مجلس العمداء" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {DEANS.map((item, idx) => <MemberCard key={idx} item={item} />)}
+              {DEANS.map((item, idx) => <MemberCard key={idx} item={{ ...item, img: item.img || photoAt('deans', idx) }} />)}
             </div>
           </div>
         );
