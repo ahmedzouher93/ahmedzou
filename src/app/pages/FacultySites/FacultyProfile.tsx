@@ -3,10 +3,11 @@ import { Link, useParams } from 'react-router';
 import {
   ChevronLeft, Mail, Phone, Printer, Building2, GraduationCap, BookOpen, FlaskConical, FileText,
   UserRound, ExternalLink, ArrowRight, Clock, Megaphone, FileUser, Info, Calendar,
+  Library, Users, Trophy, HandCoins, FolderOpen, Link2, Download,
 } from 'lucide-react';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
-import { findMember } from './FacultySitesData';
+import { findMember, FacultySite, LinkItem } from './FacultySitesData';
 
 function initials(name: string) {
   const parts = name.replace(/^(أ\.د\.|أ\.د|د\.|الدكتور|الدكتورة|م\.)\s*/, '').trim().split(/\s+/);
@@ -64,20 +65,21 @@ const RGIcon = () => (
   <span className="w-4 h-4 rounded-[3px] bg-current/0 border border-current text-[9px] leading-[14px] font-bold text-center" dir="ltr">RG</span>
 );
 
-const SECTIONS = [
-  { id: 'about', title: 'معلومات عامة', icon: Info },
-  { id: 'research', title: 'الاهتمامات البحثية', icon: FlaskConical },
-  { id: 'publications', title: 'الأبحاث المنشورة', icon: FileText },
-  { id: 'courses', title: 'المواد التدريسية', icon: BookOpen },
-  { id: 'news', title: 'الأخبار والإعلانات', icon: Megaphone },
-  { id: 'hours', title: 'الساعات المكتبية ومعلومات أخرى', icon: Clock },
+// Sidebar buttons, each opening its own page at /faculty-sites/:slug/:tab
+const TABS = [
+  { id: 'books', title: 'الكتب', desc: 'الكتب المنشورة', icon: Library },
+  { id: 'supervision', title: 'الإشراف', desc: 'الإشراف على الرسائل والأطروحات الجامعية', icon: Users },
+  { id: 'achievements', title: 'الإنجازات', desc: 'إنجازات عضو هيئة التدريس', icon: Trophy },
+  { id: 'funded-research', title: 'الأبحاث المدعومة', desc: 'الأبحاث والمشاريع المدعومة', icon: HandCoins },
+  { id: 'files', title: 'ملفات', desc: 'ملفات ومواد للتحميل', icon: FolderOpen },
+  { id: 'links', title: 'روابط مهمة', desc: 'روابط ذات صلة', icon: Link2 },
 ];
 
 export function FacultyProfile() {
-  const { slug } = useParams();
+  const { slug, tab: tabId } = useParams();
   const f = findMember(slug);
 
-  useEffect(() => { window.scrollTo(0, 0); }, [slug]);
+  useEffect(() => { window.scrollTo(0, 0); }, [slug, tabId]);
 
   if (!f) {
     return (
@@ -97,7 +99,8 @@ export function FacultyProfile() {
     );
   }
 
-  const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const tab = TABS.find(t => t.id === tabId);
+  const base = '/faculty-sites/' + f.slug;
 
   return (
     <div dir="rtl" className="min-h-screen flex flex-col font-['Noto_Kufi_Arabic'] bg-[#f7f8fa]">
@@ -111,7 +114,9 @@ export function FacultyProfile() {
           <nav className="flex flex-wrap items-center gap-2 text-[13px] text-white/60 mb-10">
             <Link to="/" className="hover:text-[#c9a227]">الرئيسية</Link><ChevronLeft size={14} />
             <Link to="/faculty-sites" className="hover:text-[#c9a227]">مواقع أعضاء هيئة التدريس</Link><ChevronLeft size={14} />
-            <span className="text-[#c9a227]">{f.name}</span>
+            {tab
+              ? <><Link to={base} className="hover:text-[#c9a227]">{f.name}</Link><ChevronLeft size={14} /><span className="text-[#c9a227]">{tab.title}</span></>
+              : <span className="text-[#c9a227]">{f.name}</span>}
           </nav>
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             <div className="shrink-0 self-start md:self-auto w-[128px] h-[128px] md:w-[150px] md:h-[150px] rounded-[28px] p-[3px] bg-gradient-to-br from-[#c9a227] to-[#c9a227]/20 shadow-2xl">
@@ -140,9 +145,23 @@ export function FacultyProfile() {
 
       <main className="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-10 -mt-14 pb-16 flex-1">
         <div className="grid lg:grid-cols-[320px_1fr] gap-6 items-start">
-          {/* Sidebar: contact + section nav */}
+          {/* Sidebar: sub-page buttons, then contact */}
           <aside className="space-y-6 lg:sticky lg:top-24">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-6">
+            <nav className="bg-white rounded-2xl border border-gray-100 shadow-xl p-3 grid grid-cols-2 lg:grid-cols-1 gap-1.5">
+              {TABS.map(t => {
+                const active = t.id === tabId;
+                return (
+                  <Link key={t.id} to={base + '/' + t.id}
+                    className={'flex items-center gap-3 rounded-xl px-4 py-3 text-[13.5px] font-bold transition-colors ' +
+                      (active ? 'bg-[#0f3057] text-white' : 'text-gray-600 hover:bg-[#f8f6ee] hover:text-[#0f3057]')}>
+                    <t.icon size={17} className="text-[#c9a227] shrink-0" />
+                    <span className="flex-1">{t.title}</span>
+                    <ChevronLeft size={15} className={'hidden lg:block ' + (active ? 'text-[#c9a227]' : 'text-gray-300')} />
+                  </Link>
+                );
+              })}
+            </nav>
+            <div className={'bg-white rounded-2xl border border-gray-100 shadow-sm p-6 ' + (tab ? 'hidden lg:block' : '')}>
               <h3 className="text-[15px] font-bold text-[#0f3057] mb-2 pb-3 border-b-2 border-[#c9a227] inline-block">معلومات التواصل</h3>
               <div className="mt-2">
                 <ContactRow icon={Phone} label="رقم الهاتف" value={f.phone} href={f.phone && 'tel:' + f.phone.replace(/\s/g, '')} />
@@ -150,17 +169,10 @@ export function FacultyProfile() {
                 <ContactRow icon={Mail} label="البريد الإلكتروني" value={f.email} href={f.email && 'mailto:' + f.email} />
               </div>
             </div>
-            <nav className="hidden lg:block bg-white rounded-2xl border border-gray-100 shadow-sm p-3">
-              {SECTIONS.map(s => (
-                <button key={s.id} onClick={() => go(s.id)}
-                  className="w-full text-right flex items-center gap-3 rounded-xl px-4 py-3 text-[13.5px] font-bold text-gray-600 hover:bg-[#f8f6ee] hover:text-[#0f3057] transition-colors">
-                  <s.icon size={16} className="text-[#c9a227]" /> {s.title}
-                </button>
-              ))}
-            </nav>
           </aside>
 
           {/* Content */}
+          {tab ? <TabPage tab={tab} f={f} base={base} /> : (
           <div className="space-y-6 min-w-0">
             <Section id="about" icon={Info} title="معلومات عامة" empty={!f.about?.length}>
               <div className="space-y-4 text-[15px] leading-[2] text-gray-700">{f.about?.map((p, i) => <p key={i}>{p}</p>)}</div>
@@ -243,10 +255,114 @@ export function FacultyProfile() {
               )}
             </Section>
           </div>
+          )}
         </div>
       </main>
 
       <WireframeFooter />
+    </div>
+  );
+}
+
+function Card({ children, href }: { children: React.ReactNode; href?: string }) {
+  const cls = 'block rounded-xl border border-gray-100 bg-[#fafbfc] p-4 md:p-5';
+  return href
+    ? <a href={href} target="_blank" rel="noopener noreferrer" className={cls + ' hover:border-[#c9a227] hover:bg-white transition-colors'}>{children}</a>
+    : <div className={cls}>{children}</div>;
+}
+
+const Meta = ({ items }: { items: (string | undefined)[] }) => {
+  const xs = items.filter(Boolean);
+  return xs.length ? <p className="text-[13px] text-gray-500 mt-1.5">{xs.join(' · ')}</p> : null;
+};
+
+function TabPage({ tab, f, base }: { tab: typeof TABS[number]; f: FacultySite; base: string }) {
+  const lists: Record<string, any[] | undefined> = {
+    books: f.books, supervision: f.supervision, achievements: f.achievements,
+    'funded-research': f.fundedResearch, files: f.files, links: f.links,
+  };
+  const items = lists[tab.id] || [];
+  return (
+    <div className="space-y-6 min-w-0">
+      <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 min-h-[420px]">
+        <div className="flex flex-wrap items-start justify-between gap-4 mb-7">
+          <div className="flex items-center gap-3">
+            <span className="w-12 h-12 rounded-xl bg-[#0f3057] flex items-center justify-center"><tab.icon size={20} className="text-[#c9a227]" /></span>
+            <div>
+              <h2 className="text-[21px] font-bold text-[#0f3057]">{tab.title}</h2>
+              <p className="text-[13px] text-gray-500 mt-0.5">{tab.desc}</p>
+            </div>
+          </div>
+          <Link to={base} className="inline-flex items-center gap-2 rounded-xl border border-[#0f3057]/15 px-4 py-2.5 text-[13px] font-bold text-[#0f3057] hover:bg-[#0f3057] hover:text-white transition-colors">
+            <ArrowRight size={15} /> الصفحة الرئيسية للعضو
+          </Link>
+        </div>
+
+        {!items.length ? (
+          <div className="rounded-2xl bg-[#f7f8fa] border border-dashed border-gray-200 py-14 text-center">
+            <tab.icon size={34} className="mx-auto text-gray-300 mb-3" />
+            <p className="text-[15px] font-bold text-[#0f3057]">لا يوجد محتوى مضاف حالياً</p>
+          </div>
+        ) : tab.id === 'books' ? (
+          <div className="grid sm:grid-cols-2 gap-4">
+            {f.books!.map((b, i) => (
+              <Card key={i} href={b.link}>
+                <div className="flex gap-4">
+                  <span className="w-12 h-16 shrink-0 rounded-md bg-gradient-to-b from-[#0f3057] to-[#1d4e89] border-r-4 border-[#c9a227] shadow" />
+                  <div className="min-w-0"><h3 className="text-[15px] font-bold text-[#0f3057] leading-relaxed">{b.title}</h3><Meta items={[b.publisher, b.year]} /></div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        ) : tab.id === 'supervision' ? (
+          <div className="overflow-hidden rounded-xl border border-gray-100">
+            <div className="hidden md:grid grid-cols-[1fr_180px_120px_90px] gap-4 bg-[#0f3057] text-white/85 text-[12.5px] font-bold px-5 py-3">
+              <span>عنوان الرسالة / الأطروحة</span><span>اسم الطالب</span><span>الدرجة</span><span>السنة</span>
+            </div>
+            {f.supervision!.map((s, i) => (
+              <div key={i} className="grid md:grid-cols-[1fr_180px_120px_90px] gap-1 md:gap-4 px-5 py-4 text-[14px] border-t border-gray-100 first:border-0 md:first:border-t even:bg-[#fafbfc]">
+                <span className="font-bold text-[#0f3057] leading-relaxed">{s.title}{s.role && <span className="block text-[12px] font-medium text-[#c9a227] mt-1">{s.role}</span>}</span>
+                <span className="text-gray-600">{s.student || '—'}</span>
+                <span className="text-gray-600">{s.degree || '—'}</span>
+                <span className="text-gray-600">{s.year || '—'}</span>
+              </div>
+            ))}
+          </div>
+        ) : tab.id === 'achievements' ? (
+          <ol className="relative border-r-2 border-[#c9a227]/30 pr-6 space-y-6">
+            {f.achievements!.map((a, i) => (
+              <li key={i} className="relative">
+                <span className="absolute -right-[33px] top-1 w-4 h-4 rounded-full bg-[#c9a227] ring-4 ring-[#c9a227]/20" />
+                {a.year && <span className="text-[12.5px] font-bold text-[#c9a227]">{a.year}</span>}
+                <h3 className="text-[15px] font-bold text-[#0f3057] leading-relaxed">{a.title}</h3>
+                {a.text && <p className="text-[13.5px] text-gray-600 mt-1 leading-relaxed">{a.text}</p>}
+              </li>
+            ))}
+          </ol>
+        ) : tab.id === 'funded-research' ? (
+          <div className="space-y-3">
+            {f.fundedResearch!.map((r, i) => (
+              <Card key={i}>
+                <h3 className="text-[15px] font-bold text-[#0f3057] leading-relaxed">{r.title}</h3>
+                <Meta items={[r.funder && 'الجهة الداعمة: ' + r.funder, r.role, r.year]} />
+              </Card>
+            ))}
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 gap-3">
+            {(items as LinkItem[]).map((l, i) => (
+              <a key={i} href={l.url} target="_blank" rel="noopener noreferrer"
+                className="group flex items-center gap-3 rounded-xl border border-gray-100 bg-[#fafbfc] px-4 py-3.5 hover:border-[#c9a227] hover:bg-white transition-colors">
+                <span className="w-10 h-10 shrink-0 rounded-lg bg-[#c9a227]/10 flex items-center justify-center">
+                  {tab.id === 'files' ? <FileText size={17} className="text-[#c9a227]" /> : <Link2 size={17} className="text-[#c9a227]" />}
+                </span>
+                <span className="flex-1 min-w-0 text-[14px] font-bold text-[#0f3057] truncate">{l.title}</span>
+                {tab.id === 'files' ? <Download size={16} className="text-gray-400 group-hover:text-[#c9a227]" /> : <ExternalLink size={15} className="text-gray-400 group-hover:text-[#c9a227]" />}
+              </a>
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   );
 }

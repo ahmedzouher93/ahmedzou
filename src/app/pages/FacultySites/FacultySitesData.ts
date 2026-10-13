@@ -5,6 +5,11 @@ export type Publication = { title: string; venue?: string; year?: string; link?:
 export type Course = { code?: string; title: string };
 export type NewsItem = { title: string; date?: string; text?: string; link?: string };
 export type OfficeHour = { day: string; time: string };
+export type Book = { title: string; publisher?: string; year?: string; link?: string };
+export type Supervision = { title: string; student?: string; degree?: string; year?: string; role?: string };
+export type Achievement = { title: string; year?: string; text?: string };
+export type FundedResearch = { title: string; funder?: string; year?: string; role?: string };
+export type LinkItem = { title: string; url: string };
 
 export type FacultySite = {
   slug: string;
@@ -26,6 +31,13 @@ export type FacultySite = {
   news?: NewsItem[];
   officeHours?: OfficeHour[];
   otherInfo?: string[];
+  // Sub-pages (/faculty-sites/:slug/:tab)
+  books?: Book[];
+  supervision?: Supervision[];
+  achievements?: Achievement[];
+  fundedResearch?: FundedResearch[];
+  files?: LinkItem[];
+  links?: LinkItem[];
 };
 
 export const DIRECTORY_URL = "https://academics.mutah.edu.jo/Files/index.aspx";

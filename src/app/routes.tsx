@@ -108,6 +108,7 @@ export const router = createHashRouter([
   { path: "/university-fees", Component: UniversityFees },
   { path: "/faculty-sites", Component: FacultySites },
   { path: "/faculty-sites/:slug", Component: FacultyProfile },
+  { path: "/faculty-sites/:slug/:tab", Component: FacultyProfile },
   { path: "/cc-list/:kind", Component: ComputerCenterNewsList },
   { path: "/cc-item/:kind/:idx", Component: ComputerCenterItemDetail },
   { path: "/c-item/:scope/:tab/:idx", Component: CenterItemDetail },
