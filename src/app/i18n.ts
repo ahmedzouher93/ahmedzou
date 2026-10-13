@@ -1,0 +1,122 @@
+const EN: Record<string,string> = {
+ "الرئيسية": "Home",
+ "عن الجامعة": "About the University",
+ "نبذة عن الجامعة": "About Mutah University",
+ "الرؤية والرسالة والقيم": "Vision, Mission and Values",
+ "رئاسة الجامعة": "University Presidency",
+ "نواب الرئيس": "Vice Presidents",
+ "مجلس الأمناء": "Board of Trustees",
+ "مجلس الجامعة": "University Council",
+ "مجلس العمداء": "Deans Council",
+ "الرؤساء السابقون": "Former Presidents",
+ "الخطة الاستراتيجية": "Strategic Plan",
+ "مدونات السلوك": "Codes of Conduct",
+ "الخطة الإجرائية": "Action Plan",
+ "خطة إدارة المخاطر": "Risk Management Plan",
+ "مجلة جامعة مؤتة": "Mutah University Journal",
+ "التقرير السنوي": "Annual Report",
+ "الكليات والعمادات": "Faculties & Deanships",
+ "الدراسات العليا": "Graduate Studies",
+ "كلية الدراسات العليا": "Faculty of Graduate Studies",
+ "الكليات العلمية": "Scientific Faculties",
+ "الطب": "Medicine",
+ "طب وجراحة الأسنان": "Dentistry",
+ "الصيدلة": "Pharmacy",
+ "العلوم الطبية المساندة": "Allied Medical Sciences",
+ "التمريض": "Nursing",
+ "الهندسة": "Engineering",
+ "العلوم": "Science",
+ "تكنولوجيا المعلومات": "Information Technology",
+ "الزراعة": "Agriculture",
+ "الكليات الإنسانية": "Humanities Faculties",
+ "الآداب": "Arts",
+ "الأعمال": "Business",
+ "الحقوق": "Law",
+ "العلوم الاجتماعية": "Social Sciences",
+ "الشريعة": "Sharia",
+ "العلوم التربوية": "Educational Sciences",
+ "علوم الرياضة": "Sport Sciences",
+ "العمادات": "Deanships",
+ "عمادة البحث العلمي": "Deanship of Scientific Research",
+ "عمادة شؤون الطلبة": "Deanship of Student Affairs",
+ "عمادة الشؤون الأكاديمية": "Deanship of Academic Affairs",
+ "الوحدات والمراكز": "Units & Centers",
+ "الوحدات": "Units",
+ "الموارد البشرية": "Human Resources",
+ "القبول والتسجيل": "Admission and Registration",
+ "المكتبة": "Library",
+ "وحدة الصيانة والخدمات الهندسية": "Maintenance and Engineering Services Unit",
+ "وحدة التواصل وخدمة المجتمع المحلي": "Community Outreach Unit",
+ "المدرسة النموذجية": "Model School",
+ "وحدة الخدمات العامة": "General Services Unit",
+ "الدوائر": "Departments",
+ "دائرة الرئاسة": "Presidency Department",
+ "دائرة أمانة سر المجالس": "Councils Secretariat Department",
+ "دائرة الرقابة والتدقيق الداخلية": "Internal Control and Audit Department",
+ "دائرة العلاقات العامة والثقافية": "Public and Cultural Relations Department",
+ "الأمن الجامعي": "University Security",
+ "المعلومات والتخطيط": "Information and Planning",
+ "الشؤون القانونية": "Legal Affairs",
+ "العطاءات المركزية": "Central Tenders",
+ "المراكز": "Centers",
+ "مركز الحاسوب": "Computer Center",
+ "مركز التطوير الأكاديمي وضمان الجودة": "Academic Development and Quality Assurance Center",
+ "مركز التعليم الالكتروني ومصادر التعلم": "E-Learning and Learning Resources Center",
+ "مركز الريادة والابتكار": "Entrepreneurship and Innovation Center",
+ "مركز التدريب والاستشارات": "Training and Consultancy Center",
+ "مركز الملكة رانيا العبدالله للدراسات التربوية والنفسية": "Queen Rania Al Abdullah Center for Educational and Psychological Studies",
+ "مركز الأمير فيصل لدراسات البحر الميت": "Prince Faisal Center for Dead Sea Studies",
+ "مركز اللغات": "Language Center",
+ "المركز الصحي": "Health Center",
+ "المختبرات المركزية الافتراضية": "Central Virtual Laboratories",
+ "مكاتب الجامعة": "University Offices",
+ "العلاقات الدولية": "International Relations",
+ "المكتب الهندسي": "Engineering Office",
+ "المشاغل الهندسية": "Engineering Workshops",
+ "صندوق الاستثمار": "Investment Fund",
+ "صندوق الإسكان": "Housing Fund",
+ "أخرى": "Other",
+ "نادي العاملين": "Employees Club",
+ "العطاءات": "Tenders",
+ "نظام المشتريات الحكومي": "Government Procurement System",
+ "تعليمات تنظيم المشتريات": "Procurement Regulation Instructions",
+ "شروط العطاءات العامة الرئيسية": "General Tender Conditions",
+ "الاحالات المبدئية للعطاءات": "Preliminary Tender Awards",
+ "التشريعات": "Legislation",
+ "القوانين": "Laws",
+ "الأنظمة": "Regulations",
+ "التعليمات": "Instructions",
+ "اتصل بنا": "Contact Us",
+ "بحث": "Search",
+ "البريد الإلكتروني": "Email",
+ "الهاتف": "Phone",
+ "التقويم الجامعي": "Academic Calendar",
+ "فتح القائمة": "Open menu",
+ "القائمة": "Menu",
+ "إغلاق القائمة": "Close menu",
+ "إغلاق": "Close",
+ "عمّ تبحث؟": "What are you looking for?",
+ "كلية، بوابة، خدمة...": "Faculty, portal, service…",
+ "شعار جامعة مؤتة": "Mutah University logo",
+ "كلية الطب": "Faculty of Medicine"
+};
+
+export function getLang(): 'ar' | 'en' {
+  try { return (localStorage.getItem('mutah-lang') as any) === 'en' ? 'en' : 'ar'; } catch { return 'ar'; }
+}
+
+export function setLang(lang: 'ar' | 'en') {
+  try { localStorage.setItem('mutah-lang', lang); } catch {}
+  applyDir(lang);
+  window.dispatchEvent(new CustomEvent('mutah-lang-change', { detail: lang }));
+}
+
+export function applyDir(lang: 'ar' | 'en') {
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
+}
+
+export function t(text: string, lang: 'ar' | 'en'): string {
+  if (lang === 'ar') return text;
+  return EN[text] ?? text;
+}
