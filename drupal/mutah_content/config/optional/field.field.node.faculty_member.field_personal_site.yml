@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_personal_site
+    - node.type.faculty_member
+  module:
+    - link
+id: node.faculty_member.field_personal_site
+field_name: field_personal_site
+entity_type: node
+bundle: faculty_member
+label: 'الموقع الشخصي الأصلي'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

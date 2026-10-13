@@ -8,6 +8,7 @@ import {
 import { Eye, Target, Users, Phone, Mail, MapPin, GraduationCap, BookOpen } from 'lucide-react';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 import { Attachments, samplePair } from '../../components/Attachments';
+import { facultyNews } from '../Faculties/facultyNews';
 
 const ARTS_LINKS: NavLink[] = [
   { id: 'home', name: 'الرئيسية' },
@@ -107,12 +108,6 @@ const FORMER_DEANS = [
   { name: 'الاستاذة الدكتورة رانيه العقاربه', period: '8/9/2024 - حتى الآن' }
 ];
 
-const NEWS = [
-  { t: 'اليوم العلمي لكلية الآداب 2025', d: '30/7/2025' },
-  { t: 'كلية الآداب تنظم يوماً علمياً شاملاً يجمع الإبداع الثقافي والعلمي', d: '30/7/2025' },
-  { t: 'المؤتمر الدولي السابع لكلية الآداب', d: '15/7/2025' },
-  { t: 'حفل تكريم طلبة كلية الآداب لإنجازاتهم لعام ٢٠٢٤–٢٠٢٥', d: '21/5/2025' }
-];
 
 const IMPORTANT_LINKS = [
   { name: 'الخطة الاستراتيجية 2023-2025', url: 'https://www.mutah.edu.jo/ar/arts/Documents/%D8%A7%D9%84%D8%AE%D8%B7%D8%A9%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9%20%D9%84%D9%83%D9%84%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A7%D9%93%D8%AF%D8%A7%D8%A8.pdf' },
@@ -283,8 +278,8 @@ export function ArtsFaculty() {
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وإعلانات</h3>
               <NewsGrid>
-                {NEWS.map((n: any, i: number) => (
-                  <NewsCard key={i} to={'/f-item/arts/news/' + i} title={n.t} date={n.d} img={n.img} excerpt={n.excerpt} />
+                {facultyNews('arts').map((n: any, i: number) => (
+                  <NewsCard key={i} to={'/f-item/arts/news/' + i} title={n.title || n.t} date={n.date || n.d} img={n.img} excerpt={n.excerpt} />
                 ))}
               </NewsGrid>
             </div>

@@ -1004,7 +1004,7 @@ export function SecretariatCouncilsDept() {
             <Prose><p className="font-bold text-[#0f3057]">نبذة</p><p>{BRIEF}</p></Prose>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وأحداث</h3>
-              <NewsGrid><NewsCard to="/u-item/sec-news/0" title="جلسة مجلس العمداء رقم 18" date="25/2/2025" /></NewsGrid>
+              <NewsGrid>{ITEMS['sec-news'].items.map((n: any, i: number) => <NewsCard key={i} to={'/u-item/sec-news/' + i} title={n.title || n.t} date={n.date || n.d} img={n.img} excerpt={n.excerpt} />)}</NewsGrid>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">إعلانات</h3>

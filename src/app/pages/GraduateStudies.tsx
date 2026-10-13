@@ -75,14 +75,14 @@ const GRADUATE_LINKS = [
   { id: 'contact', name: 'إتصل بنا' }
 ];
 
-const NEWS = [
+export const NEWS: any[] = [
   { id: 'grad-36', date: '21/7/2025', title: 'تخريج الفوج السادس والثلاثين لطلبة الدراسات العليا – جامعة مؤتة', img: 'https://www.mutah.edu.jo/ar/GraduateStudies/SiteAssets/Lists/MainSlideShow/EditForm/463097745_934558445381531_2053696325672575625_n.jpg' },
   { id: 'top-students-36', date: '20/7/2025', title: 'أوائل التخصصات في برامج الدراسات العليا للفوج السادس والثلاثين', img: 'https://www.mutah.edu.jo/ar/GraduateStudies/SiteAssets/Lists/MainSlideShow/EditForm/455249957_890894076414635_1811359401118425394_n.jpg' },
   { id: 'police-academy-19', date: '14/10/2024', title: 'تخريج الفوج التاسع عشر لبرنامج الماجستير في أكاديمية الشرطة الملكية بالتعاون مع جامعة مؤتة', img: 'https://www.mutah.edu.jo/ar/GraduateStudies/SiteAssets/Lists/MainSlideShow/EditForm/463276580_934558708714838_4527933639320416840_n.jpg' },
   { id: 'grad-ceremony-2024', date: '14/8/2024', title: 'تخريج طلبة الدراسات العليا', img: 'https://www.mutah.edu.jo/ar/GraduateStudies/SiteAssets/Lists/MainSlideShow/EditForm/WhatsApp%20Image%202024-10-20%20at%2010.56.08%20AM.jpeg' }
 ];
 
-const ANNOUNCEMENTS = [
+export const ANNOUNCEMENTS: any[] = [
   { id: 'arabic-proficiency', date: '29/7/2026', title: 'امتحان الكفاية في اللغة العربية' },
   { id: 'jordanian-applications', date: '29/7/2026', title: 'بدء استقبال طلبات الالتحاق في برامج كلية الدراسات العليا للطلبة الإردنيين' },
   { id: 'medical-specialty', date: '23/7/2026', title: 'إعلان لطلبة الاختصاص العالي في الطب جامعة مؤتة' }

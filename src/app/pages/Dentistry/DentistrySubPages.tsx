@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router";
 import { Target, FileText, Download, ExternalLink, Users, Award, BookOpen, Phone, Mail, MapPin, Info } from 'lucide-react';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { facultyNews } from '../Faculties/facultyNews';
 
 function SectionTitle({ icon: Icon, title }: { icon: React.ElementType; title: string }) {
   return (
@@ -236,18 +237,12 @@ export function DentistryForms() {
 
 /* ─── أخبار وإعلانات ─── */
 export function DentistryNews() {
-  const news = [
-    { date: '18/8/2026', title: 'معلومات تهم الطلبة المقبلين الى كلية طب الأسنان' },
-    { date: '2/6/2026', title: '"رحلة ابتسامة سعيدة"' },
-    { date: '2/6/2026', title: 'فعالية دعم الحياة الأساسي والإسعافات الطارئة' },
-    { date: '26/4/2026', title: 'تكريم بيزا هاوس لدعمها كلية طب الأسنان' },
-  ];
   return (
     <Wrap>
       <SectionTitle icon={FileText} title="أخبار وإعلانات" />
       <NewsGrid>
-        {news.map((n: any, i: number) => (
-          <NewsCard key={i} to={'/f-item/dentistry/news/' + i} title={n.title} date={n.date} img={n.img} excerpt={n.excerpt} />
+        {facultyNews('dentistry').map((n: any, i: number) => (
+          <NewsCard key={i} to={'/f-item/dentistry/news/' + i} title={n.title} date={n.date} img={n.img} excerpt={n.excerpt || n.body?.[0]} />
         ))}
       </NewsGrid>
     </Wrap>

@@ -7,6 +7,7 @@ import {
 } from '../Deanships/DeanshipShell';
 import { Eye, Target, Users, Phone, Mail, MapPin } from 'lucide-react';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import ITEMS from '../ItemsRegistry';
 
 const EL_LINKS: NavLink[] = [
   { id: 'home', name: 'الرئيسية' },
@@ -75,17 +76,10 @@ const EL_LINKS: NavLink[] = [
 const HERO = 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/1.1115.jpg';
 const LOGO = 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/LOGO%20fin.png';
 
-const NEWS = [
-  { t: 'جامعة مؤتة تشارك بمبادارة دعم الطلبة المتوقع تخرجهم في جامعات غزة', d: '11/10/2025' },
-  { t: 'دورة تطوير المحتوى', d: '26/12/2022' },
-  { t: 'جامعة مؤتة تحقق تقدماً متميزاً وفق تصنيفات التايمز العالمي', d: '22/4/2021' }
-];
+// Same lists the detail pages read (/u-item/el-news|el-ann/:idx); filled from Drupal when available
+const NEWS: any[] = ITEMS['el-news'].items;
 
-const ANN = [
-  { t: 'امتحانات المستوى (اللغة العربية - اللغة الانجليزية - الحاسوب)', d: '22/12/2022' },
-  { t: 'امتحانات المستوى (اللغة العربية - اللغة الانجليزية - الحاسوب)', d: '8/12/2022' },
-  { t: 'امتحان الكفاءة الجامعي', d: '10/11/2021' }
-];
+const ANN: any[] = ITEMS['el-ann'].items;
 
 const QUICK = [
   { n: 'التعليم الالكتروني', u: 'https://www.mutah.edu.jo/Pages/E-Learninig.aspx' },
@@ -461,11 +455,7 @@ export function ELearningCenter() {
           <div className="space-y-8">
             <PageTitle title="الأخبار والاحداث" sub="مركز التعليم الإلكتروني ومصادر التعلم" />
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {[
-                { t: 'جامعة مؤتة تشارك بمبادرة دعم الطلبة المتوقع تخرجهم في جامعات غزة', d: '11/10/2025', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/TEACH%20YOURSELF.jpg' },
-                { t: 'دورة تطوير المحتوى', d: '26/12/2022', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/6666.jpg' },
-                { t: 'جامعة مؤتة تحقق تقدماً متميزاً وفق تصنيفات التايمز العالمي', d: '22/4/2021', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/RANK.jpg' }
-              ].map((n, i) => (
+              {NEWS.map((n, i) => (
                 <NewsCard key={n.t} to={'/u-item/el-news/' + i} title={n.t} date={n.d} img={n.img} />
               ))}
             </div>

@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_document
+    - node.type.course_document
+  module:
+    - file
+id: node.course_document.field_document
+field_name: field_document
+entity_type: node
+bundle: course_document
+label: الملف
+description: 'بصيغة DOCX أو HTML فقط (صيغ مناسبة لذوي الإعاقة).'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: mutah/documents
+  file_extensions: 'docx html htm'
+  max_filesize: ''
+  description_field: false
+field_type: file

@@ -1,0 +1,7 @@
+mutah_content.dashboard:
+  path: '/admin/mutah'
+  defaults:
+    _controller: '\Drupal\mutah_content\Controller\DashboardController::page'
+    _title: 'محتوى الجامعة'
+  requirements:
+    _permission: 'access content overview'

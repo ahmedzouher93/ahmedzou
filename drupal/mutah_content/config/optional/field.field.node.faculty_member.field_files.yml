@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_files
+    - node.type.faculty_member
+  module:
+    - file
+id: node.faculty_member.field_files
+field_name: field_files
+entity_type: node
+bundle: faculty_member
+label: ملفات
+description: 'ملفات بصيغة DOCX أو HTML.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: mutah/faculty-files
+  file_extensions: 'docx html htm'
+  max_filesize: ''
+  description_field: true
+field_type: file

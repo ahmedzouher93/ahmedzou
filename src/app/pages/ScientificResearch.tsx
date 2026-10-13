@@ -12,6 +12,7 @@ import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 import { Breadcrumbs, navTrail } from '../components/Breadcrumbs';
+import RESEARCH_ITEMS from './Research/ResearchNewsData';
 
 function DocRow({ name, type = 'PDF' }: { name: string; type?: string }) {
   return (
@@ -218,10 +219,7 @@ export function ScientificResearch() {
                 </div>
                 
                 <NewsGrid>
-                  {[
-                    { date: "٢٢ أكتوبر ٢٠٢٤", title: "دعوة لتقديم مقترحات بحثية لعام 2024", desc: "تعلن عمادة البحث العلمي عن فتح باب التقدم للمنح البحثية الداخلية لأعضاء الهيئة التدريسية المتميزين في كافة الكليات لتطوير مشاريعهم المبتكرة..." },
-                    { date: "١٥ أكتوبر ٢٠٢٤", title: "ورشة عمل حول النشر العلمي", desc: "تنظم العمادة ورشة عمل متخصصة حول أسس ومعايير النشر في المجلات العالمية المرموقة، وتجنب المجلات الوهمية، بمشاركة خبراء من قواعد بيانات دولية..." }
-                  ].map((news, i) => (
+                  {RESEARCH_ITEMS.news.items.slice(0, 4).map((news: any, i: number) => (
                     <NewsCard key={i} to={"/r-item/news/" + i} title={news.title} date={news.date} img={(news as any).img} excerpt={news.desc} />
                   ))}
                 </NewsGrid>

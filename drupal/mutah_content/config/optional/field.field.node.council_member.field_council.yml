@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_council
+    - node.type.council_member
+  module:
+    - options
+id: node.council_member.field_council
+field_name: field_council
+entity_type: node
+bundle: council_member
+label: المجلس
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,110 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.announcement.body
+    - field.field.node.announcement.field_attachments
+    - field.field.node.announcement.field_date
+    - field.field.node.announcement.field_date_text
+    - field.field.node.announcement.field_gallery
+    - field.field.node.announcement.field_image
+    - field.field.node.announcement.field_image_url
+    - field.field.node.announcement.field_item_id
+    - field.field.node.announcement.field_related_links
+    - field.field.node.announcement.field_scope
+    - field.field.node.announcement.field_source_link
+    - field.field.node.announcement.field_tag
+    - field.field.node.announcement.field_weight
+    - image.style.large
+    - node.type.announcement
+  module:
+    - datetime
+    - file
+    - image
+    - link
+    - text
+    - user
+id: node.announcement.default
+targetEntityType: node
+bundle: announcement
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_attachments:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_related_links:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_scope:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_source_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_date_text: true
+  field_gallery: true
+  field_image_url: true
+  field_item_id: true
+  field_tag: true
+  field_weight: true

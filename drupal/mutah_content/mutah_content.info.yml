@@ -1,0 +1,18 @@
+name: 'Mutah University content'
+type: module
+description: 'أنواع محتوى موقع جامعة مؤتة (أخبار، إعلانات، فعاليات، أعضاء هيئة التدريس، المجالس، المرفقات) مع واجهات JSON التي يقرأها القالب، ولوحة «محتوى الجامعة».'
+package: 'Mutah University'
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:text
+  - drupal:file
+  - drupal:image
+  - drupal:link
+  - drupal:datetime
+  - drupal:options
+  - drupal:views
+  - drupal:rest
+  - drupal:serialization
+configure: mutah_content.dashboard

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_scope_key
+    - taxonomy.vocabulary.mutah_scope
+id: taxonomy_term.mutah_scope.field_scope_key
+field_name: field_scope_key
+entity_type: taxonomy_term
+bundle: mutah_scope
+label: 'مفتاح الجهة'
+description: 'مفتاح ثابت يربط المصطلح بمكانه في الموقع (مثل items:hr-news). لا تغيّره.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

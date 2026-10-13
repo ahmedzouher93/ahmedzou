@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: فعالية
+type: event
+description: 'فعالية أو نشاط يظهر في قوائم «الفعاليات» و«النشاطات».'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

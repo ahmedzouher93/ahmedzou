@@ -22,6 +22,10 @@ function mutah_theme_preprocess_html(array &$variables): void {
   $variables['mutah_app'] = mutah_theme_shows_app();
   if ($variables['mutah_app']) {
     $variables['#attached']['library'][] = 'mutah_theme/app';
+    // Content managed in Drupal (module mutah_content): the app reads it from these JSON views
+    if (\Drupal::moduleHandler()->moduleExists('mutah_content')) {
+      $variables['html_attributes']->setAttribute('data-mutah-api', base_path() . 'api/mutah');
+    }
   }
   else {
     $variables['#attached']['library'][] = 'mutah_theme/drupal';

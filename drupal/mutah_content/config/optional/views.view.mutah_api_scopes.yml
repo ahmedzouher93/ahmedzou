@@ -1,0 +1,121 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mutah_scope
+  module:
+    - rest
+    - serialization
+    - taxonomy
+    - user
+id: mutah_api_scopes
+label: 'Mutah API: الجهات'
+module: views
+description: 'بيانات JSON يقرأها موقع الجامعة: قائمة الجهات ومفاتيحها.'
+tag: mutah
+base_table: taxonomy_term_field_data
+base_field: tid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Mutah API: الجهات'
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+        options: {  }
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        tid:
+          id: tid
+          table: taxonomy_term_field_data
+          field: tid
+          entity_type: taxonomy_term
+          entity_field: tid
+          plugin_id: standard
+          order: ASC
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+          operator: in
+          value:
+            mutah_scope: mutah_scope
+          group: 1
+      style:
+        type: serializer
+        options:
+          formats:
+            json: json
+      row:
+        type: data_entity
+        options: {  }
+      query:
+        type: views_query
+        options: {  }
+      relationships: {  }
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - request_format
+        - user.permissions
+      tags: {  }
+  rest_export_1:
+    id: rest_export_1
+    display_title: JSON
+    display_plugin: rest_export
+    position: 1
+    display_options:
+      pager:
+        type: none
+        options:
+          offset: 0
+      style:
+        type: serializer
+        options:
+          formats:
+            json: json
+      row:
+        type: data_entity
+        options: {  }
+      display_extenders: {  }
+      path: api/mutah/scopes
+      auth:
+        - cookie
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - request_format
+        - user.permissions
+      tags: {  }

@@ -12,6 +12,7 @@ import { Link } from 'react-router';
 import structureImg from '../../imports/Org.png';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 import { Breadcrumbs, navTrail } from '../components/Breadcrumbs';
+import CC_NEWS from './Centers/ComputerCenterNews';
 
 const CENTER_LINKS = [
   { id: 'home', name: 'الرئيسية' },
@@ -159,7 +160,7 @@ function ComputerCenterContent() {
                 </Link>
               </div>
               <div className="space-y-4">
-                <NewsCard to="/cc-item/news/0" title="موقع الكتروني جديد يتناسب ومقتضيات المرحلة في الجامعة" date="3 ديسمبر 2019" img="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" />
+                {CC_NEWS.news.items.slice(0, 3).map((n: any, i: number) => <NewsCard key={i} to={'/cc-item/news/' + i} title={n.title} date={n.date} img={n.img || n.image} excerpt={n.desc || n.body?.[0]} />)}
               </div>
             </section>
 

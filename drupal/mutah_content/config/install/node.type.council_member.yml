@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'عضو مجلس'
+type: council_member
+description: 'رئيس الجامعة ونوابه وأعضاء مجلس الأمناء ومجلس الجامعة ومجلس العمداء. العنوان = الاسم.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

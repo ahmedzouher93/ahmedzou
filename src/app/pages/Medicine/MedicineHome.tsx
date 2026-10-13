@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { Card, CardContent } from "../../components/ui/card";
 import { ImageWithFallback } from "../../components/figma/ImageWithFallback";
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { facultyNews } from '../Faculties/facultyNews';
 
 export function MedicineHome() {
   return (
@@ -179,32 +180,8 @@ export function MedicineHome() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              date: "🤝 1 أغسطس 2026",
-              title:
-                "جامعة مؤتة توقّع مذكرة تفاهم مع جمعية الأطباء الأردنيين الأميركيين",
-              desc: "لتعزيز التعاون الأكاديمي والطبي.",
-              image:
-                "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            },
-            {
-              date: "🌍 21 أكتوبر 2025",
-              title:
-                "محاضرة حول الصحة العالمية بتنظيم من كلية الطب",
-              desc: "محاضرة علمية حول التحديات الصحية.",
-              image:
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            },
-            {
-              date: "🏆 15 سبتمبر 2025",
-              title: "الكلية تحصل على الاعتماد البرامجي الدولي",
-              desc: "إنجاز جديد يضاف لسلسلة النجاحات.",
-              image:
-                "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            },
-          ].map((news, i) => (
-            <NewsCard key={i} to={'/f-item/medicine/news/' + i} title={news.title} date={news.date} img={news.image} excerpt={news.desc} />
+          {facultyNews('medicine').map((news: any, i: number) => (
+            <NewsCard key={i} to={'/f-item/medicine/news/' + i} title={news.title} date={news.date} img={news.img || news.image} excerpt={news.desc || news.body?.[0]} />
           ))}
         </div>
       </section>

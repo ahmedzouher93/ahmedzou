@@ -75,9 +75,9 @@ const ITEMS: Record<string, any> = {
   { t: 'وصول الموسوعة الفلسطينية اهداء من مركز التميز', d: '21/8/2019' }
 ] },
   'el-news': { label: 'أخبار وأحداث', scope: 'مركز التعليم الإلكتروني', back: '/elearning-center', items: [
-  { t: 'جامعة مؤتة تشارك بمبادارة دعم الطلبة المتوقع تخرجهم في جامعات غزة', d: '11/10/2025' },
-  { t: 'دورة تطوير المحتوى', d: '26/12/2022' },
-  { t: 'جامعة مؤتة تحقق تقدماً متميزاً وفق تصنيفات التايمز العالمي', d: '22/4/2021' }
+  { t: 'جامعة مؤتة تشارك بمبادارة دعم الطلبة المتوقع تخرجهم في جامعات غزة', d: '11/10/2025', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/TEACH%20YOURSELF.jpg' },
+  { t: 'دورة تطوير المحتوى', d: '26/12/2022', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/6666.jpg' },
+  { t: 'جامعة مؤتة تحقق تقدماً متميزاً وفق تصنيفات التايمز العالمي', d: '22/4/2021', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/RANK.jpg' }
 ] },
 };
 export default ITEMS;

@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_attachments
+    - node.type.announcement
+  module:
+    - file
+id: node.announcement.field_attachments
+field_name: field_attachments
+entity_type: node
+bundle: announcement
+label: مرفقات
+description: 'ملفات بصيغة DOCX أو HTML.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: mutah/attachments
+  file_extensions: 'docx html htm'
+  max_filesize: ''
+  description_field: true
+field_type: file

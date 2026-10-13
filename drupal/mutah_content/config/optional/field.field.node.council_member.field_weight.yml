@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.council_member
+id: node.council_member.field_weight
+field_name: field_weight
+entity_type: node
+bundle: council_member
+label: الترتيب
+description: 'الأصغر يظهر أولاً.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

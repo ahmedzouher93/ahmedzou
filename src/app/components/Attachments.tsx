@@ -1,10 +1,31 @@
 import React from 'react';
 import { Paperclip, Download } from 'lucide-react';
+import { documentFiles, SEEN_TITLES } from '../cms/documents';
 
 // "المرفقات" block shown under course-description and study-plan content.
-// Files are sample entries for now: they are displayed but do not open.
+// Files uploaded in Drupal («ملف مرفق» with the same title) open and download;
+// the others are sample entries: displayed but they do not open.
 // Accessible formats only: Word (DOCX) and web page (HTML).
-export type Attachment = { name: string; type: 'docx' | 'html' };
+export type Attachment = { name: string; type: 'docx' | 'html'; url?: string };
+
+const baseName = (name: string) => name.replace(/\.(docx|html?)$/i, '').trim();
+
+// Replaces each sample pair with the real files uploaded in Drupal for that title
+function resolve(files: Attachment[]): Attachment[] {
+  const out: Attachment[] = [];
+  const done = new Set<string>();
+  for (const f of files) {
+    if (f.url) { out.push(f); continue; }
+    const base = baseName(f.name);
+    SEEN_TITLES.add(base);
+    const real = documentFiles(base);
+    if (!real) { out.push(f); continue; }
+    if (done.has(base)) continue;
+    done.add(base);
+    out.push(...real);
+  }
+  return out;
+}
 
 const TYPES = {
   docx: { label: 'DOCX', badge: 'bg-[#2b579a]', tint: 'bg-[#2b579a]/8' },
@@ -24,7 +45,8 @@ function FileIcon({ type }: { type: Attachment['type'] }) {
   );
 }
 
-export function Attachments({ files, title = 'المرفقات', className = '' }: { files: Attachment[]; title?: string; className?: string }) {
+export function Attachments({ files: given, title = 'المرفقات', className = '' }: { files: Attachment[]; title?: string; className?: string }) {
+  const files = resolve(given);
   if (!files.length) return null;
   return (
     <section className={'mt-10 pt-8 border-t border-gray-100 ' + className}>
@@ -34,18 +56,23 @@ export function Attachments({ files, title = 'المرفقات', className = '' 
         <span className="text-xs font-bold text-gray-400">{files.length}</span>
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {files.map((f, i) => (
-          <div key={i} className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white px-4 py-3" title="ملف توضيحي">
-            <FileIcon type={f.type} />
-            <div className="min-w-0 flex-1">
-              <p className="text-[14px] font-bold text-[#0f3057] leading-relaxed truncate">{f.name}</p>
-              <p className="text-[12px] text-gray-400 mt-0.5" dir="ltr" style={{ textAlign: 'right' }}>{TYPES[f.type].label}</p>
-            </div>
-            <span className="w-9 h-9 rounded-lg border border-gray-200 flex items-center justify-center text-gray-300 shrink-0" aria-hidden="true">
-              <Download size={16} />
-            </span>
-          </div>
-        ))}
+        {files.map((f, i) => {
+          const body = (
+            <>
+              <FileIcon type={f.type} />
+              <div className="min-w-0 flex-1">
+                <p className="text-[14px] font-bold text-[#0f3057] leading-relaxed truncate">{f.name}</p>
+                <p className="text-[12px] text-gray-400 mt-0.5" dir="ltr" style={{ textAlign: 'right' }}>{TYPES[f.type].label}</p>
+              </div>
+              <span className={'w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ' + (f.url ? 'border-[#c9a227]/50 text-[#c9a227]' : 'border-gray-200 text-gray-300')} aria-hidden="true">
+                <Download size={16} />
+              </span>
+            </>
+          );
+          return f.url
+            ? <a key={i} href={f.url} download={f.type === 'docx' ? f.name : undefined} target={f.type === 'html' ? '_blank' : undefined} rel="noopener" className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white px-4 py-3 hover:border-[#c9a227]/60 hover:shadow-sm transition-all" aria-label={'تحميل ' + f.name}>{body}</a>
+            : <div key={i} className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white px-4 py-3" title="ملف توضيحي">{body}</div>;
+        })}
       </div>
     </section>
   );

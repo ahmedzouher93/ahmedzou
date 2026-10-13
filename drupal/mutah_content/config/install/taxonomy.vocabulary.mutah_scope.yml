@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'الجهات (أماكن ظهور المحتوى)'
+vid: mutah_scope
+description: 'كل مصطلح يمثل قائمة في الموقع: أخبار كلية أو قسم أو وحدة أو مركز، أو مرفقات صفحة. لا تغيّر «مفتاح الجهة».'
+weight: 0
+new_revision: false

@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.course_document
+id: node.course_document.title
+field_name: title
+entity_type: node
+bundle: course_document
+label: 'اسم المرفق كما يظهر في الموقع'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

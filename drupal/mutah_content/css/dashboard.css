@@ -1,0 +1,10 @@
+.mutah-intro { background: #f5f7f9; border-inline-start: 4px solid #c9a227; padding: .75rem 1.25rem; border-radius: 8px; margin-bottom: 1.5rem; line-height: 1.9; }
+.mutah-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.mutah-card { background: #fff; border: 1px solid #dedfe4; border-radius: 12px; padding: 1rem 1.25rem; display: flex; flex-direction: column; }
+.mutah-card h3 { margin: 0 0 .25rem; color: #0f3057; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; }
+.mutah-card p { margin: 0 0 1rem; color: #55565b; font-size: .9rem; flex: 1; }
+.mutah-count { background: #0f3057; color: #fff; border-radius: 999px; padding: 0 .65rem; font-size: .85rem; }
+.mutah-actions { list-style: none; margin: 0; padding: 0; display: flex; gap: .5rem; }
+.mutah-actions li { margin: 0; }
+.mutah-actions .button { margin: 0; }
+.mutah-recent h2 { color: #0f3057; }

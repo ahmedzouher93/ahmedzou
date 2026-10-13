@@ -7,10 +7,13 @@ import { WireframeFooter } from '../../components/WireframeFooter';
 import { go } from '../../nav';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-const YEARS = Array.from(new Set(NEWS.map((n: any) => n.date.slice(0, 4)))).sort().reverse();
-const TAGS = Array.from(new Set(NEWS.map((n: any) => n.tag)));
+// Computed on render: the list may be replaced by Drupal content at startup
+const years = () => Array.from(new Set(NEWS.map((n: any) => String(n.date || '').slice(0, 4)).filter(Boolean))).sort().reverse();
+const tags = () => Array.from(new Set(NEWS.map((n: any) => n.tag).filter(Boolean)));
 
 export function NewsList() {
+  const YEARS = years();
+  const TAGS = tags();
   const [q, setQ] = useState('');
   const [year, setYear] = useState('all');
   const [tag, setTag] = useState('all');

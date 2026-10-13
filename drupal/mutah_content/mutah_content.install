@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for Mutah University content.
+ */
+
+use Drupal\Core\Config\FileStorage;
+use Drupal\mutah_content\Seeder;
+
+/**
+ * Implements hook_install().
+ *
+ * Loads the site's current news, members and attachments into Drupal.
+ */
+function mutah_content_install($is_syncing) {
+  if ($is_syncing) {
+    return;
+  }
+  // Fields, displays and views live in config/optional (body and field_image
+  // may already exist on the site); create them now so the content can be saved.
+  $path = \Drupal::service('extension.list.module')->getPath('mutah_content');
+  \Drupal::service('config.installer')->installOptionalConfig(new FileStorage($path . '/config/optional'));
+  \Drupal::service('entity_field.manager')->clearCachedFieldDefinitions();
+  $count = (new Seeder())->run();
+  \Drupal::messenger()->addStatus(t('تم تحميل محتوى الجامعة: @items خبر وإعلان وفعالية في @scopes جهة، @faculty عضو هيئة تدريس، @council عضو مجلس، @documents مرفق.', [
+    '@items' => $count['items'],
+    '@scopes' => $count['scopes'],
+    '@faculty' => $count['faculty'],
+    '@council' => $count['council'],
+    '@documents' => $count['documents'],
+  ]));
+}

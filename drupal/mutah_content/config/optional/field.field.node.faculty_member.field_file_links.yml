@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_file_links
+    - node.type.faculty_member
+  module:
+    - link
+id: node.faculty_member.field_file_links
+field_name: field_file_links
+entity_type: node
+bundle: faculty_member
+label: 'ملفات (روابط)'
+description: 'روابط لملفات منشورة على موقع آخر.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 16
+field_type: link

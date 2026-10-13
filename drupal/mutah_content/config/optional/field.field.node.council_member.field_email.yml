@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.council_member
+id: node.council_member.field_email
+field_name: field_email
+entity_type: node
+bundle: council_member
+label: 'البريد الإلكتروني'
+description: 'يظهر لرئيس الجامعة في صفحة «رئاسة الجامعة».'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

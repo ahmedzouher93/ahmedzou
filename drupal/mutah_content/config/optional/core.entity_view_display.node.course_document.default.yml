@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.course_document.field_document
+    - field.field.node.course_document.field_weight
+    - node.type.course_document
+  module:
+    - file
+    - user
+id: node.course_document.default
+targetEntityType: node
+bundle: course_document
+mode: default
+content:
+  field_document:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_weight: true

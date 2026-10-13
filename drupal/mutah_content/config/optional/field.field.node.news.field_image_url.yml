@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_url
+    - node.type.news
+id: node.news.field_image_url
+field_name: field_image_url
+entity_type: node
+bundle: news
+label: 'رابط صورة خارجية'
+description: 'اختياري: رابط صورة على موقع آخر، يُستخدم إذا لم تُرفع صورة.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

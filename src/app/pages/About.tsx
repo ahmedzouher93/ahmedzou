@@ -10,8 +10,8 @@ import presidentImg from "../../imports/president.webp";
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 // Member photos, named by position in COUNCIL / DEANS / TRUSTEES (cropped from the official university pages)
-const PHOTOS = import.meta.glob('../../imports/{council,deans,trustees}/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
-const photoAt = (dir: string, i: number) => PHOTOS[`../../imports/${dir}/${String(i).padStart(2, '0')}.jpg`];
+const PHOTOS = import.meta.glob('../../imports/{council,deans,trustees,vp}/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
+export const councilPhoto = (dir: string, i: number): string | undefined => PHOTOS[`../../imports/${dir}/${String(i).padStart(2, '0')}.jpg`];
 
 const ABOUT_LINKS = [
   { id: 'about', name: 'نبذة عن الجامعة', icon: Info },
@@ -31,7 +31,7 @@ const ABOUT_LINKS = [
 ];
 
 // Data Arrays
-const TRUSTEES: { name: string; role: string; img?: string }[] = [
+export const TRUSTEES: { name: string; role: string; img?: string }[] = [
   { name: "سعادة د. يوسف موسى القسوس", role: "رئيس المجلس" },
   { name: "الأستاذ الدكتور رئيس الجامعة", role: "عضواً", img: presidentImg },
   { name: "معالي أ.د. كامل عودة الله المحادين", role: "عضواً" },
@@ -62,14 +62,14 @@ const FORMER_PRESIDENTS = [
   { name: "عطوفة الأستاذ الدكتور عرفات عوجان", period: "2020/08/23 - 2023/05/18" },
 ];
 
-const VP_LIST: { name: string; role: string; img?: string }[] = [
+export const VP_LIST: { name: string; role: string; img?: string }[] = [
   { name: "العميد الركن عوض علي الطهاروة", role: "نائب الرئيس للشؤون العسكرية" },
   { name: "أ.د.محمد سليمان الصرايرة", role: "نائب الرئيس للشؤون الإدارية" },
   { name: "أ.د.امين عقل", role: "نائب الرئيس لشؤون الكليات العلمية" },
   { name: "أ.د.محمد داود المجالي", role: "نائب الرئيس للتعليم الالكتروني والجودة" },
 ];
 
-const COUNCIL: { name: string; role: string; img?: string }[] = [
+export const COUNCIL: { name: string; role: string; img?: string }[] = [
   { name: "معالي أ.د. سلامة صالح النعيمات", role: "رئيس الجامعة" },
   { name: "العميد الركن عطالله سالم الحماد", role: "نائب الرئيس للشؤون العسكرية" },
   { name: "أ.د.محمد داوود المجالي", role: "نائب الرئيس للشؤون الأكاديمية والتعليم الإلكتروني والجودة" },
@@ -117,7 +117,7 @@ const COUNCIL: { name: string; role: string; img?: string }[] = [
   { name: "الطالبة ميسون مرتضى الضلاعين", role: "عضو مجلس اتحاد الطلبة/ ممثل طلبة الجامعة" },
 ];
 
-const DEANS: { name: string; role: string; img?: string }[] = [
+export const DEANS: { name: string; role: string; img?: string }[] = [
   { name: "معالي أ.د. سلامة صالح النعيمات", role: "رئيس الجامعة" },
   { name: "العميد الركن عطالله سالم الحماد", role: "نائب الرئيس للشؤون العسكرية" },
   { name: "أ.د محمد داوود المجالي", role: "نائب الرئيس للشؤون الأكاديمية والتعليم الإلكتروني والجودة" },
@@ -147,6 +147,30 @@ const DEANS: { name: string; role: string; img?: string }[] = [
 
 
 // Member photo; falls back to an empty circle until a real photo is added (img field)
+// Photos from src/imports/<board>/NN.jpg (Drupal replaces these lists with its own data)
+for (const [dir, list] of [['trustees', TRUSTEES], ['council', COUNCIL], ['deans', DEANS], ['vp', VP_LIST]] as const) {
+  list.forEach((m, i) => { m.img = m.img || councilPhoto(dir, i); });
+}
+
+// رئيس الجامعة — editable in Drupal (council_member, المجلس: رئيس الجامعة)
+export const PRESIDENT = {
+  name: 'معالي الاستاذ الدكتور سلامة صالح النعيمات',
+  role: 'رئيس الجامعة',
+  img: presidentImg as string,
+  phone: '00962-32372380',
+  ext: '6000',
+  fax: '962-03-2375540',
+  email: 'president@mutah.edu.jo',
+  location: 'مؤتة - الكرك - الاردن',
+  // كلمة الرئيس
+  speech: [
+    "إنه لمن دواعي سرورنا الترحيب بكم في جامعة مؤتة، هذه الجامعة التي أصبحت تشكل منارة علم مضيئة في مسيرة التعليم العالي والتنمية والإبداع والتفكير وتحقيق النجاح، جامعة رائدة في المملكة الأردنية الهاشمية ومنطقة الشرق الأوسط والعالم، وإنه لشرف عظيم لجامعة مؤتة أن تحمل اسم معركة مؤتة الخالدة، وأن تضم في رحابها جناحين، أحدهما عسكري منذ عام (1981م)، والآخر مدني منذ عام (1986م)، محققة بذلك ثورة من المكتسبات والإنجازات العسكرية والأكاديمية والبحثية والمؤسسية، وقد ساعدها ذلك في أن تكون شريكاً فاعلاً ومؤثراً في المجتمع الأردني، وأن تكون إحدى الجامعات المرموقة في المنطقة.",
+    "تستلهم جامعة مؤتة رؤيتها من توجيهات حضرة صاحب الجلالة الهاشمية الملك عبد الله الثاني ابن الحسين المعظم يحفظه الله ويرعاه، فالتعليم العالي وفق هذه الرؤية يحتاج إلى إستراتيجية تعنى بالكيف ونوعية التعليم؛ ليتوافق مع أفضل المعايير الدولية، ويضع النظام التعليمي في درجة عالية من التنافس؛ إذ إن الكفاءات المدربة والمواكبة لمتطلبات العصر أدوات اقتصادية مولدة للنشاط الاقتصادي والثروة، وهي رصيد إنساني ومعرفي يساهم في تنمية المجتمعات الوطنية والدولية.",
+    "وفي ضوء ذلك، تسعى جامعة مؤتة إلى أن تحقق لنفسها سمعة وطنية ودولية، وأن تؤسس مكانة رفيعة بين الجامعات الأردنية والعالمية من خلال وضع إستراتيجية تعالج متطلبات النهوض العلمي؛ لتستشرف احتياجات المستقبل، وتواجه تحديات التعليم العالي، وتواكب في هذه المرحلة الحوار الجاد، والبحث العلمي، والتجاذب الذي تشهده الجامعات الوطنية والعالمية، والحركة النشطة لتعديل المسار باتجاه نوعية التعليم ومتطلبات المجتمع، وربط التعليم العالي بالحاجات الحقيقية للنماء.",
+    "وفي سياق متصل، تعتز جامعة مؤتة بالعلاقة الوثيقة التي تربطها بالجامعات الوطنية والعربية والعالمية من خلال العديد من مذكرات التفاهم واتفاقيات التعاون التي ترتب عليها استحداث الكثير من التخصصات والبرامج؛ وذلك في محاولة من الجامعة لمضاهاة أعرق الجامعات العالمية، والتميز والتفوق على المستوى المحلي والعالمي.بكل فخر واعتزاز أرحب بكم أجمل ترحيب بمشاعر تتدفق بالحب والولاء لهذا الصرح العلمي الشامخ، وأدعوكم لتصفح كافة محتويات موقع جامعة مؤتة الإلكتروني بهدف التعرف بشكل أوسع وأكبر على الجامعة وإنجازاتها وخطتها وبنيتها التحتية المتطورة، والله يوفقكم ويحقق آمالكم وطموحاتكم، ويديم عليكم نعمتي الصحة والعافية.",
+  ],
+};
+
 function MemberPhoto({ name, img, size = 'w-20 h-20' }: { name: string; img?: string; size?: string }) {
   return img
     ? <img src={img} alt={name} loading="lazy" className={size + ' shrink-0 rounded-full object-cover object-top shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40 bg-gray-100'} />
@@ -275,17 +299,17 @@ export function About() {
 
             <div className="flex flex-col md:flex-row gap-10 items-start">
               <div className="w-full md:w-1/3 shrink-0 flex flex-col gap-4">
-                <img src={presidentImg} alt="رئيس الجامعة" className="w-full aspect-[3/4] object-cover object-[50%_30%] rounded-2xl shadow-md border-4 border-white" />
+                <img src={PRESIDENT.img} alt={PRESIDENT.name} className="w-full aspect-[3/4] object-cover object-[50%_30%] rounded-2xl shadow-md border-4 border-white" />
                 <div className="text-center bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                  <h3 className="text-xl font-bold text-[#0f3057]">معالي الاستاذ الدكتور سلامة صالح النعيمات</h3>
-                  <p className="text-[#c9a227] font-medium mb-4">رئيس الجامعة</p>
+                  <h3 className="text-xl font-bold text-[#0f3057]">{PRESIDENT.name}</h3>
+                  <p className="text-[#c9a227] font-medium mb-4">{PRESIDENT.role}</p>
                   
                   <div className="space-y-3 text-sm text-gray-600 text-right mt-4 pt-4 border-t border-gray-200">
-                    <p className="flex justify-between items-center"><strong>الهاتف:</strong> <span className="dir-ltr">00962-32372380</span></p>
-                    <p className="flex justify-between items-center"><strong>فرعي:</strong> <span>6000</span></p>
-                    <p className="flex justify-between items-center"><strong>فاكس:</strong> <span className="dir-ltr">962-03-2375540</span></p>
-                    <p className="flex justify-between items-center"><strong>البريد:</strong> <span>president@mutah.edu.jo</span></p>
-                    <p className="flex justify-between items-center"><strong>الموقع:</strong> <span>مؤتة - الكرك - الاردن</span></p>
+                    <p className="flex justify-between items-center"><strong>الهاتف:</strong> <span className="dir-ltr">{PRESIDENT.phone}</span></p>
+                    <p className="flex justify-between items-center"><strong>فرعي:</strong> <span>{PRESIDENT.ext}</span></p>
+                    <p className="flex justify-between items-center"><strong>فاكس:</strong> <span className="dir-ltr">{PRESIDENT.fax}</span></p>
+                    <p className="flex justify-between items-center"><strong>البريد:</strong> <span>{PRESIDENT.email}</span></p>
+                    <p className="flex justify-between items-center"><strong>الموقع:</strong> <span>{PRESIDENT.location}</span></p>
                   </div>
                   
                   <Button className="w-full mt-6 bg-[#0f3057] hover:bg-[#0a2040] text-white">
@@ -297,10 +321,7 @@ export function About() {
               
               <div className="w-full md:w-2/3 text-gray-700 leading-8 space-y-6 text-lg text-justify">
                 <h3 className="text-2xl font-bold text-[#0f3057] mb-4 border-b pb-2 inline-block border-[#c9a227]">كلمة الرئيس</h3>
-                <p>إنه لمن دواعي سرورنا الترحيب بكم في جامعة مؤتة، هذه الجامعة التي أصبحت تشكل منارة علم مضيئة في مسيرة التعليم العالي والتنمية والإبداع والتفكير وتحقيق النجاح، جامعة رائدة في المملكة الأردنية الهاشمية ومنطقة الشرق الأوسط والعالم، وإنه لشرف عظيم لجامعة مؤتة أن تحمل اسم معركة مؤتة الخالدة، وأن تضم في رحابها جناحين، أحدهما عسكري منذ عام (1981م)، والآخر مدني منذ عام (1986م)، محققة بذلك ثورة من المكتسبات والإنجازات العسكرية والأكاديمية والبحثية والمؤسسية، وقد ساعدها ذلك في أن تكون شريكاً فاعلاً ومؤثراً في المجتمع الأردني، وأن تكون إحدى الجامعات المرموقة في المنطقة.</p>
-                <p>تستلهم جامعة مؤتة رؤيتها من توجيهات حضرة صاحب الجلالة الهاشمية الملك عبد الله الثاني ابن الحسين المعظم يحفظه الله ويرعاه، فالتعليم العالي وفق هذه الرؤية يحتاج إلى إستراتيجية تعنى بالكيف ونوعية التعليم؛ ليتوافق مع أفضل المعايير الدولية، ويضع النظام التعليمي في درجة عالية من التنافس؛ إذ إن الكفاءات المدربة والمواكبة لمتطلبات العصر أدوات اقتصادية مولدة للنشاط الاقتصادي والثروة، وهي رصيد إنساني ومعرفي يساهم في تنمية المجتمعات الوطنية والدولية.</p>
-                <p>وفي ضوء ذلك، تسعى جامعة مؤتة إلى أن تحقق لنفسها سمعة وطنية ودولية، وأن تؤسس مكانة رفيعة بين الجامعات الأردنية والعالمية من خلال وضع إستراتيجية تعالج متطلبات النهوض العلمي؛ لتستشرف احتياجات المستقبل، وتواجه تحديات التعليم العالي، وتواكب في هذه المرحلة الحوار الجاد، والبحث العلمي، والتجاذب الذي تشهده الجامعات الوطنية والعالمية، والحركة النشطة لتعديل المسار باتجاه نوعية التعليم ومتطلبات المجتمع، وربط التعليم العالي بالحاجات الحقيقية للنماء.</p>
-                <p>وفي سياق متصل، تعتز جامعة مؤتة بالعلاقة الوثيقة التي تربطها بالجامعات الوطنية والعربية والعالمية من خلال العديد من مذكرات التفاهم واتفاقيات التعاون التي ترتب عليها استحداث الكثير من التخصصات والبرامج؛ وذلك في محاولة من الجامعة لمضاهاة أعرق الجامعات العالمية، والتميز والتفوق على المستوى المحلي والعالمي.بكل فخر واعتزاز أرحب بكم أجمل ترحيب بمشاعر تتدفق بالحب والولاء لهذا الصرح العلمي الشامخ، وأدعوكم لتصفح كافة محتويات موقع جامعة مؤتة الإلكتروني بهدف التعرف بشكل أوسع وأكبر على الجامعة وإنجازاتها وخطتها وبنيتها التحتية المتطورة، والله يوفقكم ويحقق آمالكم وطموحاتكم، ويديم عليكم نعمتي الصحة والعافية.</p>
+                {PRESIDENT.speech.map((p, i) => <p key={i}>{p}</p>)}
                 <p className="font-bold text-[#0f3057]">والسلام عل​يكم ورحمة ا​لله وبركاته</p>
               </div>
             </div>
@@ -345,7 +366,7 @@ export function About() {
             </div>
             <img src={aboutImg} alt="مجلس الأمناء" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {TRUSTEES.map((item, idx) => <MemberCard key={idx} item={{ ...item, img: item.img || photoAt('trustees', idx) }} />)}
+              {TRUSTEES.map((item, idx) => <MemberCard key={idx} item={item} />)}
             </div>
           </div>
         );
@@ -361,7 +382,7 @@ export function About() {
             </div>
             <img src={aboutImg} alt="مجلس الجامعة" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {COUNCIL.map((item, idx) => <MemberCard key={idx} item={{ ...item, img: item.img || photoAt('council', idx) }} />)}
+              {COUNCIL.map((item, idx) => <MemberCard key={idx} item={item} />)}
             </div>
           </div>
         );
@@ -377,7 +398,7 @@ export function About() {
             </div>
             <img src={aboutImg} alt="مجلس العمداء" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {DEANS.map((item, idx) => <MemberCard key={idx} item={{ ...item, img: item.img || photoAt('deans', idx) }} />)}
+              {DEANS.map((item, idx) => <MemberCard key={idx} item={item} />)}
             </div>
           </div>
         );

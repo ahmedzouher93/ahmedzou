@@ -103,7 +103,7 @@ const LINKS: CenterLink[] = [
 ];
 
 /* ─── Data ─── */
-const newsItems = [
+export const newsItems: any[] = [
   {
     id: 1,
     title: 'استبانة رضى المتعاملين مع صندوق الملك عبدالله — مكتب الإرشاد الوظيفي ومتابعة الخريجين',

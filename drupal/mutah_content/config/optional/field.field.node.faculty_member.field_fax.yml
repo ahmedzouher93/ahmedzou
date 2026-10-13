@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fax
+    - node.type.faculty_member
+id: node.faculty_member.field_fax
+field_name: field_fax
+entity_type: node
+bundle: faculty_member
+label: الفاكس
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

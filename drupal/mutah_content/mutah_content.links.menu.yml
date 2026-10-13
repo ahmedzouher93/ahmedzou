@@ -1,0 +1,53 @@
+mutah_content.dashboard:
+  title: 'محتوى الجامعة'
+  description: 'إدارة أخبار وإعلانات وفعاليات وصفحات موقع جامعة مؤتة.'
+  route_name: mutah_content.dashboard
+  parent: system.admin
+  weight: -20
+mutah_content.list:
+  title: 'كل المحتوى'
+  route_name: view.mutah_content_admin.page_1
+  parent: mutah_content.dashboard
+  weight: 0
+mutah_content.add_news:
+  title: 'إضافة خبر'
+  route_name: node.add
+  route_parameters: { node_type: news }
+  parent: mutah_content.dashboard
+  weight: 1
+mutah_content.add_announcement:
+  title: 'إضافة إعلان'
+  route_name: node.add
+  route_parameters: { node_type: announcement }
+  parent: mutah_content.dashboard
+  weight: 2
+mutah_content.add_event:
+  title: 'إضافة فعالية'
+  route_name: node.add
+  route_parameters: { node_type: event }
+  parent: mutah_content.dashboard
+  weight: 3
+mutah_content.add_faculty_member:
+  title: 'إضافة عضو هيئة تدريس'
+  route_name: node.add
+  route_parameters: { node_type: faculty_member }
+  parent: mutah_content.dashboard
+  weight: 4
+mutah_content.add_council_member:
+  title: 'إضافة عضو مجلس'
+  route_name: node.add
+  route_parameters: { node_type: council_member }
+  parent: mutah_content.dashboard
+  weight: 5
+mutah_content.add_course_document:
+  title: 'إضافة ملف مرفق'
+  route_name: node.add
+  route_parameters: { node_type: course_document }
+  parent: mutah_content.dashboard
+  weight: 6
+mutah_content.scopes:
+  title: 'الجهات (أماكن ظهور المحتوى)'
+  route_name: entity.taxonomy_vocabulary.overview_form
+  route_parameters: { taxonomy_vocabulary: mutah_scope }
+  parent: mutah_content.dashboard
+  weight: 7

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'ملف مرفق'
+type: course_document
+description: 'ملفات «المرفقات» تحت وصف المواد والخطط الدراسية (DOCX أو HTML).'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Card, CardContent } from "../../components/ui/card";
 import { ImageWithFallback } from "../../components/figma/ImageWithFallback";
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { facultyNews } from '../Faculties/facultyNews';
 
 export function DentistryHome() {
   return (
@@ -128,30 +129,8 @@ export function DentistryHome() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              date: "🎓 18 أغسطس 2026",
-              title: "معلومات تهم الطلبة المقبلين إلى كلية طب الأسنان",
-              desc: "دليل ومعلومات أساسية للطلبة الجدد قبل بدء العام الدراسي.",
-              image:
-                "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            },
-            {
-              date: "😀 2 يونيو 2026",
-              title: "\"رحلة ابتسامة سعيدة\"",
-              desc: "فعالية توعوية لصحة الفم والأسنان بمشاركة طلبة الكلية.",
-              image:
-                "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            },
-            {
-              date: "🚑 2 يونيو 2026",
-              title: "فعالية دعم الحياة الأساسي والإسعافات الطارئة",
-              desc: "تدريب عملي على الإسعافات الأولية ودعم الحياة الأساسي.",
-              image:
-                "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            },
-          ].map((news, i) => (
-            <NewsCard key={i} to={'/f-item/dentistry/news/' + i} title={news.title} date={news.date} img={news.image} excerpt={news.desc} />
+          {facultyNews('dentistry').map((news: any, i: number) => (
+            <NewsCard key={i} to={'/f-item/dentistry/news/' + i} title={news.title} date={news.date} img={news.img || news.image} excerpt={news.desc || news.body?.[0]} />
           ))}
         </div>
       </section>

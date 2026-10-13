@@ -3,10 +3,12 @@ import { ArrowLeft, Calendar } from "lucide-react";
 import NEWS from "../pages/News/NewsData";
 import { go } from "../nav";
 
-const news = NEWS.slice(0, 3).map((n: any) => ({ id: n.id, date: n.dateAr, title: n.title, img: n.img, tag: n.tag }));
+// Computed on render: the list may be replaced by Drupal content at startup
+const latest = () => NEWS.slice(0, 3).map((n: any) => ({ id: n.id, date: n.dateAr, title: n.title, img: n.img, tag: n.tag }));
 
 
 export function LatestNews() {
+  const news = latest();
   return (
     <section dir="rtl" className="py-20 bg-white" style={{ borderBottom: "1px solid rgba(15,48,87,0.08)" }}>
       <div className="mx-auto px-10" style={{ maxWidth: "1440px" }}>

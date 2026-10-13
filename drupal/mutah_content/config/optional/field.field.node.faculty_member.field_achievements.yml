@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_achievements
+    - node.type.faculty_member
+id: node.faculty_member.field_achievements
+field_name: field_achievements
+entity_type: node
+bundle: faculty_member
+label: الإنجازات
+description: 'بالشكل: الإنجاز | السنة | الوصف'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "build:drupal": "vite build --config vite.drupal.config.ts"
+    "build:drupal": "vite build --config vite.drupal.config.ts",
+    "export:content": "vite build -c vite.export.config.ts --logLevel warn && node node_modules/.mutah-export/export.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "1.2.3",
