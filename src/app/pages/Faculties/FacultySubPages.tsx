@@ -5,6 +5,7 @@ import { ImageWithFallback } from '../../components/figma/ImageWithFallback';
 import FACULTIES from './FacultyData';
 import { facultySlug, ABOUT_LABELS, EXTRA_LABELS, PROGRAM_LABELS } from './FacultyNav';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Attachments, descriptionFiles } from '../../components/Attachments';
 
 function useCfg() {
   const location = useLocation();
@@ -486,6 +487,7 @@ export function FacultyForms() {
           </div>
         ))}
       </div>
+      <Attachments files={descriptionFiles(cfg.formsData)} />
       {cfg.contactTable && (
         <div className="mt-8 overflow-hidden rounded-2xl border border-gray-100">
           <table className="w-full text-right border-collapse">
@@ -546,6 +548,7 @@ export function FacultyDocuments() {
           </section>
         ))}
       </div>
+      <Attachments files={descriptionFiles(groups.flatMap((g: any) => g.items))} />
     </Wrap>
   );
 }
@@ -724,6 +727,7 @@ function ProgramPage({ kind }: { kind: string }) {
       ) : (
         <EmptyNote label="لا توجد برامج مدرجة حالياً." />
       )}
+      {items && <Attachments files={descriptionFiles(items.flatMap((it: any) => [it.name, it.note]))} />}
     </Wrap>
   );
 }
@@ -740,6 +744,7 @@ export function FacultyLinks() {
       <div className="flex flex-col gap-3">
         {cfg.links.map((l: string, i: number) => <FileRow key={i} name={l} />)}
       </div>
+      <Attachments files={descriptionFiles(cfg.links)} />
       {cfg.contactTable && (
         <div className="mt-8 overflow-hidden rounded-2xl border border-gray-100">
           <table className="w-full text-right border-collapse">

@@ -55,3 +55,25 @@ export const samplePair = (base: string): Attachment[] => [
   { name: base + '.pdf', type: 'pdf' },
   { name: base + '.docx', type: 'docx' },
 ];
+
+// Detects course-description wording ("وصف المواد", "وصف مساقات", "ووصف موادها", "وصف مقرر"…)
+export const DESC_RE = /وصف\s*(ال)?(مادة|مواد|مساق|مساقات|مقرر|مقررات)/;
+export function mentionsDescription(...texts: unknown[]): boolean {
+  const flat = (v: unknown): string => typeof v === 'string' ? v : Array.isArray(v) ? v.map(flat).join(' ') : v && typeof v === 'object' ? Object.values(v as object).map(flat).join(' ') : '';
+  return DESC_RE.test(texts.map(flat).join(' '));
+}
+
+// For a list of document titles, a PDF + Word sample for each one that is a course description
+export function descriptionFiles(names: unknown[]): Attachment[] {
+  const seen = new Set<string>();
+  const out: Attachment[] = [];
+  for (const n of names) {
+    const raw = typeof n === 'string' ? n : n && typeof n === 'object' ? String((n as any).name || (n as any).title || '') : '';
+    if (!DESC_RE.test(raw)) continue;
+    const base = raw.replace(/\s*\((pdf|PDF|docx|DOCX)\)\s*$/, '').replace(/\.(pdf|docx?|PDF|DOCX?)$/, '').trim();
+    if (seen.has(base)) continue;
+    seen.add(base);
+    out.push(...samplePair(base));
+  }
+  return out;
+}

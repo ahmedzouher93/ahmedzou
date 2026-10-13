@@ -8,6 +8,7 @@ import {
 } from './DeanshipShell';
 import { Phone, Mail, MapPin, Eye, Target, Users, CheckCircle } from 'lucide-react';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
+import { Attachments, descriptionFiles } from '../../components/Attachments';
 
 const DAA_LINKS: NavLink[] = [
   { id: 'home', name: 'الرئيسية' },
@@ -102,6 +103,8 @@ export function AcademicAffairs() {
                 <DocRow name="وصف المواد — كلية العلوم الشرطية" url="https://www.mutah.edu.jo/ar/daa/Documents/%D9%88%D8%B5%D9%81%20%D9%85%D9%88%D8%A7%D8%AF%20%D8%A7%D9%84%D8%B4%D8%B1%D8%B7%D8%A9.pdf" />
                 <DocRow name="وصف مواد كلية العلوم العسكرية" url="https://www.mutah.edu.jo/ar/daa/Documents/%D9%88%D8%B5%D9%81%20%D9%85%D9%88%D8%A7%D8%AF%20%D8%A7%D9%84%D8%B9%D8%B3%D9%83%D8%B1%D9%8A.pdf" />
               </div>
+              <Attachments files={descriptionFiles(['وصف المواد — كلية العلوم الشرطية', 'وصف مواد كلية العلوم العسكرية'])} />
+
             </div>
 
             <div>

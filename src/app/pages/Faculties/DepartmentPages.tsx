@@ -4,7 +4,7 @@ import { Info, Users, BookOpen, FileText, Download, Layers, Newspaper, Graduatio
 import { ImageWithFallback } from '../../components/figma/ImageWithFallback';
 import { departmentOf, DEPT_TABS, PROGRAM_LABELS } from './FacultyNav';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
-import { Attachments, samplePair } from '../../components/Attachments';
+import { Attachments, samplePair, descriptionFiles } from '../../components/Attachments';
 
 function useDept() {
   const location = useLocation();
@@ -550,6 +550,7 @@ export function DepartmentForms() {
           </div>
         ))}
       </div>
+      <Attachments files={descriptionFiles(dept.forms)} />
     </Wrap>
   );
 }
