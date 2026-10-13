@@ -8,8 +8,8 @@ import { Button } from '../components/ui/button';
 import aboutImg from "../../imports/image-4.png";
 import presidentImg from "../../imports/president.webp";
 
-// Member photos, named by position in COUNCIL / DEANS (cropped from the official university pages)
-const PHOTOS = import.meta.glob('../../imports/{council,deans}/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
+// Member photos, named by position in COUNCIL / DEANS / TRUSTEES (cropped from the official university pages)
+const PHOTOS = import.meta.glob('../../imports/{council,deans,trustees}/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
 const photoAt = (dir: string, i: number) => PHOTOS[`../../imports/${dir}/${String(i).padStart(2, '0')}.jpg`];
 
 const ABOUT_LINKS = [
@@ -32,7 +32,7 @@ const ABOUT_LINKS = [
 // Data Arrays
 const TRUSTEES: { name: string; role: string; img?: string }[] = [
   { name: "سعادة د. يوسف موسى القسوس", role: "رئيس المجلس" },
-  { name: "الأستاذ الدكتور رئيس الجامعة", role: "عضواً" },
+  { name: "الأستاذ الدكتور رئيس الجامعة", role: "عضواً", img: presidentImg },
   { name: "معالي أ.د. كامل عودة الله المحادين", role: "عضواً" },
   { name: "سعادة أ.د. رنا محمد نذير أبو الذهـب", role: "عضواً" },
   { name: "سعادة أ.د. إبراهيم فتحي الغلايني", role: "عضواً" },
@@ -344,7 +344,7 @@ export function About() {
             </div>
             <img src={aboutImg} alt="مجلس الأمناء" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {TRUSTEES.map((item, idx) => <MemberCard key={idx} item={item} />)}
+              {TRUSTEES.map((item, idx) => <MemberCard key={idx} item={{ ...item, img: item.img || photoAt('trustees', idx) }} />)}
             </div>
           </div>
         );
