@@ -131,7 +131,7 @@ export function FacultySites() {
               <div className="flex-1 grid grid-cols-2 gap-6"><span>اسم عضو هيئة التدريس</span><span>الكلية</span></div>
               <span className="w-[150px] shrink-0 text-center">الموقع</span>
             </div>
-            {results.slice(0, shown).map(f => <SiteRow key={f.url} f={f} />)}
+            {results.slice(0, shown).map(f => <SiteRow key={f.name + f.url} f={f} />)}
           </div>
         )}
 
