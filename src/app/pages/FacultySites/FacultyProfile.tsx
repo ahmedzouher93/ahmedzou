@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router';
 import {
   ChevronLeft, Mail, Phone, Printer, Building2, GraduationCap, BookOpen, FlaskConical, FileText,
   UserRound, ExternalLink, ArrowRight, Clock, Megaphone, FileUser, Info, Calendar,
-  Library, Users, Trophy, HandCoins, FolderOpen, Link2, Download,
+  Library, Users, Trophy, House, HandCoins, FolderOpen, Link2, Download,
 } from 'lucide-react';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
@@ -148,6 +148,13 @@ export function FacultyProfile() {
           {/* Sidebar: sub-page buttons, then contact */}
           <aside className="space-y-6 lg:sticky lg:top-24">
             <nav className="bg-white rounded-2xl border border-gray-100 shadow-xl p-3 grid grid-cols-2 lg:grid-cols-1 gap-1.5">
+              <Link to={base}
+                className={'col-span-2 lg:col-span-1 flex items-center gap-3 rounded-xl px-4 py-3 text-[13.5px] font-bold transition-colors ' +
+                  (!tab ? 'bg-[#0f3057] text-white' : 'text-gray-600 hover:bg-[#f8f6ee] hover:text-[#0f3057]')}>
+                <House size={17} className="text-[#c9a227] shrink-0" />
+                <span className="flex-1">الرئيسية</span>
+                <ChevronLeft size={15} className={'hidden lg:block ' + (!tab ? 'text-[#c9a227]' : 'text-gray-300')} />
+              </Link>
               {TABS.map(t => {
                 const active = t.id === tabId;
                 return (
