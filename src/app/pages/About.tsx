@@ -8,6 +8,10 @@ import { Button } from '../components/ui/button';
 import aboutImg from "../../imports/image-4.png";
 import presidentImg from "../../imports/president.webp";
 
+// University council photos, named by position in COUNCIL (cropped from the official council page)
+const COUNCIL_PHOTOS = import.meta.glob('../../imports/council/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
+const councilPhoto = (i: number) => COUNCIL_PHOTOS[`../../imports/council/${String(i).padStart(2, '0')}.jpg`];
+
 const ABOUT_LINKS = [
   { id: 'about', name: 'نبذة عن الجامعة', icon: Info },
   { id: 'vision', name: 'الرؤية والرسالة والقيم', icon: Target },
@@ -358,7 +362,7 @@ export function About() {
             </div>
             <img src={aboutImg} alt="مجلس الجامعة" className="w-full h-64 object-cover rounded-xl shadow-sm mb-10 border border-gray-100" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {COUNCIL.map((item, idx) => <MemberCard key={idx} item={item} />)}
+              {COUNCIL.map((item, idx) => <MemberCard key={idx} item={{ ...item, img: item.img || councilPhoto(idx) }} />)}
             </div>
           </div>
         );
