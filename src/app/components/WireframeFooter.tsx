@@ -10,7 +10,7 @@ const quickLinks = [
   { label: "المكتبة", to: "/library" },
   { label: "وزارة التعليم العالي", href: "https://mohe.gov.jo" },
   { label: "وحدة القبول والتسجيل", to: "/admission" },
-  { label: "مواقع أعضاء هيئة التدريس", to: "/staff-services/faculty-network" },
+  { label: "مواقع أعضاء هيئة التدريس", to: "/faculty-sites" },
 ];
 const collegesLinks = [
   { label: "كلية الطب", to: "/medicine" },

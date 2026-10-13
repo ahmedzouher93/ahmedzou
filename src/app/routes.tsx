@@ -5,6 +5,7 @@ import { ResearchItemList, ResearchItemDetail } from "./pages/Research/ResearchI
 import { MedicineActivityDetail } from "./pages/Medicine/MedicineActivityDetail";
 import { MedicineDeptGeneric } from "./pages/Medicine/MedicineDeptGeneric";
 import { UniversityFees } from "./pages/UniversityFees";
+import { FacultySites } from "./pages/FacultySites/FacultySites";
 import { ComputerCenterNewsList, ComputerCenterItemDetail } from "./pages/Centers/ComputerCenterNewsPages";
 import { CenterItemDetail } from "./pages/Centers/CenterItemDetail";
 import { ItemDetail } from "./pages/Faculties/ItemDetail";
@@ -104,6 +105,7 @@ export const router = createHashRouter([
   { path: "/r-list/:kind", Component: ResearchItemList },
   { path: "/r-item/:kind/:idx", Component: ResearchItemDetail },
   { path: "/university-fees", Component: UniversityFees },
+  { path: "/faculty-sites", Component: FacultySites },
   { path: "/cc-list/:kind", Component: ComputerCenterNewsList },
   { path: "/cc-item/:kind/:idx", Component: ComputerCenterItemDetail },
   { path: "/c-item/:scope/:tab/:idx", Component: CenterItemDetail },
