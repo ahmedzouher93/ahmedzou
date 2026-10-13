@@ -5,7 +5,7 @@ import { ImageWithFallback } from '../../components/figma/ImageWithFallback';
 import FACULTIES from './FacultyData';
 import { facultySlug, ABOUT_LABELS, EXTRA_LABELS, PROGRAM_LABELS } from './FacultyNav';
 import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
-import { Attachments, descriptionFiles } from '../../components/Attachments';
+import { Attachments, descriptionFiles, mentionsDescription, samplePair } from '../../components/Attachments';
 
 function useCfg() {
   const location = useLocation();
@@ -548,7 +548,7 @@ export function FacultyDocuments() {
           </section>
         ))}
       </div>
-      <Attachments files={descriptionFiles(groups.flatMap((g: any) => g.items))} />
+      <Attachments files={[...groups.filter((g: any) => mentionsDescription(g.group)).flatMap((g: any) => samplePair(g.group + ' - ' + cfg.name)), ...descriptionFiles(groups.filter((g: any) => !mentionsDescription(g.group)).flatMap((g: any) => g.items))]} />
     </Wrap>
   );
 }
@@ -895,6 +895,7 @@ export function FacultyLearningOutcomes() {
           </div>
         </>
       )}
+      {mentionsDescription(cfg.learningOutcomesIntro) && <Attachments files={samplePair('النموذج 2 - وصف المقرر')} />}
     </Wrap>
   );
 }
