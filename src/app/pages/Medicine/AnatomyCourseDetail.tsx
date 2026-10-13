@@ -64,7 +64,7 @@ export function AnatomyCourseDetail() {
                 </li>
               ))}
             </ul>
-            <Attachments files={[...samplePair('وصف المادة'), ...samplePair('خطة المادة (Syllabus)')]} />
+            <Attachments files={[...samplePair('وصف المادة'), ...samplePair('خطة المادة')]} />
           </section>
 
           {/* Slides */}
