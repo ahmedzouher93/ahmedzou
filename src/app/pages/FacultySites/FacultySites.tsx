@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import { Search, Globe, ExternalLink, GraduationCap, Users, Building2, ChevronLeft, X } from 'lucide-react';
+import { Search, Globe, Mail, ExternalLink, GraduationCap, Users, Building2, ChevronLeft, X } from 'lucide-react';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
 import { FACULTY_SITES, DIRECTORY_TOTAL, FacultySite } from './FacultySitesData';
@@ -20,18 +20,25 @@ function norm(s: string) {
 
 function SiteRow({ f }: { f: FacultySite }) {
   return (
-    <div className="group flex items-center gap-4 px-5 md:px-6 py-4 border-b border-gray-100 last:border-0 hover:bg-[#f8f6ee] transition-colors">
+    <div className="group flex flex-wrap md:flex-nowrap items-center gap-x-4 gap-y-3 px-5 md:px-6 py-4 border-b border-gray-100 last:border-0 hover:bg-[#f8f6ee] transition-colors">
       <div className="w-11 h-11 shrink-0 rounded-xl bg-gradient-to-br from-[#0f3057] to-[#1d4e89] text-[#c9a227] flex items-center justify-center text-[15px] font-bold">
         {initials(f.name)}
       </div>
-      <div className="min-w-0 flex-1 grid md:grid-cols-2 gap-1 md:gap-6 items-center">
+      <div className="min-w-0 flex-1 grid md:grid-cols-3 gap-1 md:gap-6 items-center">
         <span className="text-[15px] font-bold text-[#0f3057] leading-relaxed md:truncate">{f.name}</span>
         <span className="text-[13.5px] text-gray-600 truncate flex items-center gap-1.5">
           <Building2 size={14} className="text-[#c9a227] shrink-0" />{f.college || '—'}
         </span>
+        {f.email ? (
+          <a href={'mailto:' + f.email} className="text-[12px] md:text-[13px] text-gray-600 hover:text-[#c9a227] min-w-0 flex items-center gap-1.5">
+            <Mail size={14} className="text-[#c9a227] shrink-0" /><span dir="ltr" className="truncate">{f.email}</span>
+          </a>
+        ) : (
+          <span className="text-[13px] text-gray-400 hidden md:flex items-center gap-1.5"><Mail size={14} className="text-gray-300 shrink-0" />—</span>
+        )}
       </div>
       <a href={f.url} target="_blank" rel="noopener noreferrer"
-        className="shrink-0 inline-flex items-center gap-2 rounded-xl border border-[#0f3057]/15 px-3 md:px-5 py-2.5 text-[12.5px] md:text-[13px] font-bold text-[#0f3057] hover:bg-[#0f3057] hover:text-white hover:border-[#0f3057] transition-colors">
+        className="w-full md:w-auto justify-center shrink-0 inline-flex items-center gap-2 rounded-xl border border-[#0f3057]/15 px-3 md:px-5 py-2.5 text-[12.5px] md:text-[13px] font-bold text-[#0f3057] hover:bg-[#0f3057] hover:text-white hover:border-[#0f3057] transition-colors">
         <Globe size={15} className="hidden sm:inline" /><span>عرض الموقع</span><ExternalLink size={13} className="opacity-60 hidden sm:inline" />
       </a>
     </div>
@@ -53,7 +60,7 @@ export function FacultySites() {
     const nq = norm(q.trim());
     return FACULTY_SITES.filter(f =>
       (!college || f.college === college) &&
-      (!nq || norm([f.name, f.college, f.department].filter(Boolean).join(' ')).includes(nq)));
+      (!nq || norm([f.name, f.college, f.department, f.email].filter(Boolean).join(' ')).includes(nq)));
   }, [q, college]);
 
   const total = Math.max(FACULTY_SITES.length, DIRECTORY_TOTAL);
@@ -96,7 +103,7 @@ export function FacultySites() {
             <div className="relative flex-1">
               <Search size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
               <input value={q} onChange={e => { setQ(e.target.value); setShown(PAGE); }}
-                placeholder="ابحث باسم عضو هيئة التدريس أو الكلية…"
+                placeholder="ابحث بالاسم أو الكلية أو البريد الإلكتروني…"
                 className="w-full h-12 rounded-xl bg-[#f3f4f6] pr-11 pl-10 text-[14px] text-[#0f3057] outline-none border border-transparent focus:border-[#c9a227] focus:bg-white transition-colors" />
               {q && <button onClick={() => setQ('')} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#0f3057]"><X size={16} /></button>}
             </div>
@@ -128,7 +135,7 @@ export function FacultySites() {
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div className="hidden md:flex items-center gap-4 px-6 py-3 bg-[#0f3057] text-white/80 text-[12.5px] font-bold">
               <span className="w-11 shrink-0" />
-              <div className="flex-1 grid grid-cols-2 gap-6"><span>اسم عضو هيئة التدريس</span><span>الكلية</span></div>
+              <div className="flex-1 grid grid-cols-3 gap-6"><span>اسم عضو هيئة التدريس</span><span>الكلية</span><span>البريد الإلكتروني</span></div>
               <span className="w-[150px] shrink-0 text-center">الموقع</span>
             </div>
             {results.slice(0, shown).map(f => <SiteRow key={f.name + f.url} f={f} />)}
