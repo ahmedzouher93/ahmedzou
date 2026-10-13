@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import { Search, Globe, Mail, ExternalLink, GraduationCap, Users, Building2, ChevronLeft, X } from 'lucide-react';
+import { Search, Globe, Mail, GraduationCap, Users, Building2, ChevronLeft, X } from 'lucide-react';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
 import { FACULTY_SITES, DIRECTORY_TOTAL, FacultySite } from './FacultySitesData';
@@ -37,10 +37,10 @@ function SiteRow({ f }: { f: FacultySite }) {
           <span className="text-[13px] text-gray-400 hidden md:flex items-center gap-1.5"><Mail size={14} className="text-gray-300 shrink-0" />—</span>
         )}
       </div>
-      <a href={f.url} target="_blank" rel="noopener noreferrer"
+      <Link to={'/faculty-sites/' + f.slug}
         className="w-full md:w-auto justify-center shrink-0 inline-flex items-center gap-2 rounded-xl border border-[#0f3057]/15 px-3 md:px-5 py-2.5 text-[12.5px] md:text-[13px] font-bold text-[#0f3057] hover:bg-[#0f3057] hover:text-white hover:border-[#0f3057] transition-colors">
-        <Globe size={15} className="hidden sm:inline" /><span>عرض الموقع</span><ExternalLink size={13} className="opacity-60 hidden sm:inline" />
-      </a>
+        <Globe size={15} className="hidden sm:inline" /><span>عرض الموقع</span><ChevronLeft size={14} className="opacity-60 hidden sm:inline" />
+      </Link>
     </div>
   );
 }
@@ -138,7 +138,7 @@ export function FacultySites() {
               <div className="flex-1 grid grid-cols-3 gap-6"><span>اسم عضو هيئة التدريس</span><span>الكلية</span><span>البريد الإلكتروني</span></div>
               <span className="w-[150px] shrink-0 text-center">الموقع</span>
             </div>
-            {results.slice(0, shown).map(f => <SiteRow key={f.name + f.url} f={f} />)}
+            {results.slice(0, shown).map(f => <SiteRow key={f.slug} f={f} />)}
           </div>
         )}
 
