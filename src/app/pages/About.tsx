@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import aboutImg from "../../imports/image-4.png";
+import presidentImg from "../../imports/president.webp";
 
 const ABOUT_LINKS = [
   { id: 'about', name: 'نبذة عن الجامعة', icon: Info },
@@ -252,7 +253,7 @@ export function About() {
 
             <div className="flex flex-col md:flex-row gap-10 items-start">
               <div className="w-full md:w-1/3 shrink-0 flex flex-col gap-4">
-                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80" alt="رئيس الجامعة" className="w-full aspect-[3/4] object-cover rounded-2xl shadow-md border-4 border-white" />
+                <img src={presidentImg} alt="رئيس الجامعة" className="w-full aspect-[3/4] object-cover object-[50%_30%] rounded-2xl shadow-md border-4 border-white" />
                 <div className="text-center bg-gray-50 p-6 rounded-2xl border border-gray-100">
                   <h3 className="text-xl font-bold text-[#0f3057]">معالي الاستاذ الدكتور سلامة صالح النعيمات</h3>
                   <p className="text-[#c9a227] font-medium mb-4">رئيس الجامعة</p>
