@@ -1,0 +1,34 @@
+/* Accessibility settings, toggled from the header tools (AccessibilityTools.tsx) */
+
+/* Text size: scales the whole page like browser zoom, so fixed px sizes grow too */
+html[data-a11y-font="1"] #root { zoom: 1.15; }
+html[data-a11y-font="2"] #root { zoom: 1.3; }
+html[data-a11y-font="3"] #root { zoom: 1.5; }
+
+/* Line spacing */
+html[data-a11y-lh="1"] #root * { line-height: 2 !important; }
+html[data-a11y-lh="2"] #root * { line-height: 2.5 !important; word-spacing: 0.12em; }
+
+/* High contrast: black background, white text, yellow links and buttons */
+html[data-a11y-contrast="high"] body,
+html[data-a11y-contrast="high"] #root,
+html[data-a11y-contrast="high"] #root * {
+  background-color: #000 !important;
+  background-image: none !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+}
+html[data-a11y-contrast="high"] #root a,
+html[data-a11y-contrast="high"] #root a *,
+html[data-a11y-contrast="high"] #root button,
+html[data-a11y-contrast="high"] #root button * { color: #ffe14d !important; }
+html[data-a11y-contrast="high"] #root a { text-decoration: underline !important; }
+html[data-a11y-contrast="high"] #root img { opacity: 1 !important; mix-blend-mode: normal !important; filter: none !important; }
+html[data-a11y-contrast="high"] #root svg { color: inherit !important; }
+html[data-a11y-contrast="high"] #root :focus-visible { outline: 3px solid #ffe14d !important; outline-offset: 2px; }
+
+/* Visible keyboard focus everywhere */
+#root :focus-visible { outline: 3px solid #c9a227; outline-offset: 2px; }

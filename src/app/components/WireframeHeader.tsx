@@ -9,6 +9,7 @@ import {
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import mutahLogo from "@/imports/MUTAH_LOGO.png";
 import { getLang, setLang, applyDir, t } from "@/app/i18n";
+import { AccessibilityTools } from "./AccessibilityTools";
 
 const navItems = [
   {
@@ -222,15 +223,20 @@ export function WireframeHeader() {
     }
   };
 
-  const iconBtn = (label: string, onClick?: () => void, children?: React.ReactNode) => (
+  const iconBtn = (label: string, onClick?: () => void, children?: React.ReactNode, extra: any = {}) => {
+    const { style: extraStyle, ...rest } = extra || {};
+    const restBg = (extraStyle && extraStyle.background) || "transparent";
+    const restColor = (extraStyle && extraStyle.color) || "rgba(255,255,255,0.85)";
+    return (
     <div className="relative group/tooltip flex items-center justify-center">
       <button
         onClick={onClick}
         className="w-9 h-9 flex items-center justify-center transition-all group relative"
         aria-label={tr(label)}
-        style={{ color: "rgba(255,255,255,0.85)", borderRadius: "10px" }}
-        onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = "rgba(255,255,255,0.12)"; el.style.color = "#c9a227"; }}
-        onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.color = "rgba(255,255,255,0.85)"; }}
+        {...rest}
+        style={{ color: "rgba(255,255,255,0.85)", borderRadius: "10px", ...(extraStyle || {}) }}
+        onMouseEnter={e => { const el = e.currentTarget as HTMLElement; if ((el as HTMLButtonElement).disabled) return; el.style.background = "rgba(255,255,255,0.12)"; el.style.color = "#c9a227"; }}
+        onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = restBg; el.style.color = restColor; }}
       >
         {children}
       </button>
@@ -240,6 +246,7 @@ export function WireframeHeader() {
       </div>
     </div>
   );
+  };
 
   return (
     <>
@@ -284,6 +291,8 @@ export function WireframeHeader() {
           {/* LEFT: Icons + Hamburger */}
           <div className="relative z-10 flex items-center gap-0.5">
           <div className="flex items-center gap-0.5">
+            <AccessibilityTools iconBtn={iconBtn} />
+            <div className="hidden lg:block" style={{ width: "1px", height: "22px", background: "rgba(255,255,255,0.15)", margin: "0 6px" }} />
             {iconBtn("بحث", () => setSearchOpen(true), <Search size={17} />)}
             {iconBtn("البريد الإلكتروني", () => { window.location.href = 'mailto:unit_admin@mutah.edu.jo'; }, <Mail size={17} />)}
             {iconBtn("الهاتف", () => { window.location.href = 'tel:+96232372380'; }, <Phone size={17} />)}
