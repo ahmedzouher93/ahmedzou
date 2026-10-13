@@ -1,27 +1,31 @@
 // Faculty member websites, from https://academics.mutah.edu.jo/Files/index.aspx
 // Each member gets an internal profile page at /faculty-sites/:slug.
-// Optional profile fields render as sections only when filled in.
+// Every profile section always shows; empty ones show a placeholder.
 export type Publication = { title: string; venue?: string; year?: string; link?: string };
-export type Course = { code?: string; title: string; level?: string };
-export type Education = { degree: string; field?: string; university?: string; country?: string; year?: string };
+export type Course = { code?: string; title: string };
+export type NewsItem = { title: string; date?: string; text?: string; link?: string };
+export type OfficeHour = { day: string; time: string };
 
 export type FacultySite = {
   slug: string;
   name: string;
   college?: string;
   department?: string;
-  rank?: string;
-  email?: string;
-  phone?: string;
-  office?: string;
   photo?: string;
   site?: string; // original personal site on academics.mutah.edu.jo
-  bio?: string[];
-  education?: Education[];
+  cv?: string; // السيرة الذاتية (file or page link)
+  scholar?: string; // Google Scholar profile
+  researchgate?: string; // ResearchGate profile
+  about?: string[]; // معلومات عامة
+  phone?: string;
+  fax?: string;
+  email?: string;
   research?: string[];
   publications?: Publication[];
   courses?: Course[];
-  positions?: string[];
+  news?: NewsItem[];
+  officeHours?: OfficeHour[];
+  otherInfo?: string[];
 };
 
 export const DIRECTORY_URL = "https://academics.mutah.edu.jo/Files/index.aspx";
@@ -34,8 +38,7 @@ export const FACULTY_SITES: FacultySite[] = [
   { slug: "Anawafleh", name: "احمد سليمان النوافلة", college: ARTS, email: "Anawafleh@Mutah.Edu.Jo", site: SITE("Anawafleh") },
   {
     slug: "Artcolloq", name: "محمد محمود المطالقة", college: ARTS, email: "Artcolloq@Mutah.Edu.Jo", site: SITE("Artcolloq/sitepages/Home.aspx"),
-    rank: "أستاذ", department: "قسم اللغات الأوروبية",
-    education: [{ degree: "الدكتوراه", country: "المغرب" }],
+    department: "قسم اللغات الأوروبية",
   },
   { slug: "Alsmadiayman1979", name: "أيمن الصمادي", college: ARTS, email: "Alsmadiayman1979@Mutah.Edu.Jo", site: SITE("Alsmadiayman1979") },
   { slug: "Hmoud58mutah", name: "حمود الرحاوي", college: ARTS, email: "Hmoud58mutah@Mutah.Edu.Jo", site: SITE("Hmoud58mutah") },
