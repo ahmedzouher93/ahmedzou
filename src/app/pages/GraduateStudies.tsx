@@ -8,6 +8,7 @@ import {ChevronRight, Users, FileText, Menu, GraduationCap,
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
 import orgChart2024 from '@/imports/org-chart-2024.png';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 const GRADUATE_LINKS = [
   { id: 'home', name: 'الرئيسية' },
@@ -565,15 +566,7 @@ export function GraduateStudies() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                       {NEWS.map((news, i) => (
-                        <div key={i} onClick={() => setActiveItem('news-' + news.id)} className="cursor-pointer bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all group">
-                          <div className="h-44 overflow-hidden bg-gray-100">
-                            <img src={news.img} alt={news.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                          </div>
-                          <div className="p-5">
-                            <span className="text-xs font-bold text-[#c9a227] mb-2 block" dir="ltr">{news.date}</span>
-                            <h4 className="font-bold text-[#0f3057] text-[15px] leading-relaxed group-hover:text-[#c9a227] transition-colors">{news.title}</h4>
-                          </div>
-                        </div>
+                        <NewsCard key={i} onClick={() => setActiveItem('news-' + news.id)} title={news.title} date={news.date} img={news.img} />
                       ))}
                     </div>
                   </div>

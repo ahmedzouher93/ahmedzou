@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import importedImageMUTAH from "../../imports/MUTAH_LOGO.png"; // We can just use standard logo or an unsplash image for sidebar
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 const ADMISSION_LINKS = [
   { name: "الرئيسية", go: "top" },
@@ -641,27 +642,7 @@ export function Admission() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {ITEMS["adm-news"].items.map((news, i) => (
-                <Link
-                  key={i}
-                  to={'/u-item/adm-news/' + i}
-                  className="block bg-white rounded-[20px] overflow-hidden border border-gray-100 hover:shadow-xl hover:border-[#c9a227]/30 transition-all group hover:-translate-y-1"
-                >
-                  <div className="h-56 overflow-hidden relative">
-                    <img
-                      src={news.img}
-                      alt={news.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                  </div>
-                  <div className="p-6 relative">
-                    <div className="absolute top-0 right-6 -translate-y-1/2 bg-[#c9a227] text-white px-3 py-1 rounded-md text-xs font-bold shadow-md">
-                      {news.date}
-                    </div>
-                    <h3 className="font-bold text-[#0f3057] text-lg mt-3 leading-relaxed group-hover:text-[#c9a227] transition-colors line-clamp-2">
-                      {news.title}
-                    </h3>
-                  </div>
-                </Link>
+                <NewsCard key={i} to={'/u-item/adm-news/' + i} title={news.title} date={news.date} img={news.img} />
               ))}
             </div>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-16 mb-8">

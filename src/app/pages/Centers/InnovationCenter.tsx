@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { CenterLayout, CenterLink } from './CenterLayout';
 import { Home, Info, Phone, Users, Target, Calendar, Briefcase, FileText, Image as ImageIcon, Award, Monitor } from 'lucide-react';
 import DATA from './InnovationData';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 const LINKS: CenterLink[] = [
   { id: 'home', name: 'الرئيسية', icon: Home },
@@ -133,10 +134,7 @@ function Archive({category, home = false}:any) {
       <label className="flex-1 min-w-[180px] text-sm text-[#0f3057]">البحث في الأرشيف<input value={query} onChange={e=>{setQuery(e.target.value);setLimit(12)}} className="block w-full border border-slate-300 rounded-lg p-3 mt-2" placeholder="اكتب اسم الخبر أو كلمة مفتاحية"/></label>
       <label className="text-sm text-[#0f3057]">السنة<select value={year} onChange={e=>{setYear(e.target.value);setLimit(12)}} className="block border border-slate-300 rounded-lg p-3 mt-2"><option value="all">كل السنوات</option>{[...new Set(entries.map((a:any)=>a.date?.slice(0,4)).filter(Boolean))].map((y:any)=><option key={y} value={y}>{y}</option>)}</select></label>
     </div>}
-    <div className="divide-y divide-slate-200">{shown.map((item:any)=><a key={item.id} href={`#/innovation-center/${category}?article=${item.id}`} className="flex flex-col sm:flex-row gap-5 py-6 group">
-      {item.images[0]&&<img src={item.images[0]} alt="" loading="lazy" className="w-full sm:w-40 h-36 sm:h-28 object-cover rounded-lg bg-slate-100 shrink-0"/>}
-      <div><p className="text-xs text-slate-500 mb-2">{dateLabel(item.date)}</p><h3 className="text-lg font-bold text-[#0f3057] leading-8 group-hover:underline">{item.title}</h3><p className="text-sm text-slate-600 leading-7 mt-2 line-clamp-2">{item.paragraphs[0]}</p><span className="text-sm underline text-[#0f3057] mt-3 inline-block">عرض التفاصيل والصور</span></div>
-    </a>)}</div>
+    <NewsGrid>{shown.map((item:any)=><NewsCard key={item.id} to={`/innovation-center/${category}?article=${item.id}`} title={item.title} date={dateLabel(item.date)} img={item.images[0]} excerpt={item.paragraphs[0]}/>)}</NewsGrid>
     {!shown.length&&<p className="py-10 text-slate-600">لا توجد نتائج مطابقة. جرّب كلمة أخرى أو اختر كل السنوات.</p>}
     {!home&&filtered.length>limit&&<button className="mt-6 px-6 py-3 rounded-lg bg-[#0f3057] text-white" onClick={()=>setLimit(limit+12)}>عرض المزيد ({filtered.length-limit})</button>}
     {!home&&<Source url={DATA.pages[category].source}/>}

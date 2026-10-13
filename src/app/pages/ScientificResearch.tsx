@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 function DocRow({ name, type = 'PDF' }: { name: string; type?: string }) {
   return (
@@ -215,20 +216,14 @@ export function ScientificResearch() {
                   <Link to="/r-list/news" className="text-[#c9a227] text-sm font-bold px-3 py-2 rounded-lg hover:bg-[#c9a227]/10 transition-colors">عرض الكل</Link>
                 </div>
                 
-                <div className="space-y-6">
+                <NewsGrid>
                   {[
                     { date: "٢٢ أكتوبر ٢٠٢٤", title: "دعوة لتقديم مقترحات بحثية لعام 2024", desc: "تعلن عمادة البحث العلمي عن فتح باب التقدم للمنح البحثية الداخلية لأعضاء الهيئة التدريسية المتميزين في كافة الكليات لتطوير مشاريعهم المبتكرة..." },
                     { date: "١٥ أكتوبر ٢٠٢٤", title: "ورشة عمل حول النشر العلمي", desc: "تنظم العمادة ورشة عمل متخصصة حول أسس ومعايير النشر في المجلات العالمية المرموقة، وتجنب المجلات الوهمية، بمشاركة خبراء من قواعد بيانات دولية..." }
                   ].map((news, i) => (
-                    <Link key={i} to={"/r-item/news/" + i} className="block group p-5 rounded-2xl hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-all cursor-pointer">
-                      <span className="text-[#c9a227] text-sm font-bold mb-2 flex items-center gap-2">
-                        <Calendar className="w-4 h-4" /> {news.date}
-                      </span>
-                      <h3 className="text-lg font-bold text-[#0f3057] mb-2 group-hover:text-[#c9a227] transition-colors">{news.title}</h3>
-                      <p className="text-gray-600 leading-relaxed text-sm">{news.desc}</p>
-                    </Link>
+                    <NewsCard key={i} to={"/r-item/news/" + i} title={news.title} date={news.date} img={(news as any).img} excerpt={news.desc} />
                   ))}
-                </div>
+                </NewsGrid>
               </div>
 
               {/* Announcements - takes 5 columns */}

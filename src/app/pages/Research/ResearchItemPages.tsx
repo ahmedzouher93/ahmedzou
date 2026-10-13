@@ -4,6 +4,7 @@ import { Calendar, ArrowRight, FileText, AlertCircle } from 'lucide-react';
 import RESEARCH_ITEMS from './ResearchNewsData';
 import { WireframeHeader } from '../../components/WireframeHeader';
 import { WireframeFooter } from '../../components/WireframeFooter';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 function Shell({ children }: any) {
   return (
@@ -42,12 +43,7 @@ export function ResearchItemList() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {set.items.map((n: any, i: number) => (
-          <Link key={i} to={'/r-item/' + (kind || 'news') + '/' + i} className="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:border-[#c9a227] hover:shadow-md transition-all group">
-            {n.date && <span className="text-xs font-bold text-[#c9a227] mb-3 inline-flex items-center gap-2"><Calendar size={13} /> {n.date}</span>}
-            <h3 className="text-[16.5px] font-bold text-[#0f3057] leading-relaxed group-hover:text-[#c9a227] mb-2">{n.title}</h3>
-            <p className="text-gray-600 text-[14px] leading-[1.95] line-clamp-3">{n.desc}</p>
-            <span className="text-xs font-bold text-[#0f3057] mt-4 inline-flex items-center gap-1.5">اقرأ التفاصيل <span className="rotate-180">→</span></span>
-          </Link>
+          <NewsCard key={i} to={'/r-item/' + (kind || 'news') + '/' + i} title={n.title} date={n.date} img={n.img} excerpt={n.desc} />
         ))}
       </div>
     </Shell>

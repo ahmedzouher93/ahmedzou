@@ -36,6 +36,7 @@ import {
   CheckCircle, Calendar, ChevronLeft, Megaphone, BookOpen,
   Scale, ClipboardList, Link2, Bell, AlertCircle, ExternalLink
 } from 'lucide-react';
+import { NewsCard as SharedNewsCard } from '@/app/components/NewsCard';
 
 /* ─── Sidebar links ─── */
 const LINKS: CenterLink[] = [
@@ -205,35 +206,7 @@ function SectionTitle({ icon: Icon, title, linkLabel }: { icon: React.ElementTyp
 
 /* ─── News card ─── */
 function NewsCard({ item }: { item: typeof newsItems[0] }) {
-  return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer group flex flex-col">
-      <div className="relative overflow-hidden h-44">
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0f3057]/60 to-transparent" />
-        <span className="absolute bottom-3 right-3 bg-[#c9a227] text-[#0f3057] text-xs font-bold px-2.5 py-1 rounded-full">
-          {item.category}
-        </span>
-      </div>
-      <div className="p-4 flex flex-col flex-1">
-        <p className="text-sm text-gray-700 leading-relaxed line-clamp-3 flex-1 group-hover:text-[#0f3057] transition-colors">
-          {item.title}
-        </p>
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-          <div className="flex items-center gap-1.5 text-gray-400">
-            <Calendar size={13} />
-            <span className="text-xs">{item.date}</span>
-          </div>
-          <span className="text-xs text-[#c9a227] font-semibold flex items-center gap-1">
-            اقرأ المزيد <ChevronLeft size={12} />
-          </span>
-        </div>
-      </div>
-    </div>
-  );
+  return <SharedNewsCard title={item.title} date={item.date} img={item.image} />;
 }
 
 /* ─── Announcement card ─── */

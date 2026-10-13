@@ -10,6 +10,7 @@ import {
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
 import structureImg from '../../imports/Org.png';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 const CENTER_LINKS = [
   { id: 'home', name: 'الرئيسية' },
@@ -157,17 +158,7 @@ function ComputerCenterContent() {
                 </Link>
               </div>
               <div className="space-y-4">
-                <Link to="/cc-item/news/0" className="flex gap-4 group cursor-pointer p-3 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-100">
-                  <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="News thumbnail" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    <span className="text-xs text-[#c9a227] font-medium mb-1">3 ديسمبر 2019</span>
-                    <h4 className="font-bold text-[#0f3057] mb-2 group-hover:text-[#c9a227] transition-colors line-clamp-2 text-sm leading-relaxed">
-                      موقع الكتروني جديد يتناسب ومقتضيات المرحلة في الجامعة
-                    </h4>
-                  </div>
-                </Link>
+                <NewsCard to="/cc-item/news/0" title="موقع الكتروني جديد يتناسب ومقتضيات المرحلة في الجامعة" date="3 ديسمبر 2019" img="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" />
               </div>
             </section>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router";
 import { Target, FileText, Download, ExternalLink, Users, Award, BookOpen, Phone, Mail, MapPin, Info } from 'lucide-react';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 function SectionTitle({ icon: Icon, title }: { icon: React.ElementType; title: string }) {
   return (
@@ -244,15 +245,11 @@ export function DentistryNews() {
   return (
     <Wrap>
       <SectionTitle icon={FileText} title="أخبار وإعلانات" />
-      <div className="flex flex-col gap-3">
-        {news.map((n, i) => (
-          <Link key={n.title} to={'/f-item/dentistry/news/' + i} className="flex items-center gap-4 border border-gray-200 rounded-xl px-5 py-4 hover:border-[#c9a227] hover:bg-[#fffbf0] transition-colors">
-            <span className="text-xs font-bold text-[#c9a227] flex-shrink-0" dir="ltr">{n.date}</span>
-            <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.title}</p>
-            <ExternalLink size={15} className="text-[#0f3057] flex-shrink-0" />
-          </Link>
+      <NewsGrid>
+        {news.map((n: any, i: number) => (
+          <NewsCard key={i} to={'/f-item/dentistry/news/' + i} title={n.title} date={n.date} img={n.img} excerpt={n.excerpt} />
         ))}
-      </div>
+      </NewsGrid>
     </Wrap>
   );
 }

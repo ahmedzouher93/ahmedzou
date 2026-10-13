@@ -7,6 +7,7 @@ import {
   getSectionTitle, type NavLink
 } from '../Deanships/DeanshipShell';
 import { Eye, Target, Users, Phone, Mail, MapPin, Shield, FileText } from 'lucide-react';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 const CAMPUS = 'https://www.mutah.edu.jo/PublishingImages/Mutah22.JPG';
 
@@ -1003,11 +1004,7 @@ export function SecretariatCouncilsDept() {
             <Prose><p className="font-bold text-[#0f3057]">نبذة</p><p>{BRIEF}</p></Prose>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وأحداث</h3>
-              <Link to="/u-item/sec-news/0" className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                <p className="text-sm font-semibold text-[#0f3057] flex-1">جلسة مجلس العمداء رقم 18</p>
-                <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">25/2/2025</span>
-              </Link>
+              <NewsGrid><NewsCard to="/u-item/sec-news/0" title="جلسة مجلس العمداء رقم 18" date="25/2/2025" /></NewsGrid>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">إعلانات</h3>
@@ -1302,15 +1299,11 @@ export function PublicRelationsDept() {
         return (
           <div className="space-y-8">
             <PageTitle title="أخبار وأحداث" sub="دائرة العلاقات الثقافية والعامة" />
-            <div className="flex flex-col gap-3">
+            <NewsGrid>
               {ITEMS['pr-news'].items.map((n: any, i: number) => (
-                <Link key={i} to={'/u-item/pr-news/' + i} className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                  <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                  <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.t}</p>
-                  <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">{n.d}</span>
-                </Link>
+                <NewsCard key={i} to={'/u-item/pr-news/' + i} title={n.t} date={n.d} img={n.img} excerpt={n.excerpt} />
               ))}
-            </div>
+            </NewsGrid>
           </div>
         );
 

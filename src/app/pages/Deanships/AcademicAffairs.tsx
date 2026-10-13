@@ -7,6 +7,7 @@ import {
   getSectionTitle, type NavLink
 } from './DeanshipShell';
 import { Phone, Mail, MapPin, Eye, Target, Users, CheckCircle } from 'lucide-react';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 const DAA_LINKS: NavLink[] = [
   { id: 'home', name: 'الرئيسية' },
@@ -80,15 +81,11 @@ export function AcademicAffairs() {
 
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وأحداث</h3>
-              <div className="flex flex-col gap-3">
-                {DAA_NEWS.map((n, i) => (
-                  <Link key={i} to={'/daa-news/' + i} className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                    <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                    <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.title}</p>
-                    <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">{n.date}</span>
-                  </Link>
+              <NewsGrid>
+                {DAA_NEWS.map((n: any, i: number) => (
+                  <NewsCard key={i} to={'/daa-news/' + i} title={n.title} date={n.date} img={n.img} excerpt={n.excerpt} />
                 ))}
-              </div>
+              </NewsGrid>
             </div>
 
             <div>

@@ -7,6 +7,7 @@ import {
   getSectionTitle, type NavLink
 } from '../Deanships/DeanshipShell';
 import { Eye, Target, Users, Phone, Mail, MapPin, CheckCircle, Building2 } from 'lucide-react';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 /* ══════════════════════════════════════════
    وحدة الموارد البشرية
@@ -90,15 +91,11 @@ export function HumanResourcesUnit() {
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وأحداث</h3>
-              <div className="flex flex-col gap-3">
-                {HR_NEWS.map((n, i) => (
-                  <Link key={n.t} to={'/u-item/hr-news/' + i} className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                    <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                    <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.t}</p>
-                    <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">{n.d}</span>
-                  </Link>
+              <NewsGrid>
+                {HR_NEWS.map((n: any, i: number) => (
+                  <NewsCard key={i} to={'/u-item/hr-news/' + i} title={n.t} date={n.d} img={n.img} excerpt={n.excerpt} />
                 ))}
-              </div>
+              </NewsGrid>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">إعلانات</h3>
@@ -545,15 +542,11 @@ export function LibraryUnit() {
                 <h3 className="text-xl font-bold text-[#0f3057]">أخبار وأحداث</h3>
                 <Link to="/u-list/lib-news" className="text-[13px] font-bold text-[#0f3057] hover:text-[#c9a227] border border-gray-200 hover:border-[#c9a227] rounded-xl px-4 py-2 transition-colors">جميع الأخبار</Link>
               </div>
-              <div className="flex flex-col gap-3">
-                {LIB_NEWS.map((n, i) => (
-                  <Link key={n.t} to={'/u-item/lib-news/' + i} className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                    <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                    <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.t}</p>
-                    <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">{n.d}</span>
-                  </Link>
+              <NewsGrid>
+                {LIB_NEWS.map((n: any, i: number) => (
+                  <NewsCard key={i} to={'/u-item/lib-news/' + i} title={n.t} date={n.d} img={n.img} excerpt={n.excerpt} />
                 ))}
-              </div>
+              </NewsGrid>
             </div>
             <div>
               <div className="flex items-center justify-between mb-5">
@@ -1291,15 +1284,11 @@ export function CommunityServiceUnit() {
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وأحداث</h3>
-              <div className="flex flex-col gap-3">
-                {ITEMS['comm-news'].items.map((n, i) => (
-                  <Link key={i} to={'/u-item/comm-news/' + i} className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                    <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                    <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.t}</p>
-                    <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">{n.d}</span>
-                  </Link>
+              <NewsGrid>
+                {ITEMS['comm-news'].items.map((n: any, i: number) => (
+                  <NewsCard key={i} to={'/u-item/comm-news/' + i} title={n.t} date={n.d} img={n.img} excerpt={n.excerpt} />
                 ))}
-              </div>
+              </NewsGrid>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">إعلانات</h3>
@@ -1636,15 +1625,11 @@ export function ModelSchoolUnit() {
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وأحداث</h3>
-              <div className="flex flex-col gap-3">
-                {ITEMS['school-news'].items.map((n, i) => (
-                  <Link key={i} to={'/u-item/school-news/' + i} className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                    <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                    <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.t}</p>
-                    <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">{n.d}</span>
-                  </Link>
+              <NewsGrid>
+                {ITEMS['school-news'].items.map((n: any, i: number) => (
+                  <NewsCard key={i} to={'/u-item/school-news/' + i} title={n.t} date={n.d} img={n.img} excerpt={n.excerpt} />
                 ))}
-              </div>
+              </NewsGrid>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">إعلانات</h3>

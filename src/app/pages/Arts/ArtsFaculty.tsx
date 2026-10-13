@@ -6,6 +6,7 @@ import {
   getSectionTitle, type NavLink
 } from '../Deanships/DeanshipShell';
 import { Eye, Target, Users, Phone, Mail, MapPin, GraduationCap, BookOpen } from 'lucide-react';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 const ARTS_LINKS: NavLink[] = [
   { id: 'home', name: 'الرئيسية' },
@@ -280,15 +281,11 @@ export function ArtsFaculty() {
 
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وإعلانات</h3>
-              <div className="flex flex-col gap-3">
-                {NEWS.map((n, i) => (
-                  <Link key={n.t} to={'/f-item/arts/news/' + i} className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                    <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                    <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.t}</p>
-                    <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">{n.d}</span>
-                  </Link>
+              <NewsGrid>
+                {NEWS.map((n: any, i: number) => (
+                  <NewsCard key={i} to={'/f-item/arts/news/' + i} title={n.t} date={n.d} img={n.img} excerpt={n.excerpt} />
                 ))}
-              </div>
+              </NewsGrid>
             </div>
 
             <div>

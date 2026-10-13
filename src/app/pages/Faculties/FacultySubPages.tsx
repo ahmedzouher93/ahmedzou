@@ -4,6 +4,7 @@ import { Target, FileText, Download, Users, Award, BookOpen, Phone, Mail, MapPin
 import { ImageWithFallback } from '../../components/figma/ImageWithFallback';
 import FACULTIES from './FacultyData';
 import { facultySlug, ABOUT_LABELS, EXTRA_LABELS, PROGRAM_LABELS } from './FacultyNav';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 function useCfg() {
   const location = useLocation();
@@ -900,14 +901,9 @@ export function FacultyActivities() {
   return (
     <Wrap>
       <SectionTitle icon={Newspaper} title="نشاطات الكلية" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {cfg.activitiesList.map((n: string, i: number) => (
-          <div key={i} className="bg-white border border-gray-100 rounded-2xl px-5 py-5 shadow-sm flex items-start gap-3">
-            <span className="w-2 h-2 rounded-full bg-[#c9a227] flex-shrink-0 mt-2" />
-            <p className="text-[15px] font-semibold text-[#0f3057] leading-[1.95]">{n}</p>
-          </div>
-        ))}
-      </div>
+      <NewsGrid>
+        {cfg.activitiesList.map((n: string, i: number) => <NewsCard key={i} title={n} />)}
+      </NewsGrid>
     </Wrap>
   );
 }

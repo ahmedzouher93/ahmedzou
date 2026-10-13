@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router';
 import { Info, Users, BookOpen, FileText, Download, Layers, Newspaper, GraduationCap, Target, Award, Link2 } from 'lucide-react';
 import { ImageWithFallback } from '../../components/figma/ImageWithFallback';
 import { departmentOf, DEPT_TABS, PROGRAM_LABELS } from './FacultyNav';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 function useDept() {
   const location = useLocation();
@@ -149,14 +150,7 @@ export function DepartmentHome() {
         {news.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {news.map((n: any, i: number) => (
-              <Link key={i} to={'/d-item/' + slug + '/' + dept.id + '/news/' + i} className="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:border-[#c9a227] hover:shadow-md transition-all group">
-                <span className="text-xs font-bold text-[#c9a227] mb-3 block" dir="ltr">{n.date}</span>
-                <h3 className="text-[16px] font-bold text-[#0f3057] leading-relaxed group-hover:text-[#c9a227]">{n.title}</h3>
-                {n.body && n.body.slice(0, 1).map((p: string, j: number) => (
-                  <p key={j} className="text-[14.5px] text-gray-600 leading-[2] mt-3 text-justify">{p}</p>
-                ))}
-                <span className="text-xs font-bold text-[#0f3057] mt-4 inline-flex items-center gap-1.5">اقرأ التفاصيل <span className="rotate-180">→</span></span>
-              </Link>
+              <NewsCard key={i} to={'/d-item/' + slug + '/' + dept.id + '/news/' + i} title={n.title} date={n.date} img={n.img} excerpt={n.body?.[0]} />
             ))}
           </div>
         ) : (

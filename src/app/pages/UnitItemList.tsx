@@ -4,6 +4,7 @@ import { Calendar, ArrowRight, Newspaper } from 'lucide-react';
 import ITEMS from './ItemsRegistry';
 import { WireframeHeader } from '../components/WireframeHeader';
 import { WireframeFooter } from '../components/WireframeFooter';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 export function UnitItemList() {
   const { key } = useParams();
@@ -29,13 +30,7 @@ export function UnitItemList() {
         </div>
         <div style={{ display: 'grid', gap: 20, gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
           {set.items.map((n: any, i: number) => (
-            <Link key={i} to={'/u-item/' + key + '/' + i} className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:border-[#c9a227] hover:shadow-md transition-all group">
-              {n.img && <img src={n.img} alt={n.title || n.t} loading="lazy" className="w-full h-[180px] object-cover bg-gray-100" />}
-              <div className="p-5">
-                {(n.date || n.d) && <span className="text-xs font-bold text-[#c9a227] mb-2 block">{n.date || n.d}</span>}
-                <h3 className="text-[15.5px] font-bold text-[#0f3057] leading-relaxed group-hover:text-[#c9a227]">{n.title || n.t}</h3>
-              </div>
-            </Link>
+            <NewsCard key={i} to={'/u-item/' + key + '/' + i} title={n.title || n.t} date={n.date || n.d} img={n.img} excerpt={n.desc} />
           ))}
         </div>
       </div>

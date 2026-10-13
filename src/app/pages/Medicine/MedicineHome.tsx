@@ -3,6 +3,7 @@ import image_photo_1559839734_2b71ea197ec2_3 from '@/imports/photo-1559839734-2b
 import { Link } from "react-router";
 import { Card, CardContent } from "../../components/ui/card";
 import { ImageWithFallback } from "../../components/figma/ImageWithFallback";
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 export function MedicineHome() {
   return (
@@ -203,40 +204,7 @@ export function MedicineHome() {
                 "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
             },
           ].map((news, i) => (
-            <Link
-              key={i}
-              to={'/f-item/medicine/news/' + i}
-              className="flex flex-col rounded-2xl border border-gray-100 hover:shadow-lg transition-all bg-white overflow-hidden group cursor-pointer shadow-sm"
-            >
-              <div className="h-48 overflow-hidden relative">
-                <div className="absolute inset-0 bg-[#0f3057]/10 group-hover:bg-transparent transition-colors z-10" />
-                <ImageWithFallback
-                  src={news.image}
-                  alt={news.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="flex flex-col p-6 flex-1">
-                <span
-                  className="text-xs font-bold text-[#c9a227] mb-3 block"
-                  dir={dateDir(news.date)}
-                >
-                  {news.date}
-                </span>
-                <h3 className="text-[16px] font-bold text-[#0f3057] mb-3 group-hover:text-[#c9a227] transition-colors leading-relaxed">
-                  {news.title}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4 flex-1 leading-relaxed">
-                  {news.desc}
-                </p>
-                <span
-                  className="text-xs font-bold text-[#0f3057] flex items-center gap-1 group-hover:text-[#c9a227] mt-auto w-fit"
-                >
-                  قراءة المزيد{" "}
-                  <span className="rotate-180">→</span>
-                </span>
-              </div>
-            </Link>
+            <NewsCard key={i} to={'/f-item/medicine/news/' + i} title={news.title} date={news.date} img={news.image} excerpt={news.desc} />
           ))}
         </div>
       </section>

@@ -6,6 +6,7 @@ import {
   getSectionTitle, type NavLink
 } from '../Deanships/DeanshipShell';
 import { Eye, Target, Users, Phone, Mail, MapPin } from 'lucide-react';
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 const EL_LINKS: NavLink[] = [
   { id: 'home', name: 'الرئيسية' },
@@ -464,16 +465,8 @@ export function ELearningCenter() {
                 { t: 'جامعة مؤتة تشارك بمبادرة دعم الطلبة المتوقع تخرجهم في جامعات غزة', d: '11/10/2025', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/TEACH%20YOURSELF.jpg' },
                 { t: 'دورة تطوير المحتوى', d: '26/12/2022', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/6666.jpg' },
                 { t: 'جامعة مؤتة تحقق تقدماً متميزاً وفق تصنيفات التايمز العالمي', d: '22/4/2021', img: 'https://www.mutah.edu.jo/ar/ELCenter/PublishingImages/RANK.jpg' }
-              ].map((n) => (
-                <div key={n.t} className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:border-[#c9a227]/40 transition-all">
-                  <div className="h-44 bg-gray-50 overflow-hidden">
-                    <img src={n.img} alt={n.t} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="p-6">
-                    <span className="text-xs font-bold text-[#c9a227] mb-2 block" dir="ltr">{n.d}</span>
-                    <h3 className="font-bold text-[#0f3057] text-[15px] leading-relaxed">{n.t}</h3>
-                  </div>
-                </div>
+              ].map((n, i) => (
+                <NewsCard key={n.t} to={'/u-item/el-news/' + i} title={n.t} date={n.d} img={n.img} />
               ))}
             </div>
           </div>
@@ -1053,15 +1046,11 @@ export function ELearningCenter() {
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">أخبار وأحداث</h3>
-              <div className="flex flex-col gap-3">
-                {NEWS.map((n, i) => (
-                  <Link key={n.t} to={'/u-item/el-news/' + i} className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c9a227] transition-colors">
-                    <span className="w-1.5 h-10 rounded-full bg-[#c9a227] shrink-0" />
-                    <p className="text-sm font-semibold text-[#0f3057] flex-1 leading-snug">{n.t}</p>
-                    <span className="text-xs font-bold text-gray-400 shrink-0" dir="ltr">{n.d}</span>
-                  </Link>
+              <NewsGrid>
+                {NEWS.map((n: any, i: number) => (
+                  <NewsCard key={i} to={'/u-item/el-news/' + i} title={n.t} date={n.d} img={n.img} excerpt={n.excerpt} />
                 ))}
-              </div>
+              </NewsGrid>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#0f3057] mb-5">إعلانات</h3>

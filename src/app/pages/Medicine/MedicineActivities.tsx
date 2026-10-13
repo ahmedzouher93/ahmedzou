@@ -1,6 +1,7 @@
 import { Calendar, ChevronLeft } from "lucide-react";
 import { Link } from "react-router";
 import MED_ACTIVITIES from "./MedicineActivitiesData";
+import { NewsCard, NewsGrid } from '@/app/components/NewsCard';
 
 export function MedicineActivities() {
   return (
@@ -11,24 +12,11 @@ export function MedicineActivities() {
       </div>
 
       <section className="py-2">
-        <div className="space-y-4">
+        <NewsGrid>
           {MED_ACTIVITIES.map((activity, i) => (
-            <Link key={i} to={"/medicine/activities/" + i} className="flex items-center justify-between p-6 rounded-2xl border border-gray-100 bg-white hover:shadow-md hover:border-[#c9a227] transition-all group">
-              <div className="flex flex-col gap-2">
-                <h3 className="font-bold text-lg text-[#0f3057] group-hover:text-[#c9a227] transition-colors">
-                  {activity.title}
-                </h3>
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <Calendar className="w-4 h-4 text-[#c9a227]" />
-                  <span dir="ltr">{activity.date}</span>
-                </div>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#0f3057] transition-colors shrink-0 mr-4">
-                <ChevronLeft className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              </div>
-            </Link>
+            <NewsCard key={i} to={"/medicine/activities/" + i} title={activity.title} date={activity.date} img={(activity as any).img} />
           ))}
-        </div>
+        </NewsGrid>
       </section>
     </div>
   );
