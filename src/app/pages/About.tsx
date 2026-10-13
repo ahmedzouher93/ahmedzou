@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router';
 import { 
   Menu, ChevronLeft, ChevronDown, Info, Target, Users, Award, 
-  FileText, ShieldAlert, BookOpen, Download, Building
+  FileText, ShieldAlert, BookOpen, Download, Building, UserRound
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import aboutImg from "../../imports/image-4.png";
@@ -141,20 +141,19 @@ const DEANS: { name: string; role: string; img?: string }[] = [
 ];
 
 
-// Member photo; falls back to initials until a real photo is added (img field)
-function MemberPhoto({ name, img, size = 'w-20 h-20', text = 'text-[22px]' }: { name: string; img?: string; size?: string; text?: string }) {
-  const clean = name.replace(/['"]/g, '').replace(/^(معالي|عطوفة|سعادة|السيد|الطالبة|الطالب|الخريج|العميد الركن|الأستاذ الدكتور|الاستاذ الدكتور)\s+/g, '')
-    .replace(/^(أ\.\s?د\.?|د\.|م\.)\s*/, '').trim().split(/\s+/);
-  const initials = (clean[0]?.[0] || '') + (clean[1]?.[0] || '');
+// Member photo; falls back to a person icon until a real photo is added (img field)
+function MemberPhoto({ name, img, size = 'w-20 h-20' }: { name: string; img?: string; size?: string }) {
   return img
     ? <img src={img} alt={name} loading="lazy" className={size + ' shrink-0 rounded-full object-cover object-top shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40 bg-gray-100'} />
-    : <div className={size + ' ' + text + ' shrink-0 rounded-full bg-gradient-to-br from-[#0f3057] to-[#1d4e89] text-[#c9a227] font-bold flex items-center justify-center shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40'}>{initials}</div>;
+    : <div className={size + ' shrink-0 rounded-full bg-gradient-to-br from-[#0f3057] to-[#1d4e89] text-[#c9a227] flex items-end justify-center overflow-hidden shadow-sm border-[3px] border-white ring-1 ring-[#c9a227]/40'}>
+        <UserRound className="w-[72%] h-[72%] translate-y-[8%]" strokeWidth={1.5} />
+      </div>;
 }
 
 function MemberCard({ item }: { item: { name: string; role: string; img?: string } }) {
   return (
     <div className="flex flex-col items-center text-center p-5 bg-gray-50 border border-gray-100 rounded-2xl hover:bg-white hover:border-[#c9a227]/50 hover:shadow-md transition-all">
-      <MemberPhoto name={item.name} img={item.img} size="w-24 h-24" text="text-[24px]" />
+      <MemberPhoto name={item.name} img={item.img} size="w-24 h-24" />
       <span className="font-bold text-[#0f3057] mt-4 leading-relaxed">{item.name}</span>
       <span className="text-xs text-[#c9a227] font-medium mt-1.5 leading-relaxed">{item.role}</span>
     </div>
@@ -318,7 +317,7 @@ export function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {VP_LIST.map((vp, idx) => (
                 <div key={idx} className="flex flex-col sm:flex-row gap-6 bg-gray-50 p-6 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow items-center sm:items-start text-center sm:text-right">
-                  <MemberPhoto name={vp.name} img={vp.img} size="w-24 h-24" text="text-[24px]" />
+                  <MemberPhoto name={vp.name} img={vp.img} size="w-24 h-24" />
                   <div className="flex-1 flex flex-col justify-center h-full">
                     <h3 className="text-lg font-bold text-[#0f3057] mb-1">{vp.name}</h3>
                     <p className="text-[#c9a227] font-medium text-sm mb-4">{vp.role}</p>
