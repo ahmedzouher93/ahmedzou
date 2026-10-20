@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ROCK · SOFEX 2026</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root{
+    --ink:#0a0f1a; --ink-2:#111827; --ink-3:#1a2233;
+    --maroon:#8e1b22; --red:#b8262e;
+    --gold:#d1aa62; --gold-2:#f0d59a;
+    --green:#1f7a3d; --line:rgba(209,170,98,.28);
+    --txt:#e9edf3; --muted:#9aa4b5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--ink)}
+  .poster{
+    position:relative;width:1080px;height:1620px;overflow:hidden;
+    background:
+      radial-gradient(900px 600px at 100% 62%, rgba(142,27,34,.22), transparent 60%),
+      radial-gradient(700px 500px at 0% 100%, rgba(209,170,98,.08), transparent 60%),
+      var(--ink);
+    color:var(--txt);font-family:'Barlow',sans-serif;
+  }
+  .ar{font-family:'Cairo',sans-serif;direction:rtl}
+
+  /* ---------- header ---------- */
+  header{
+    position:absolute;inset:0 0 auto 0;height:150px;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;padding:0 54px 0 40px;
+    background:linear-gradient(180deg,rgba(10,15,26,.96),rgba(10,15,26,.82));
+    border-bottom:1px solid var(--line);
+  }
+  header .logo{height:132px}
+  .event{display:flex;align-items:center;gap:20px}
+  .event img{height:92px}
+  .event .meta{border-left:1px solid var(--line);padding-left:20px;line-height:1}
+  .event .k{font:700 15px/1 'Barlow Condensed';letter-spacing:.32em;color:var(--gold)}
+  .event .y{font:800 46px/1 'Barlow Condensed';letter-spacing:.02em;margin:6px 0 6px}
+  .event .c{font:500 14px/1 'Barlow';letter-spacing:.22em;color:var(--muted)}
+
+  /* ---------- hero ---------- */
+  .hero{position:absolute;top:150px;left:0;width:1080px;height:640px}
+  .hero img{width:100%;height:100%;object-fit:cover;object-position:60% 30%;filter:saturate(.85) contrast(1.05)}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(0deg,var(--ink) 0%,rgba(10,15,26,.88) 22%,rgba(10,15,26,.15) 55%,rgba(10,15,26,.35) 100%),
+      linear-gradient(90deg,rgba(10,15,26,.55),transparent 45%);}
+  .tag{
+    position:absolute;z-index:3;top:186px;right:54px;
+    display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+  }
+  .tag span{
+    font:600 14px/1 'Barlow Condensed';letter-spacing:.28em;text-transform:uppercase;
+    padding:9px 14px;background:rgba(10,15,26,.6);border:1px solid var(--line);
+    backdrop-filter:blur(6px);color:var(--gold-2)
+  }
+  .headline{position:absolute;z-index:3;left:54px;right:54px;top:505px}
+  .headline .ar{font:800 34px/1.25 'Cairo';color:var(--gold);text-align:left;direction:rtl;display:inline-block;margin-bottom:8px}
+  .headline h1{font:800 104px/.9 'Barlow Condensed';text-transform:uppercase;letter-spacing:-.005em}
+  .headline h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--gold)}
+  .headline h1 b{color:var(--red)}
+  .headline p{margin-top:18px;font:400 21px/1.4 'Barlow';color:#c9d0db;max-width:640px}
+  .headline .rule{position:absolute;left:-54px;top:104px;width:34px;height:4px;background:var(--red)}
+
+  /* ---------- stats ---------- */
+  .stats{
+    position:absolute;z-index:3;left:54px;right:54px;top:862px;height:118px;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    background:linear-gradient(90deg,rgba(26,34,51,.95),rgba(17,24,39,.95));
+    border:1px solid var(--line);border-top:3px solid var(--gold);
+  }
+  .stat{padding:22px 26px;position:relative}
+  .stat+.stat::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:1px;background:var(--line)}
+  .stat .n{font:800 50px/1 'Barlow Condensed';color:var(--gold-2)}
+  .stat .n sup{font-size:28px;color:var(--red);vertical-align:top;margin-left:2px}
+  .stat .l{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px}
+  .stat .l span{font:600 13px/1 'Barlow';letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .stat .l .ar{font:600 14px/1 'Cairo';color:#c3cad6;letter-spacing:0}
+
+  /* ---------- solutions ---------- */
+  .sec-title{position:absolute;left:54px;right:54px;display:flex;align-items:center;gap:18px}
+  .sec-title h2{font:700 19px/1 'Barlow Condensed';letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+  .sec-title .bar{flex:1;height:1px;background:var(--line)}
+  .sec-title .ar{font:700 20px/1 'Cairo';color:var(--txt)}
+  .t1{top:1012px}
+  .grid{position:absolute;left:54px;right:54px;top:1048px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card{
+    position:relative;height:150px;padding:20px 20px 0 20px;
+    background:linear-gradient(160deg,rgba(26,34,51,.9),rgba(17,24,39,.6));
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .card::after{content:"";position:absolute;left:0;bottom:0;width:44px;height:3px;background:var(--red)}
+  .card .num{position:absolute;right:16px;bottom:14px;font:700 14px/1 'Barlow Condensed';letter-spacing:.2em;color:rgba(209,170,98,.55)}
+  .card .top{display:flex;align-items:center;gap:14px}
+  .card svg{width:42px;height:42px;flex:none;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .card svg .r{stroke:var(--red)}
+  .card h3{font:700 19px/1.05 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase}
+  .card h3 .ar{display:block;font:700 15px/1.3 'Cairo';color:var(--gold-2);letter-spacing:0;text-transform:none;text-align:left;margin-top:3px}
+  .card p{margin-top:12px;font:400 14.5px/1.42 'Barlow';color:var(--muted)}
+
+  /* ---------- sectors ---------- */
+  .t2{top:1384px}
+  .tiles{position:absolute;left:54px;right:54px;top:1414px;height:104px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .tile{position:relative;overflow:hidden;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}
+  .tile:first-child{clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
+  .tile:last-child{clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)}
+  .tile img{width:100%;height:100%;object-fit:cover;filter:saturate(.8)}
+  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,15,26,.92),transparent 65%)}
+  .tile span{position:absolute;z-index:2;left:0;right:0;bottom:9px;text-align:center;font:700 13px/1 'Barlow Condensed';letter-spacing:.2em;text-transform:uppercase}
+
+  /* ---------- footer ---------- */
+  footer{
+    position:absolute;left:0;right:0;bottom:14px;height:86px;
+    display:flex;align-items:center;justify-content:space-between;padding:0 54px;
+    border-top:1px solid var(--line);
+  }
+  .contact{display:flex;gap:30px;align-items:center}
+  .contact div{display:flex;align-items:center;gap:10px;font:500 17px/1 'Barlow';color:#d6dbe3}
+  .contact svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.7}
+  .motto{text-align:right}
+  .motto .en{font:600 15px/1 'Barlow Condensed';letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+  .motto .ar{font:700 19px/1.4 'Cairo';margin-top:4px}
+  .flag{position:absolute;left:0;right:0;bottom:0;height:14px;
+    background:linear-gradient(180deg,#0b0b0b 0 33.3%,#f3f3f3 33.3% 66.6%,#0f7a3a 66.6% 100%)}
+  .flag::before{content:"";position:absolute;left:0;top:0;bottom:0;width:120px;background:var(--red);clip-path:polygon(0 0,100% 50%,0 100%)}
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <header>
+    <img class="logo" src="assets/logo-rock.png" alt="ROCK for Security Services and Consultancy">
+    <div class="event">
+      <img src="assets/sofex-gold.png" alt="SOFEX">
+      <div class="meta">
+        <div class="k">EXHIBITOR</div>
+        <div class="y">SOFEX 2026</div>
+        <div class="c">AMMAN · JORDAN</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero"><img src="assets/hero.jpg" alt=""></div>
+
+  <div class="tag">
+    <span>Integrated Security</span>
+    <span>Operational Support</span>
+    <span>Smart Technology</span>
+  </div>
+
+  <div class="headline">
+    <div class="rule"></div>
+    <div class="ar">ما بعد الأمن.. نُمكِّن عملياتك</div>
+    <h1><em>Beyond</em> Security.<br><b>Enabling</b> Operations.</h1>
+    <p>Integrated security, operational support and smart technology solutions — trusted by government, energy and industry across Jordan.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">7<sup>+</sup></div><div class="l"><span>Years</span><span class="ar">سنوات خبرة</span></div></div>
+    <div class="stat"><div class="n">2,100<sup>+</sup></div><div class="l"><span>Employees</span><span class="ar">موظف</span></div></div>
+    <div class="stat"><div class="n">30<sup>+</sup></div><div class="l"><span>Clients</span><span class="ar">عميل</span></div></div>
+    <div class="stat"><div class="n">3,400<sup>+</sup></div><div class="l"><span>Missions</span><span class="ar">مهمة منجزة</span></div></div>
+  </div>
+
+  <div class="sec-title t1"><h2>Our Solutions</h2><div class="bar"></div><div class="ar">حلولنا</div></div>
+  <div class="grid">
+    <div class="card"><span class="num">01</span>
+      <div class="top">
+        <svg viewBox="0 0 48 48"><path d="M24 4 7 10v12c0 11 7 19 17 22 10-3 17-11 17-22V10z"/><path class="r" d="m24 15 2.6 6.4L33 24l-6.4 2.6L24 33l-2.6-6.4L15 24l6.4-2.6z"/></svg>
+        <h3>Integrated Security<span class="ar">الحلول الأمنية المتكاملة</span></h3>
+      </div>
+      <p>Protection of people, assets and critical infrastructure.</p>
+    </div>
+    <div class="card"><span class="num">02</span>
+      <div class="top">
+        <svg viewBox="0 0 48 48"><path d="M6 40h36"/><path d="M10 34V24M18 34V18M26 34V22M34 34V12"/><path class="r" d="m8 18 9-7 8 5 13-9M33 7h5v5"/></svg>
+        <h3>Consulting &amp; Risk<span class="ar">الاستشارات وإدارة المخاطر</span></h3>
+      </div>
+      <p>Strategic advice, risk assessment and security planning.</p>
+    </div>
+    <div class="card"><span class="num">03</span>
+      <div class="top">
+        <svg viewBox="0 0 48 48"><path d="M5 14 31 7l3 10-26 7z"/><path d="M14 22l3 9H8M8 27v8"/><path class="r" d="M37 22a6 6 0 0 1 0 8M41 18a12 12 0 0 1 0 16"/></svg>
+        <h3>Smart Technology<span class="ar">تكامل التقنيات الذكية</span></h3>
+      </div>
+      <p>Advanced surveillance, camera and radar integration.</p>
+    </div>
+    <div class="card"><span class="num">04</span>
+      <div class="top">
+        <svg viewBox="0 0 48 48"><path d="M3 18 24 9l21 9-21 9z"/><path d="M12 22v10c0 3 6 6 12 6s12-3 12-6V22"/><path class="r" d="M42 19v11"/></svg>
+        <h3>Training &amp; Workforce<span class="ar">التدريب وتطوير الكوادر</span></h3>
+      </div>
+      <p>Professional training and a skilled, certified workforce.</p>
+    </div>
+    <div class="card"><span class="num">05</span>
+      <div class="top">
+        <svg viewBox="0 0 48 48"><path d="M14 12h18v22H14zM32 19h7l5 7v8H32"/><circle cx="19" cy="36" r="3.5"/><circle cx="37" cy="36" r="3.5"/><path class="r" d="M3 17h7M5 23h5M3 29h7"/></svg>
+        <h3>Logistics &amp; Support<span class="ar">الدعم اللوجستي والتشغيلي</span></h3>
+      </div>
+      <p>Transportation, mobility and operational support services.</p>
+    </div>
+    <div class="card"><span class="num">06</span>
+      <div class="top">
+        <svg viewBox="0 0 48 48"><path d="M8 42V14l12-6v34M20 42V18l12 4v20M32 42V26l8 3v13M4 42h40"/><path class="r" d="M12 20h4M12 26h4M12 32h4M24 26h4M24 32h4"/></svg>
+        <h3>Critical Infrastructure<span class="ar">حماية البنى التحتية الحيوية</span></h3>
+      </div>
+      <p>Ports, energy, industry, government and major facilities.</p>
+    </div>
+  </div>
+
+  <div class="sec-title t2"><h2>Sectors We Secure</h2><div class="bar"></div><div class="ar">قطاعات نحميها</div></div>
+  <div class="tiles">
+    <div class="tile"><img src="assets/tile1.jpg" alt=""><span>Command</span></div>
+    <div class="tile"><img src="assets/tile2.jpg" alt=""><span>Ports</span></div>
+    <div class="tile"><img src="assets/tile3.jpg" alt=""><span>Perimeter</span></div>
+    <div class="tile"><img src="assets/tile4.jpg" alt=""><span>Manpower</span></div>
+    <div class="tile"><img src="assets/tile5.jpg" alt=""><span>Energy</span></div>
+  </div>
+
+  <footer>
+    <div class="contact">
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>www.rock-jo.com</div>
+      <div><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></svg>info@rock-jo.com</div>
+      <div><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>@rockjo</div>
+    </div>
+    <div class="motto">
+      <div class="en">Your Trusted Partner</div>
+      <div class="ar">شريكك الموثوق لغدٍ أكثر أماناً</div>
+    </div>
+  </footer>
+  <div class="flag"></div>
+</div>
+</body>
+</html>
