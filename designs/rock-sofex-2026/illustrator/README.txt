@@ -1,8 +1,8 @@
-ROCK - SOFEX 2026 Posters (Illustrator package)
+ROCK - SOFEX 2026 Posters (Illustrator package, OUTLINED)
 
-1) Install the fonts in /fonts (Barlow + Barlow Condensed) BEFORE opening the files.
-2) Open ROCK-SOFEX-2026-Option-A.pdf / Option-B.pdf directly in Adobe Illustrator
-   (File > Open). Text stays live and editable; shapes are vector; photos are embedded.
-3) /links contains the original photos, logos and the Jordan flag (SVG) for relinking or replacing.
+- ROCK-SOFEX-2026-Option-A.pdf / Option-B.pdf: open directly in Adobe Illustrator (File > Open).
+- All text has been converted to outlines (vector paths); no fonts are needed or embedded.
+- Shapes, icons and gradients are vector; photos and logos are embedded images.
+- /links contains the original photos, logos and the Jordan flag (SVG) for relinking or replacing.
 
-Artboard: 810 x 1215 pt (2:3). Everything is vector except the photos, so you can scale it to any print size.
+Artboard: 810 x 1215 pt (2:3). Everything is vector except the photos and logos, so it scales to any print size.
