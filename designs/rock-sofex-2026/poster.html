@@ -26,24 +26,27 @@
   /* ---------- header ---------- */
   header{
     position:absolute;inset:0 0 auto 0;height:150px;z-index:5;
-    display:flex;align-items:center;justify-content:space-between;padding:0 54px 0 40px;
+    display:flex;align-items:center;justify-content:space-between;padding:0 40px 0 34px;
     background:linear-gradient(180deg,rgba(10,15,26,.96),rgba(10,15,26,.82));
     border-bottom:1px solid var(--line);
   }
-  header .logo{height:132px}
+  header .logo{height:124px}
   .event{display:flex;align-items:center;gap:20px}
   .event img{height:92px}
   .event .meta{border-left:1px solid var(--line);padding-left:20px;line-height:1}
   .event .k{font:700 15px/1 'Barlow Condensed';letter-spacing:.32em;color:var(--gold)}
   .event .y{font:800 46px/1 'Barlow Condensed';letter-spacing:.02em;margin:6px 0 6px}
   .event .c{font:500 14px/1 'Barlow';letter-spacing:.22em;color:var(--muted)}
+  .booth{background:linear-gradient(160deg,var(--red),var(--maroon));padding:14px 18px 12px;text-align:center;line-height:1;border-bottom:3px solid var(--gold)}
+  .booth .bk{font:700 13px/1 'Barlow Condensed';letter-spacing:.34em;color:#f6dede}
+  .booth .bn{font:800 44px/1 'Barlow Condensed';margin-top:6px;letter-spacing:.02em}
 
   /* ---------- hero ---------- */
   .hero{position:absolute;top:150px;left:0;width:1080px;height:640px}
-  .hero img{width:100%;height:100%;object-fit:cover;object-position:60% 30%;filter:saturate(.85) contrast(1.05)}
+  .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.9) contrast(1.06)}
   .hero::after{content:"";position:absolute;inset:0;
     background:
-      linear-gradient(0deg,var(--ink) 0%,rgba(10,15,26,.88) 22%,rgba(10,15,26,.15) 55%,rgba(10,15,26,.35) 100%),
+      linear-gradient(0deg,var(--ink) 0%,rgba(10,15,26,.92) 30%,rgba(10,15,26,.55) 48%,rgba(10,15,26,.05) 68%,rgba(10,15,26,.3) 100%),
       linear-gradient(90deg,rgba(10,15,26,.55),transparent 45%);}
   .tag{
     position:absolute;z-index:3;top:186px;right:54px;
@@ -97,7 +100,7 @@
 
   /* ---------- sectors ---------- */
   .t2{top:1384px}
-  .tiles{position:absolute;left:54px;right:54px;top:1414px;height:104px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .tiles{position:absolute;left:54px;right:54px;top:1412px;height:106px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
   .tile{position:relative;overflow:hidden;clip-path:polygon(10% 0,100% 0,90% 100%,0 100%)}
   .tile:first-child{clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
   .tile:last-child{clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)}
@@ -107,7 +110,7 @@
 
   /* ---------- footer ---------- */
   footer{
-    position:absolute;left:0;right:0;bottom:14px;height:86px;
+    position:absolute;left:0;right:0;bottom:0;height:90px;
     display:flex;align-items:center;justify-content:space-between;padding:0 54px;
     border-top:1px solid var(--line);
   }
@@ -117,9 +120,8 @@
   .motto{text-align:right}
   .motto .en{font:600 15px/1 'Barlow Condensed';letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
   .motto .sub{font:600 italic 22px/1.3 'Barlow';margin-top:6px;color:var(--txt)}
-  .flag{position:absolute;left:0;right:0;bottom:0;height:14px;
-    background:linear-gradient(180deg,#0b0b0b 0 33.3%,#f3f3f3 33.3% 66.6%,#0f7a3a 66.6% 100%)}
-  .flag::before{content:"";position:absolute;left:0;top:0;bottom:0;width:120px;background:var(--red);clip-path:polygon(0 0,100% 50%,0 100%)}
+  .right{display:flex;align-items:center;gap:22px}
+  .flag{width:64px;height:32px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
 </style>
 </head>
 <body>
@@ -134,10 +136,11 @@
         <div class="y">SOFEX 2026</div>
         <div class="c">AMMAN · JORDAN</div>
       </div>
+      <div class="booth"><div class="bk">BOOTH</div><div class="bn">H139</div></div>
     </div>
   </header>
 
-  <div class="hero"><img src="assets/hero.jpg" alt=""></div>
+  <div class="hero"><img src="assets/photos/hospital-team.jpg" alt=""></div>
 
   <div class="tag">
     <span>Integrated Security</span>
@@ -207,11 +210,10 @@
 
   <div class="sec-title t2"><h2>Sectors We Secure</h2><div class="bar"></div></div>
   <div class="tiles">
-    <div class="tile"><img src="assets/tile1.jpg" alt=""><span>Command</span></div>
-    <div class="tile"><img src="assets/tile2.jpg" alt=""><span>Ports</span></div>
-    <div class="tile"><img src="assets/tile3.jpg" alt=""><span>Perimeter</span></div>
-    <div class="tile"><img src="assets/tile4.jpg" alt=""><span>Manpower</span></div>
-    <div class="tile"><img src="assets/tile5.jpg" alt=""><span>Energy</span></div>
+    <div class="tile"><img src="assets/photos/control-room.jpg" style="object-position:50% 40%" alt=""><span>Command Centers</span></div>
+    <div class="tile"><img src="assets/photos/security-gate.jpg" style="object-position:50% 68%" alt=""><span>Ports &amp; Gates</span></div>
+    <div class="tile"><img src="assets/photos/heritage-site.jpg" style="object-position:80% 72%" alt=""><span>Heritage Sites</span></div>
+    <div class="tile"><img src="assets/photos/school-team.jpg" style="object-position:50% 38%" alt=""><span>Education</span></div>
   </div>
 
   <footer>
@@ -220,12 +222,14 @@
       <div><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></svg>info@rock-jo.com</div>
       <div><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>@rockjo</div>
     </div>
-    <div class="motto">
-      <div class="en">Your Trusted Partner</div>
-      <div class="sub">in a Safer Tomorrow</div>
+    <div class="right">
+      <div class="motto">
+        <div class="en">Your Trusted Partner</div>
+        <div class="sub">in a Safer Tomorrow</div>
+      </div>
+      <img class="flag" src="assets/flag-jordan.svg" alt="Jordan">
     </div>
   </footer>
-  <div class="flag"></div>
 </div>
 </body>
 </html>
