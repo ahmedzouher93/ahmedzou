@@ -22,7 +22,6 @@
       var(--ink);
     color:var(--txt);font-family:'Barlow',sans-serif;
   }
-  .ar{font-family:'Cairo',sans-serif;direction:rtl}
 
   /* ---------- header ---------- */
   header{
@@ -56,7 +55,7 @@
     backdrop-filter:blur(6px);color:var(--gold-2)
   }
   .headline{position:absolute;z-index:3;left:54px;right:54px;top:505px}
-  .headline .ar{font:800 34px/1.25 'Cairo';color:var(--gold);text-align:left;direction:rtl;display:inline-block;margin-bottom:8px}
+  .headline .eyebrow{font:700 22px/1 'Barlow Condensed';letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
   .headline h1{font:800 104px/.9 'Barlow Condensed';text-transform:uppercase;letter-spacing:-.005em}
   .headline h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--gold)}
   .headline h1 b{color:var(--red)}
@@ -74,15 +73,13 @@
   .stat+.stat::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:1px;background:var(--line)}
   .stat .n{font:800 50px/1 'Barlow Condensed';color:var(--gold-2)}
   .stat .n sup{font-size:28px;color:var(--red);vertical-align:top;margin-left:2px}
-  .stat .l{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px}
+  .stat .l{margin-top:8px}
   .stat .l span{font:600 13px/1 'Barlow';letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-  .stat .l .ar{font:600 14px/1 'Cairo';color:#c3cad6;letter-spacing:0}
 
   /* ---------- solutions ---------- */
   .sec-title{position:absolute;left:54px;right:54px;display:flex;align-items:center;gap:18px}
   .sec-title h2{font:700 19px/1 'Barlow Condensed';letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
   .sec-title .bar{flex:1;height:1px;background:var(--line)}
-  .sec-title .ar{font:700 20px/1 'Cairo';color:var(--txt)}
   .t1{top:1012px}
   .grid{position:absolute;left:54px;right:54px;top:1048px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .card{
@@ -96,7 +93,6 @@
   .card svg{width:42px;height:42px;flex:none;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
   .card svg .r{stroke:var(--red)}
   .card h3{font:700 20px/1.08 'Barlow Condensed';letter-spacing:.025em;text-transform:uppercase}
-  .card h3 .ar{display:block;font:700 15px/1.3 'Cairo';color:var(--gold-2);letter-spacing:0;text-transform:none;text-align:left;margin-top:3px}
   .card p{margin-top:14px;font:400 15.5px/1.42 'Barlow';color:var(--muted)}
 
   /* ---------- sectors ---------- */
@@ -120,7 +116,7 @@
   .contact svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.7}
   .motto{text-align:right}
   .motto .en{font:600 15px/1 'Barlow Condensed';letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
-  .motto .ar{font:700 19px/1.4 'Cairo';margin-top:4px}
+  .motto .sub{font:600 italic 22px/1.3 'Barlow';margin-top:6px;color:var(--txt)}
   .flag{position:absolute;left:0;right:0;bottom:0;height:14px;
     background:linear-gradient(180deg,#0b0b0b 0 33.3%,#f3f3f3 33.3% 66.6%,#0f7a3a 66.6% 100%)}
   .flag::before{content:"";position:absolute;left:0;top:0;bottom:0;width:120px;background:var(--red);clip-path:polygon(0 0,100% 50%,0 100%)}
@@ -151,16 +147,16 @@
 
   <div class="headline">
     <div class="rule"></div>
-    <div class="ar">ما بعد الأمن.. نُمكِّن عملياتك</div>
+    <div class="eyebrow">Security · Consultancy · Operations</div>
     <h1><em>Beyond</em> Security.<br><b>Enabling</b> Operations.</h1>
     <p>Integrated security, operational support and smart technology solutions — trusted by government, energy and industry across Jordan.</p>
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="n">7<sup>+</sup></div><div class="l"><span>Years</span><span class="ar">سنوات خبرة</span></div></div>
-    <div class="stat"><div class="n">2,100<sup>+</sup></div><div class="l"><span>Employees</span><span class="ar">موظف</span></div></div>
-    <div class="stat"><div class="n">30<sup>+</sup></div><div class="l"><span>Clients</span><span class="ar">عميل</span></div></div>
-    <div class="stat"><div class="n">3,400<sup>+</sup></div><div class="l"><span>Missions</span><span class="ar">مهمة منجزة</span></div></div>
+    <div class="stat"><div class="n">7<sup>+</sup></div><div class="l"><span>Years of Experience</span></div></div>
+    <div class="stat"><div class="n">2,100<sup>+</sup></div><div class="l"><span>Employees</span></div></div>
+    <div class="stat"><div class="n">30<sup>+</sup></div><div class="l"><span>Clients</span></div></div>
+    <div class="stat"><div class="n">3,400<sup>+</sup></div><div class="l"><span>Completed Missions</span></div></div>
   </div>
 
   <div class="sec-title t1"><h2>Our Solutions</h2><div class="bar"></div></div>
@@ -209,7 +205,7 @@
     </div>
   </div>
 
-  <div class="sec-title t2"><h2>Sectors We Secure</h2><div class="bar"></div><div class="ar">قطاعات نحميها</div></div>
+  <div class="sec-title t2"><h2>Sectors We Secure</h2><div class="bar"></div></div>
   <div class="tiles">
     <div class="tile"><img src="assets/tile1.jpg" alt=""><span>Command</span></div>
     <div class="tile"><img src="assets/tile2.jpg" alt=""><span>Ports</span></div>
@@ -226,7 +222,7 @@
     </div>
     <div class="motto">
       <div class="en">Your Trusted Partner</div>
-      <div class="ar">شريكك الموثوق لغدٍ أكثر أماناً</div>
+      <div class="sub">in a Safer Tomorrow</div>
     </div>
   </footer>
   <div class="flag"></div>
