@@ -39,11 +39,10 @@
 
   /* mosaic */
   .mosaic{position:absolute;top:412px;left:54px;right:54px;height:578px;display:grid;
-    grid-template-columns:1.35fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:10px}
+    grid-template-columns:repeat(4,1fr);grid-template-rows:1.55fr 1fr;gap:10px}
   .ph{position:relative;overflow:hidden;background:#ccc}
   .ph img{width:100%;height:100%;object-fit:cover;display:block}
-  .ph.big{grid-row:1 / 3}
-  .ph.wide{grid-column:2 / 4}
+  .ph.big{grid-column:1 / 5}
   .ph figcaption{position:absolute;left:0;bottom:0;padding:8px 14px;background:var(--navy);color:#fff;
     font:700 13px/1 'Barlow Condensed';letter-spacing:.24em;text-transform:uppercase}
   .ph figcaption::before{content:"";display:inline-block;width:8px;height:8px;background:var(--red);margin-right:9px;vertical-align:1px}
@@ -114,10 +113,11 @@
   </div>
 
   <div class="mosaic">
-    <figure class="ph big"><img src="assets/photos/hospital-team.jpg" style="object-position:50% 50%" alt=""><figcaption>Healthcare</figcaption></figure>
-    <figure class="ph wide"><img src="assets/photos/control-room.jpg" style="object-position:50% 35%" alt=""><figcaption>Command Centers</figcaption></figure>
+    <figure class="ph big"><img src="assets/photos/hospital-team-wide.jpg" style="object-position:50% 78%" alt=""><figcaption>Healthcare</figcaption></figure>
+    <figure class="ph"><img src="assets/photos/control-room.jpg" style="object-position:50% 35%" alt=""><figcaption>Command</figcaption></figure>
     <figure class="ph"><img src="assets/photos/security-gate.jpg" style="object-position:50% 70%" alt=""><figcaption>Ports &amp; Gates</figcaption></figure>
     <figure class="ph"><img src="assets/photos/heritage-site.jpg" style="object-position:72% 70%" alt=""><figcaption>Heritage</figcaption></figure>
+    <figure class="ph"><img src="assets/photos/school-team.jpg" style="object-position:50% 40%" alt=""><figcaption>Education</figcaption></figure>
   </div>
 
   <div class="stats">

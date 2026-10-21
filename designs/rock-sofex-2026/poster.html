@@ -42,28 +42,28 @@
   .booth .bn{font:800 44px/1 'Barlow Condensed';margin-top:6px;letter-spacing:.02em}
 
   /* ---------- hero ---------- */
-  .hero{position:absolute;top:150px;left:0;width:1080px;height:640px}
-  .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.9) contrast(1.06)}
+  .hero{position:absolute;top:150px;left:0;width:1080px;height:450px}
+  .hero img{position:absolute;left:-150px;top:-200px;width:1380px;height:auto;filter:saturate(.95) contrast(1.05)}
+  .hero{overflow:hidden}
   .hero::after{content:"";position:absolute;inset:0;
     background:
-      linear-gradient(0deg,var(--ink) 0%,rgba(10,15,26,.92) 30%,rgba(10,15,26,.55) 48%,rgba(10,15,26,.05) 68%,rgba(10,15,26,.3) 100%),
-      linear-gradient(90deg,rgba(10,15,26,.55),transparent 45%);}
+      linear-gradient(0deg,var(--ink) 0%,rgba(10,15,26,.75) 12%,rgba(10,15,26,0) 30%,rgba(10,15,26,0) 75%,rgba(10,15,26,.35) 100%);}
   .tag{
-    position:absolute;z-index:3;top:186px;right:54px;
-    display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+    position:absolute;z-index:3;top:168px;right:54px;
+    display:flex;flex-direction:column;align-items:flex-end;gap:6px;
   }
   .tag span{
     font:600 14px/1 'Barlow Condensed';letter-spacing:.28em;text-transform:uppercase;
     padding:9px 14px;background:rgba(10,15,26,.6);border:1px solid var(--line);
     backdrop-filter:blur(6px);color:var(--gold-2)
   }
-  .headline{position:absolute;z-index:3;left:54px;right:54px;top:505px}
-  .headline .eyebrow{font:700 22px/1 'Barlow Condensed';letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-  .headline h1{font:800 104px/.9 'Barlow Condensed';text-transform:uppercase;letter-spacing:-.005em}
+  .headline{position:absolute;z-index:3;left:54px;right:54px;top:574px}
+  .headline .eyebrow{font:700 20px/1 'Barlow Condensed';letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .headline h1{font:800 96px/.9 'Barlow Condensed';text-transform:uppercase;letter-spacing:-.005em}
   .headline h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--gold)}
   .headline h1 b{color:var(--red)}
-  .headline p{margin-top:18px;font:400 21px/1.4 'Barlow';color:#c9d0db;max-width:640px}
-  .headline .rule{position:absolute;left:-54px;top:104px;width:34px;height:4px;background:var(--red)}
+  .headline p{margin-top:14px;font:400 20px/1.4 'Barlow';color:#c9d0db}
+  .headline .rule{position:absolute;left:-54px;top:72px;width:34px;height:4px;background:var(--red)}
 
   /* ---------- stats ---------- */
   .stats{
@@ -140,7 +140,7 @@
     </div>
   </header>
 
-  <div class="hero"><img src="assets/photos/hospital-team.jpg" alt=""></div>
+  <div class="hero"><img src="assets/photos/hospital-team-wide.jpg" alt=""></div>
 
   <div class="tag">
     <span>Integrated Security</span>
@@ -152,7 +152,7 @@
     <div class="rule"></div>
     <div class="eyebrow">Security · Consultancy · Operations</div>
     <h1><em>Beyond</em> Security.<br><b>Enabling</b> Operations.</h1>
-    <p>Integrated security, operational support and smart technology solutions — trusted by government, energy and industry across Jordan.</p>
+    <p>Integrated security, operational support and smart technology solutions.</p>
   </div>
 
   <div class="stats">
