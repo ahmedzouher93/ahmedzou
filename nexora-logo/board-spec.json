@@ -1,0 +1,36 @@
+{
+  "brand": "Nexora",
+  "tagline": "AI voice agents for fintech",
+  "brief": "Nexora Fintech builds AI caller agents that make and answer phone calls for financial businesses. The identity must feel intelligent, human and trustworthy, and stand apart from blue fintech marks and generic AI symbols.",
+  "adjectives": ["intelligent", "human", "trustworthy", "fast"],
+  "criteria": "Success: distinct from blue fintech and purple AI marks, no headset or speech-bubble clichés, recognisable at 16 px, works in one colour.",
+  "industry": "fintech",
+  "nav": ["Agents", "Use cases", "Security", "Pricing"],
+  "brand_color": "#FF5A36",
+  "tile_color": "#14112B",
+  "greyscale": false,
+  "final": true,
+  "designer": "Claude design studio",
+  "concepts": [
+    {
+      "name": "Voice Line",
+      "symbol": "final/nexora-symbol.svg",
+      "lockup": "final/nexora-horizontal.svg",
+      "stacked": "final/nexora-stacked.svg",
+      "symbol_on_tile": "final/nexora-symbol-reversed.svg",
+      "symbol_on_dark": "final/nexora-symbol-reversed.svg",
+      "lockup_on_dark": "final/nexora-horizontal-reversed.svg",
+      "stacked_on_dark": "final/nexora-stacked-reversed.svg",
+      "stacked_on_tile": "final/nexora-stacked-reversed.svg",
+      "idea": "One continuous line joins two voices, the caller and the AI, and writes N; the top dot is the i of AI.",
+      "rationale": [
+        "Inbound and outbound in one gesture: the dots are the two parties, the line is the conversation",
+        "Ember on ink: warm and human, and far from the blue of fintech and the purple of AI",
+        "Built from one stroke width, one corner radius and a 60° diagonal; holds at 16 px",
+        "Seeds a system: the line becomes a live voice waveform, the dots pulse while the agent speaks"
+      ]
+    }
+  ],
+  "recommendation": "Voice Line: one line, two voices, and a hidden AI.",
+  "next_steps": ["Trademark search", "Motion study: the line as a live voice waveform", "Roll out to product UI and the website"]
+}
