@@ -7,13 +7,13 @@
 body{width:1067px;height:1600px;background:var(--blue);overflow:hidden;font-family:Archivo,sans-serif}
 .card{position:relative;width:1067px;height:1600px;background:var(--blue)}
 .slot{position:absolute;left:462px;top:88px;width:186px;height:38px;border-radius:19px;background:var(--navy)}
-.title{position:absolute;left:0;right:0;top:160px;text-align:center;color:#fff;font-weight:800;font-stretch:125%;line-height:.9;letter-spacing:-2px;white-space:nowrap}
+.title{position:absolute;left:0;right:0;top:205px;text-align:center;color:#fff;font-weight:800;font-stretch:125%;line-height:.9;letter-spacing:-2px;white-space:nowrap}
 svg.art{position:absolute;left:0;top:0}
-.name{position:absolute;left:92px;top:1110px;width:880px;height:150px;background:var(--green);border-radius:75px;transform:rotate(-4deg);display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:800;font-stretch:125%;font-size:84px;letter-spacing:-1px;white-space:nowrap;box-shadow:0 10px 0 rgba(10,42,82,.25)}
+.name{position:absolute;left:92px;top:1175px;width:880px;height:150px;background:var(--green);border-radius:75px;transform:rotate(-4deg);display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:800;font-stretch:125%;font-size:84px;letter-spacing:-1px;white-space:nowrap;box-shadow:0 10px 0 rgba(10,42,82,.25)}
 .co{position:absolute;left:500px;top:1242px;height:86px;padding:0 40px;background:var(--purple);border-radius:43px;display:flex;align-items:center;color:#fff;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:46px;letter-spacing:2px;box-shadow:0 0 0 6px var(--blue)}
-.strip{position:absolute;left:0;right:0;bottom:0;height:190px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 70px}
-.foot{height:46px;padding:0 18px;background:var(--navy);border-radius:8px;color:#fff;font-weight:700;font-size:22px;display:flex;align-items:center;letter-spacing:.5px}
-.wm{height:104px}
+.strip{position:absolute;left:0;right:0;bottom:0;height:140px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 72px}
+.foot{color:var(--navy);font-weight:800;font-stretch:112%;font-size:23px;letter-spacing:1.2px;line-height:1}
+.wm{height:74px}
 </style></head><body><div class="card">
 <div class="slot"></div>
 <div class="title"><span id="t" style="display:inline-block">PROJECT<br>MANAGER</span></div>
@@ -27,14 +27,13 @@ svg.art{position:absolute;left:0;top:0}
   <!-- sun rays behind photo -->
   <g id="rays" fill="var(--navy)"></g>
   <!-- starbursts -->
-  <g id="b1" transform="translate(145,560)" fill="var(--green)"></g>
-  <g id="b2" transform="translate(1040,615)" fill="var(--sky)"></g>
+  <g id="b1" transform="translate(145,610)" fill="var(--green)"></g>
+  <g id="b2" transform="translate(1040,665)" fill="var(--sky)"></g>
   <!-- photo placeholder (cut-out sticker) -->
-  <image href="laith-photo.png" x="141" y="470" width="800" height="746" preserveAspectRatio="xMidYMax meet"/>
+  <image href="laith-photo.png" x="141" y="535" width="800" height="746" preserveAspectRatio="xMidYMax meet"/>
 </svg>
 
 <div class="name">LAITH DWAIRY</div>
-<div class="co">BLUERAY</div>
 <div class="strip"><div class="foot">BLUERAY WEB SOLUTIONS · STAFF</div><img class="wm" src="logo-wordmark.png"></div>
 </div>
 <script>
@@ -45,8 +44,8 @@ burst('b1',16,28,102,15);burst('b2',14,24,86,14);
 const rays=document.getElementById('rays');
 [[190,1150],[160,1150],[132,1150],[48,1150],[20,1150],[-8,1150]].forEach(([a])=>{
   const r=document.createElementNS(NS,'rect');r.setAttribute('x',320);r.setAttribute('y',-42);r.setAttribute('width',200);r.setAttribute('height',84);r.setAttribute('rx',6);
-  r.setAttribute('transform',`translate(541,1140) rotate(${-a})`);rays.appendChild(r);});
+  r.setAttribute('transform',`translate(541,1205) rotate(${-a})`);rays.appendChild(r);});
 document.fonts.ready.then(()=>{const t=document.getElementById('t');let s=200;t.style.fontSize=s+'px';
-  while(t.offsetWidth>900&&s>60){s-=2;t.style.fontSize=s+'px';} document.body.dataset.ready=1;});
+  while(t.offsetWidth>740&&s>60){s-=2;t.style.fontSize=s+'px';} document.body.dataset.ready=1;});
 </script>
 </body></html>
