@@ -68,16 +68,15 @@ svg.art{position:absolute;left:0;top:0}
   <svg class="art" width="1067" height="1600">
     <defs><pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3.2" fill="rgba(255,255,255,.16)"/></pattern></defs>
     <rect width="1067" height="1600" fill="url(#dots)"/>
-    <circle cx="533" cy="880" r="345" fill="#0A2A52"/>
     <circle cx="533" cy="880" r="395" fill="none" stroke="#88C0EA" stroke-width="12"/>
     <path d="M168 700 A395 395 0 0 1 380 520" fill="none" stroke="#8DC063" stroke-width="12" stroke-linecap="round"/>
     <path d="M898 1060 A395 395 0 0 1 790 1180" fill="none" stroke="#7B2A80" stroke-width="12" stroke-linecap="round"/>
-    <g class="burst" data-n="16" data-r0="24" data-r1="88" data-w="14" transform="translate(130 470)" fill="#8DC063"></g>
-    <g class="burst" data-n="14" data-r0="20" data-r1="72" data-w="13" transform="translate(955 610)" fill="#ffffff"></g>
   </svg>
   <div class="abs slot"></div>
   <div class="abs x T" style="left:0;right:0;text-align:center;top:205px;color:#fff"></div>
-  <img class="photo" style="left:213px;width:640px;top:530px">
+  <div id="circ" class="abs" style="left:188px;top:535px;width:690px;height:690px;border-radius:50%;overflow:hidden;background:var(--navy);box-shadow:0 0 0 9px #fff">
+    <img class="photo" id="cimg">
+  </div>
   <div class="pill x N" style="left:110px;top:1215px;width:847px;height:140px;background:var(--purple);color:#fff;transform:rotate(-4deg);box-shadow:0 10px 0 rgba(10,42,82,.3)"></div>
 </div>
 
@@ -91,6 +90,8 @@ const NS='http://www.w3.org/2000/svg';
 V.querySelectorAll('.burst').forEach(g=>{const n=+g.dataset.n,r0=+g.dataset.r0,r1=+g.dataset.r1,w=+g.dataset.w;
   for(let i=0;i<n;i++){const r=document.createElementNS(NS,'rect');r.setAttribute('x',r0);r.setAttribute('y',-w/2);r.setAttribute('width',r1-r0);r.setAttribute('height',w);r.setAttribute('transform',`rotate(${i*360/n})`);g.appendChild(r);}});
 V.querySelectorAll('.photo').forEach(i=>i.src=P.photo);
+const ci=document.getElementById('cimg');
+if(ci&&P.v==='4'){ci.style.width=(Q.get('pw')||600)+'px';ci.style.left=(Q.get('px')||45)+'px';ci.style.top=(Q.get('py')||60)+'px';}
 const fit=(el,max,start)=>{let s=start;el.style.fontSize=s+'px';const sp=document.createElement('span');sp.innerHTML=el.innerHTML;el.innerHTML='';el.appendChild(sp);sp.style.display='inline-block';
   while(sp.offsetWidth>max&&s>30){s-=2;el.style.fontSize=s+'px';}return s;};
 V.querySelectorAll('.T').forEach(t=>{t.innerHTML=P.title.split('|').join('<br>');});
