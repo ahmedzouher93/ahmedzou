@@ -37,6 +37,11 @@ svg.art{position:absolute;left:0;top:0}
 <div class="strip"><div class="foot">BlueRay for Web Solutions</div><img class="wm" src="logo-wordmark.png"></div>
 </div>
 <script>
+const Q=new URLSearchParams(location.search);
+const P={title:Q.get('title')||'PROJECT|MANAGER',name:Q.get('name')||'LAYTH ALDWAIRI',photo:Q.get('photo')||'laith-photo.png'};
+document.getElementById('t').innerHTML=P.title.split('|').join('<br>');
+document.getElementById('nm').textContent=P.name;
+document.querySelector('svg.art image').setAttribute('href',P.photo);
 const NS='http://www.w3.org/2000/svg';
 function burst(id,n,r0,r1,w){const g=document.getElementById(id);for(let i=0;i<n;i++){const r=document.createElementNS(NS,'rect');r.setAttribute('x',r0);r.setAttribute('y',-w/2);r.setAttribute('width',r1-r0);r.setAttribute('height',w);r.setAttribute('transform',`rotate(${i*360/n})`);g.appendChild(r);}}
 burst('b1',16,28,102,15);burst('b2',14,24,86,14);
@@ -45,7 +50,11 @@ const rays=document.getElementById('rays');
 [[190,1150],[160,1150],[132,1150],[48,1150],[20,1150],[-8,1150]].forEach(([a])=>{
   const r=document.createElementNS(NS,'rect');r.setAttribute('x',320);r.setAttribute('y',-42);r.setAttribute('width',200);r.setAttribute('height',84);r.setAttribute('rx',6);
   r.setAttribute('transform',`translate(541,1205) rotate(${-a})`);rays.appendChild(r);});
-document.fonts.ready.then(()=>{const t=document.getElementById('t');let s=200;t.style.fontSize=s+'px';
-  while(t.offsetWidth>740&&s>60){s-=2;t.style.fontSize=s+'px';} document.body.dataset.ready=1;});
+document.fonts.ready.then(()=>{const t=document.getElementById('t');let s=150;t.style.fontSize=s+'px';
+  while(t.offsetWidth>740&&s>60){s-=2;t.style.fontSize=s+'px';}
+  const lines=P.title.split('|').length; const box=t.parentElement;
+  box.style.top=(304-lines*0.45*s)+'px';
+  const n=document.getElementById('nm');let f=84;n.style.fontSize=f+'px';while(n.offsetWidth>790&&f>40){f--;n.style.fontSize=f+'px';}
+  document.body.dataset.ready=1;});
 </script>
 </body></html>
