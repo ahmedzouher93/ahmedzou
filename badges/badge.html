@@ -1,0 +1,61 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1B75BB;--navy:#0A2A52;--green:#8DC063;--purple:#7B2A80;--sky:#7DB8E6;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1067px;height:1600px;background:var(--blue);overflow:hidden;font-family:Archivo,sans-serif}
+.card{position:relative;width:1067px;height:1600px;background:var(--blue)}
+.slot{position:absolute;left:462px;top:88px;width:186px;height:38px;border-radius:19px;background:var(--navy)}
+.title{position:absolute;left:0;right:0;top:160px;text-align:center;color:#fff;font-weight:800;font-stretch:125%;line-height:.9;letter-spacing:-2px;white-space:nowrap}
+svg.art{position:absolute;left:0;top:0}
+.name{position:absolute;left:92px;top:1188px;width:880px;height:150px;background:var(--green);border-radius:75px;transform:rotate(-4deg);display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:800;font-stretch:125%;font-size:84px;letter-spacing:-1px;white-space:nowrap;box-shadow:0 10px 0 rgba(10,42,82,.25)}
+.co{position:absolute;left:500px;top:1318px;height:86px;padding:0 40px;background:var(--purple);border-radius:43px;display:flex;align-items:center;color:#fff;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:46px;letter-spacing:2px;box-shadow:0 0 0 6px var(--blue)}
+.foot{position:absolute;left:82px;top:1462px;height:40px;padding:0 14px;background:var(--navy);border-radius:8px;color:#fff;font-weight:700;font-size:20px;display:flex;align-items:center;letter-spacing:.5px}
+.logo{position:absolute;right:62px;top:1400px;width:170px;height:170px;border-radius:50%;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.logo img{width:100%;height:100%;object-fit:cover}
+</style></head><body><div class="card">
+<div class="slot"></div>
+<div class="title"><span id="t" style="display:inline-block">PROJECT<br>MANAGER</span></div>
+
+<svg class="art" width="1067" height="1600" viewBox="0 0 1067 1600">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d3d42"/><stop offset="1" stop-color="#1c1c20"/></linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d6d9"/><stop offset="1" stop-color="#b7b3b8"/></linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfc9cc"/><stop offset="1" stop-color="#8f888c"/></linearGradient>
+  </defs>
+  <!-- sun rays behind photo -->
+  <g id="rays" fill="var(--navy)"></g>
+  <!-- starbursts -->
+  <g id="b1" transform="translate(145,560)" fill="var(--green)"></g>
+  <g id="b2" transform="translate(1040,615)" fill="var(--sky)"></g>
+  <!-- photo placeholder (cut-out sticker) -->
+  <g id="person" transform="translate(541,1250) scale(1.15) translate(-541,-1250)">
+    <path id="sil" d="M300 1240 C300 1120 330 1040 420 1000 C470 980 490 960 492 925
+      C440 890 405 830 400 760 C392 640 450 560 540 560 C630 560 690 640 682 760
+      C677 830 642 890 590 925 C592 960 612 980 662 1000 C752 1040 782 1120 782 1240 Z"
+      fill="url(#shirt)" stroke="#fff" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M492 925 C510 960 572 960 590 925 C592 960 612 980 662 1000 C620 1040 462 1040 420 1000 C470 980 490 960 492 925Z" fill="#a9a4a9"/>
+    <ellipse cx="541" cy="760" rx="138" ry="175" fill="url(#skin)"/>
+    <path d="M400 760 C385 610 470 545 545 548 C640 552 700 620 682 760 C670 690 640 650 600 640 C540 660 470 650 430 700 C412 720 405 740 400 760Z" fill="url(#g)"/>
+  </g>
+</svg>
+
+<div class="name">LAITH DWAIRY</div>
+<div class="co">BLUERAY</div>
+<div class="foot">BLUERAY WEB SOLUTIONS · STAFF</div>
+<div class="logo"><img src="logo.jpg"></div>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function burst(id,n,r0,r1,w){const g=document.getElementById(id);for(let i=0;i<n;i++){const r=document.createElementNS(NS,'rect');r.setAttribute('x',r0);r.setAttribute('y',-w/2);r.setAttribute('width',r1-r0);r.setAttribute('height',w);r.setAttribute('transform',`rotate(${i*360/n})`);g.appendChild(r);}}
+burst('b1',16,28,102,15);burst('b2',14,24,86,14);
+// sun rays radiating from behind the portrait
+const rays=document.getElementById('rays');
+[[190,1150],[160,1150],[132,1150],[48,1150],[20,1150],[-8,1150]].forEach(([a])=>{
+  const r=document.createElementNS(NS,'rect');r.setAttribute('x',320);r.setAttribute('y',-42);r.setAttribute('width',200);r.setAttribute('height',84);r.setAttribute('rx',6);
+  r.setAttribute('transform',`translate(541,1100) rotate(${-a})`);rays.appendChild(r);});
+document.fonts.ready.then(()=>{const t=document.getElementById('t');let s=200;t.style.fontSize=s+'px';
+  while(t.offsetWidth>900&&s>60){s-=2;t.style.fontSize=s+'px';} document.body.dataset.ready=1;});
+</script>
+</body></html>
