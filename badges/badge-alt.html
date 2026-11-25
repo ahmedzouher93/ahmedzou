@@ -1,0 +1,105 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1B75BB;--navy:#0A2A52;--green:#8DC063;--purple:#7B2A80;--sky:#88C0EA;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1067px;height:1600px;overflow:hidden;font-family:Archivo,sans-serif;background:var(--blue)}
+.card{position:relative;width:1067px;height:1600px;background:var(--blue);overflow:hidden}
+.abs{position:absolute}
+.slot{left:462px;top:88px;width:186px;height:38px;border-radius:19px;background:var(--navy)}
+.x{font-weight:800;font-stretch:125%;white-space:nowrap;line-height:.9}
+.photo{position:absolute}
+.pill{position:absolute;display:flex;align-items:center;justify-content:center;border-radius:999px;white-space:nowrap}
+.strip{position:absolute;left:0;right:0;bottom:0;height:140px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 72px;z-index:20}
+.foot{color:var(--navy);font-family:Inter,Arial,sans-serif;font-weight:600;font-size:28px}
+.wm{height:74px}
+svg.art{position:absolute;left:0;top:0}
+.v{display:none}
+</style></head><body><div class="card">
+
+<!-- ===== V1 : ARCH ===== -->
+<div class="v" id="v1">
+  <svg class="art" width="1067" height="1600">
+    <rect x="178" y="455" width="711" height="860" rx="355" fill="none" stroke="#88C0EA" stroke-width="6"/>
+    <path d="M203 830 A330 330 0 0 1 863 830 L863 1290 L203 1290 Z" fill="#0A2A52"/>
+    <g class="burst" data-n="16" data-r0="26" data-r1="96" data-w="15" transform="translate(150 560)" fill="#8DC063"></g>
+    <g class="burst" data-n="14" data-r0="20" data-r1="74" data-w="13" transform="translate(935 1000)" fill="#ffffff"></g>
+    <g class="burst" data-n="12" data-r0="10" data-r1="40" data-w="9" transform="translate(905 520)" fill="#88C0EA"></g>
+  </svg>
+  <div class="abs slot"></div>
+  <div class="abs x T" style="left:0;right:0;text-align:center;top:205px;color:#fff"></div>
+  <img class="photo" style="left:213px;width:640px;top:520px">
+  <div class="pill x N" style="left:110px;top:1205px;width:847px;height:140px;background:var(--purple);color:#fff;transform:rotate(-3deg);box-shadow:0 10px 0 rgba(10,42,82,.3)"></div>
+</div>
+
+<!-- ===== V2 : BIG TYPE BEHIND ===== -->
+<div class="v" id="v2">
+  <div class="abs x TB" style="left:0;right:0;text-align:center;top:560px;color:transparent;-webkit-text-stroke:3px rgba(255,255,255,.55)"></div>
+  <div class="abs x TB" style="left:0;right:0;text-align:center;top:735px;color:#fff"></div>
+  <div class="abs x TB" style="left:0;right:0;text-align:center;top:910px;color:transparent;-webkit-text-stroke:3px rgba(255,255,255,.55)"></div>
+  <svg class="art" width="1067" height="1600">
+    <g class="burst" data-n="16" data-r0="26" data-r1="96" data-w="15" transform="translate(140 300)" fill="#8DC063"></g>
+    <g class="burst" data-n="14" data-r0="22" data-r1="80" data-w="14" transform="translate(960 420)" fill="#88C0EA"></g>
+  </svg>
+  <div class="abs slot"></div>
+  <img class="photo" style="left:218px;width:640px;top:470px">
+  <div class="pill x N" style="left:110px;top:1210px;width:847px;height:140px;background:#fff;color:var(--navy);transform:rotate(-4deg);box-shadow:0 10px 0 rgba(10,42,82,.3)"></div>
+</div>
+
+<!-- ===== V3 : DIAGONAL SPLIT ===== -->
+<div class="v" id="v3">
+  <svg class="art" width="1067" height="1600">
+    <polygon points="0,1010 1067,770 1067,1600 0,1600" fill="#0A2A52"/>
+    <circle cx="640" cy="830" r="330" fill="#88C0EA"/>
+    <circle cx="640" cy="830" r="380" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="2 20" stroke-linecap="round"/>
+    <g class="burst" data-n="16" data-r0="26" data-r1="96" data-w="15" transform="translate(940 470)" fill="#8DC063"></g>
+    <g class="burst" data-n="12" data-r0="16" data-r1="58" data-w="12" transform="translate(120 1130)" fill="#7B2A80"></g>
+  </svg>
+  <div class="abs slot"></div>
+  <div class="abs x T" style="left:72px;top:205px;color:#fff;text-align:left"></div>
+  <div class="abs" style="left:72px;top:375px;width:150px;height:14px;border-radius:7px;background:var(--green)"></div>
+  <img class="photo" style="left:300px;width:640px;top:520px">
+  <div class="pill x N" style="left:70px;top:1235px;width:860px;height:140px;background:var(--purple);color:#fff;transform:rotate(-4deg);box-shadow:0 10px 0 rgba(0,0,0,.25)"></div>
+</div>
+
+<!-- ===== V4 : CIRCLE + DOTS ===== -->
+<div class="v" id="v4">
+  <svg class="art" width="1067" height="1600">
+    <defs><pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="3.2" fill="rgba(255,255,255,.16)"/></pattern></defs>
+    <rect width="1067" height="1600" fill="url(#dots)"/>
+    <circle cx="533" cy="880" r="345" fill="#0A2A52"/>
+    <circle cx="533" cy="880" r="395" fill="none" stroke="#88C0EA" stroke-width="12"/>
+    <path d="M168 700 A395 395 0 0 1 380 520" fill="none" stroke="#8DC063" stroke-width="12" stroke-linecap="round"/>
+    <path d="M898 1060 A395 395 0 0 1 790 1180" fill="none" stroke="#7B2A80" stroke-width="12" stroke-linecap="round"/>
+    <g class="burst" data-n="16" data-r0="24" data-r1="88" data-w="14" transform="translate(130 470)" fill="#8DC063"></g>
+    <g class="burst" data-n="14" data-r0="20" data-r1="72" data-w="13" transform="translate(955 610)" fill="#ffffff"></g>
+  </svg>
+  <div class="abs slot"></div>
+  <div class="abs x T" style="left:0;right:0;text-align:center;top:205px;color:#fff"></div>
+  <img class="photo" style="left:213px;width:640px;top:530px">
+  <div class="pill x N" style="left:110px;top:1215px;width:847px;height:140px;background:var(--purple);color:#fff;transform:rotate(-4deg);box-shadow:0 10px 0 rgba(10,42,82,.3)"></div>
+</div>
+
+<div class="strip"><div class="foot">BlueRay for Web Solutions</div><img class="wm" src="logo-wordmark.png"></div>
+</div>
+<script>
+const Q=new URLSearchParams(location.search);
+const P={v:Q.get('v')||'1',title:Q.get('title')||'SUPPORT',name:Q.get('name')||'HADEEL SMADI',photo:Q.get('photo')||'hadeel-photo.png'};
+const V=document.getElementById('v'+P.v);V.style.display='block';
+const NS='http://www.w3.org/2000/svg';
+V.querySelectorAll('.burst').forEach(g=>{const n=+g.dataset.n,r0=+g.dataset.r0,r1=+g.dataset.r1,w=+g.dataset.w;
+  for(let i=0;i<n;i++){const r=document.createElementNS(NS,'rect');r.setAttribute('x',r0);r.setAttribute('y',-w/2);r.setAttribute('width',r1-r0);r.setAttribute('height',w);r.setAttribute('transform',`rotate(${i*360/n})`);g.appendChild(r);}});
+V.querySelectorAll('.photo').forEach(i=>i.src=P.photo);
+const fit=(el,max,start)=>{let s=start;el.style.fontSize=s+'px';const sp=document.createElement('span');sp.innerHTML=el.innerHTML;el.innerHTML='';el.appendChild(sp);sp.style.display='inline-block';
+  while(sp.offsetWidth>max&&s>30){s-=2;el.style.fontSize=s+'px';}return s;};
+V.querySelectorAll('.T').forEach(t=>{t.innerHTML=P.title.split('|').join('<br>');});
+V.querySelectorAll('.TB').forEach(t=>{t.textContent=P.title.replace('|',' ');});
+V.querySelectorAll('.N').forEach(n=>{n.textContent=P.name;});
+Promise.all([document.fonts.load('800 100px Archivo'),document.fonts.load('600 20px Inter')]).then(()=>document.fonts.ready).then(()=>new Promise(r=>setTimeout(r,400))).then(()=>{
+  V.querySelectorAll('.T').forEach(t=>fit(t,P.v==='3'?600:740,150));
+  V.querySelectorAll('.TB').forEach(t=>fit(t,990,260));
+  V.querySelectorAll('.N').forEach(n=>fit(n,n.offsetWidth-110,84));
+  setTimeout(()=>document.body.dataset.ready=1,200);});
+</script>
+</body></html>
